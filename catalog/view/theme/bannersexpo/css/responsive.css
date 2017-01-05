@@ -1,0 +1,667 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media (max-width:767px) {
+	.footer-row1 {
+  padding: 20px 0 30px;
+}
+	.footer2 {
+  float: left;
+  margin-top: 5px;
+  width: 100%;
+}.footer2 ul li{ width:100% !important; float:left;}
+	.footer2 ul{ width:100%; float:left;}
+	.btn1{  color:#ffffff; background:#fbad35; padding:2px 10px; border-radius:3px; font-size:14px;}
+	.btn1:hover{ background:#aaaaaa; }
+	.email1 { font-size:13px; }
+		.email1 a { font-size:13px; color:#000000; text-decoration:none;}
+	.mobile-top{ display:block; width:100%; float:left; background:#eeeeee; 
+	-webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+-moz-box-shadow:    1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+box-shadow:         1px 1px 5px 0px rgba(0, 0, 0, 0.2); position:fixed; z-index:9999;}
+	.slider-content{ margin-top:10px; margin-bottom:10PX;}
+ .search {
+display:none;
+}
+ .header-row1 .navbar-default {
+display:none;
+}
+ .header-row1  .nav > li {
+    padding: 5px 10px;}
+ .header-row1 .navbar-collapse {
+	 background:#f5f5f5;
+ z-index:999;
+ position:relative;
+}
+.logo img {
+width:50%;
+
+margin-top:-50px;
+}
+.cart img{ width:40px;}
+ .cart { font-size:14px; margin-top:-50px;
+display:block;
+}
+ .header-row1 {
+	 margin-top:0px;
+border-bottom:none;
+height:87px;
+}
+.body-cont1{ margin-top:20px;}
+.your-order-cont .form-group{ margin-bottom:5px;}
+ .email {
+display:none;
+}
+ .price1 {
+ font-size: 24px;
+ color: #191919;
+ padding: 0px;
+}
+ .your-order-cont .btn-file1 {
+ margin-top: 6px;
+ font-size: 19px;
+}
+ .header-row1 .navbar-nav {
+ margin: 7.5px 0px;
+}
+ .header-row3 {
+height:55px;
+}
+.register {
+display:none;
+}
+ .red {
+background:url(../images/menu-bg.png) #010101 repeat-x;
+}
+.your-order h1 {
+ padding: 5px 8px;
+ font-size: 22px;
+}
+.your-order-cont {
+ padding: 1px 0px 1px 0px;
+}
+ .register a {
+ margin-right: 0px;
+}
+ .body-heading h2 {
+ padding: 0px;
+ font-size: 20px;
+ line-height: 65px;
+}
+ .product-thumbnails-txt p strong a {
+ font-size: 11px;
+}
+.order-button {
+width:100%;
+float:left;
+}
+.select-size {
+width:100%;
+float:left;
+}
+.order-button {
+ padding: 0px 10px 0px 10px;
+}
+ .product-thumbnails-txt {
+ height: 110px;
+}
+ .order-btn {
+ margin-bottom:5px;
+ font-size: 12px;
+}
+.product-thumbnails-txt {
+ padding: 5px;
+ text-align:center;
+}
+.body-heading {
+ padding: 8px;
+ margin-bottom:15px;
+}
+ .signup p {
+ font-size: 18px;
+ line-height: 35px;
+}
+.navbar-form .form-control {
+ width: 240px;
+}
+.video h4 {
+ font-size: 21px;
+}
+.welcome-banner {
+ margin-left: 0px;
+}
+.welcome-banner h6 {
+ font-size: 17px;
+}
+.welcome-banner {
+ padding: 7px;
+}
+
+
+.order-btn a {
+ font-size: 11px;
+}
+.product-thumbnails-txt .filter-option.pull-left {
+ font-size: 11px;
+}
+.welcome-img img {
+display:none;
+}
+.body-cont2 {
+display:none;
+}
+.body-cont3 {
+ margin-top: 0px;
+ margin-bottom:30px;
+}
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:hover, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:focus {
+ font-size: 16px;
+}
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a:hover, .body-cont2 .with-nav-tabs.panel.nav-tabs > li.active > a:focus {
+font-size: 16px;
+}
+ .footer-part1 span {
+ font-size: 16px;
+}
+ .welcome-banner p {
+ font-size: 16px;
+}
+.shop-now a {
+ padding: 5px;
+ font-size: 16px;
+}
+.shop-now img {
+width:15%;
+}
+.customer-review h3 {
+ font-size: 23px;
+}
+ .footer-part1 span {
+ font-size: 14px;
+}
+.signup2 {
+ margin-top: 0px;
+}
+ .banner {
+position:relative;
+}
+ .copyright p {
+font-size:14px;
+}
+.signup {
+ margin: 15px 0px;
+}
+.feature {
+ font-size: 16px;
+ line-height: 20px;
+}
+.feature img {
+width:50%;
+}
+.product-thumbnails-txt span a {
+ font-size: 14px;
+}
+.about-expo h2 {
+ font-size: 25px;
+}
+.about-expo {
+ font-size: 16px;
+ line-height: 22px;
+ margin: 35px 0 60px;
+ padding: 25px 10px 15px 10px;
+}
+ .image-preview {
+ font-size: 19px;
+}
+.order-type h2 {
+ font-size: 22px;
+}
+ .upload-img {
+ font-size: 20px;
+ margin-top: 0px;
+}
+.upload-button {
+ font-size: 15px;
+ margin-top: 0px;
+ padding: 10px;
+}
+.start-order {
+ margin-top: 0px;
+ padding: 0 32px;
+}
+.start-order a {
+font-size:16px;
+}
+ .ask-que h4 {
+ font-size: 22px;
+}
+.ask-inner-part .btn-default {
+ font-size: 17px;
+}
+.detail-body3 {
+margin-bottom: 30px;
+ margin-top: 15px;
+}
+.body-outer-cont h1 {
+ font-size: 35px;
+}
+.order-type {
+margin-top:10px;
+padding:5px 8px;
+}
+.radio-select input[type="checkbox"], input[type="radio"] {
+padding:0px;
+margin: 0px 0px 0;
+}
+.order-type label {
+ font-size: 14px;
+}
+.detail-content #tab1default img {
+display:none;
+}
+.detail-content #tab1default iframe {
+width:100%;
+height:160px;
+}
+.footer-part1 ul li  {
+
+  float: left;
+  font-size: 13px;
+  width: 50%;
+}
+.footer-part1 ul li a { font-size:14px;}
+}
+@media (min-width:768px) and (max-width:991px) {
+ .body-cont2 {
+ margin-top: 5px;
+}
+.body-cont1 {
+ margin-top: 10px;
+}
+.body-cont3 {
+ margin-top: 5px;
+}
+.body-cont4 {
+margin-top: 10px;
+}
+ .header-row3 {
+height:55px;
+}
+ .red {
+background:url(../images/menu-bg.png) #010101 repeat-x;
+}
+ .cart {
+ font-size: 15px;
+}
+.body-heading h2 {
+ padding: 0px;
+ font-size: 25px;
+ line-height: 68px;
+}
+ .product-thumbnails-txt p strong a {
+ font-size: 14px;
+}
+.body-cont5 {
+ padding: 0px 0px;
+}
+.welcome-img img {
+ display: none;
+}
+.services {
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+.feature {
+ font-size: 18px;
+ line-height: 24px;
+}
+.feature img {
+width:50%;
+}
+ .customer-review h3 {
+ font-size: 22px;
+}
+.customer-review p {
+ line-height: 17px;
+ padding:0px 20px;
+}
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:hover, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:focus {
+ font-size: 19px;
+ padding:5px 7px;
+}
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a:hover, .body-cont2.with-nav-tabs.panel.nav-tabs > li.active > a:focus {
+font-size: 19px;
+ padding: 3px 7px;
+}
+.welcome-banner h6 {
+ font-size: 23px;
+}
+.welcome-banner p {
+font-size: 16px;
+}
+.shop-now img {
+ width: 16%;
+}
+.shop-now a {
+ padding: 8px;
+ font-size: 17px;
+}
+ .signup p {
+ font-size: 18px;
+}
+.navbar-form .form-control {
+ width: 235px;
+}
+.footer-part1 {
+ padding: 0px;
+}
+.footer-part2 span {
+ font-size: 14px;
+}
+.footer-part2 {
+ padding: 10px;
+}
+ .footer-part2 ul li a {
+ padding: 0px;
+}
+.video iframe {
+ height: 289px;
+}
+ .register a {
+ font-size: 14px;
+ margin-right: 0px;
+}
+ .register img {
+display:none;
+}
+ .footer-part1 span {
+ font-size: 16px;
+}
+.video h4 {
+ font-size: 21px;
+}
+.order-btn {
+margin-bottom:5px;
+}
+.banner {
+position:relative;
+}
+.welcome-banner {
+ padding: 10px;
+}
+.nav-tabs > li {
+ padding:0px;
+}
+ .nav > li > a {
+ margin-right: 11px;
+}
+ .email a {
+ font-size: 13px;
+}
+.signup2 {
+ margin-top: 18px;
+}
+.signup {
+ margin: 20px 0px;
+}
+.about-expo img {
+width:300px;
+ margin-right: 9px;
+}
+.about-expo {
+ font-size: 16px;
+ line-height: 21px;
+ margin: 35px 0 40px;
+ padding:20px 17px 20px 5px;
+}
+.about-expo h2 {
+ font-size: 34px;
+}
+.price-quant {
+ margin-top:0px;
+ font-size: 22px;
+}
+ .ask-que h4 {
+ font-size: 19px;
+}
+.customer-detail {
+ margin-bottom: 10px;
+}
+.customer-detail p {
+ font-size: 15px;
+ line-height: 14px;
+}
+.radio-select {
+ padding: 1px;
+}
+.start-order {
+ margin-top:0px;
+ padding: 0 19px;
+}
+.detail-body3 {
+ margin-bottom: 10px;
+ margin-top: 15px;
+}
+.ask-inner-part .btn-default {
+ font-size: 15px;
+}
+ .ask-que h4 {
+ font-size: 19px;
+}
+.upload-img {
+ font-size: 19px;
+ margin-top: 0px;
+}
+.upload-button {
+ font-size: 16px;
+ margin-top: 0px;
+ padding: 14px;
+}
+.radio-select input[type="checkbox"], input[type="radio"] {
+ margin: 4px 0px 0;
+}
+ .order-type {
+padding:8px 10px;
+}
+.order-type .form-group {
+margin-bottom:10px;
+}
+.preview-tab {
+ padding: 15px;
+}
+.preview-tab img {
+ padding: 20px 0 0;
+}
+ .detail-content #tab1default iframe {
+width:260px;
+height:190px;
+}
+.detail-content #tab1default img {
+width:240px;
+height:190px;
+}
+.ask-que {
+ margin-top: 30px;
+ padding: 5px;
+}
+
+.footer-part1 ul li {
+  font-size: 14px;
+  line-height: 28px;
+  list-style: outside none none;
+}
+}
+ @media (min-width:992px) and (max-width:1199px) {
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:hover, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:focus {
+ font-size: 20px;
+ padding:5px 7px;
+}
+ .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li.active > a:hover, .body-cont2.with-nav-tabs.panel.nav-tabs > li.active > a:focus {
+font-size: 20px;
+ padding: 3px 7px;
+}
+ .orion-menu li a {
+ padding: 5px 6px 5px 6px;
+}
+ .orion-menu li {
+ font-size: 12px;
+}
+ .nav > li > a {
+ margin-right: 12px;
+}
+.email a {
+ font-size: 13px;
+}
+ .body-heading {
+ padding: 0px;
+}
+ .body-heading h2 {
+ padding: 37px 20px;
+ font-size: 35px;
+ line-height:67px;
+}
+.order-btn {
+ font-size: 12px;
+}
+.shop-now img {
+ width: 17%;
+}
+.product-thumbnails-txt p strong a {
+ font-size: 18px;
+}
+ .customer-review h3 {
+ font-size: 30px;
+}
+ .video h4 {
+ font-size: 29px;
+}
+.customer-review p {
+ line-height: 17px;
+}
+ .welcome-banner h6 {
+ font-size: 34px;
+}
+.welcome-banner p {
+ font-size: 16px;
+ line-height: 25px;
+}
+.feature {
+ font-size: 20px;
+ line-height: 25px;
+}
+.feature img {
+width:50%;
+}
+.services {
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+.signup p {
+ font-size: 25px;
+}
+.navbar-form .form-control {
+ width: 380px;
+}
+ .shop-now a {
+ padding: 8px;
+ font-size: 15px;
+}
+.order-btn {
+margin-bottom:5px;
+}
+ .body-cont2 {
+ margin-top: 5px;
+}
+.body-cont1 {
+ margin-top: 20px;
+}
+.body-cont3 {
+ margin-top: 5px;
+}
+.body-cont4 {
+margin-top: 10px;
+}
+ .signup2 {
+ margin-top: 18px;
+}
+.signup {
+ margin: 20px 0px;
+}
+.customer-review p {
+ padding: 0px 20px;
+}
+ .nav-tabs > li {
+ padding:5px;
+}
+ .popular-cont-txt {
+ font-size: 15px;
+}
+.video iframe {
+ height: 316px;
+}
+.product-thumbnails-txt span a {
+ font-size: 15px;
+}
+.about-expo {
+ font-size: 17px;
+ line-height: 22px;
+ margin: 35px 0 100px;
+ padding: 15px 20px 20px 10px;
+}
+.about-expo img {
+ margin-right: 9px;
+}
+.about-expo h2 {
+ font-size: 34px;
+ margin-bottom: 15px;
+}
+ .upload-img {
+ font-size:16px;
+ margin-top: 0px;
+}
+ .upload-button {
+padding:15px;
+ margin-top: 0px;
+font-size: 18px;
+}
+ .price-quant {
+ margin-top: 0px;
+}
+ .start-order {
+ margin-top: 0px;
+ padding:0px 47px;
+}
+.ask-inner-part .btn-default {
+ font-size: 17px;
+}
+.detail-body3 {
+ margin-bottom: 40px;
+}
+.ask-que h4 {
+ font-size: 22px;
+}
+.order-type h2 {
+ font-size: 22px;
+}
+.order-type {
+padding:8px 10px;
+}
+.order-type .form-group {
+margin-bottom:10px;
+}
+.preview-tab {
+ padding: 15px;
+}
+.preview-tab img {
+ padding: 20px 0 0;
+}
+.detail-content #tab1default iframe {
+width:260px;
+height:190px;
+}
+}
+ @media (min-width:1200px) {
+.hidden-lg {
+display:none!important
+}
+}

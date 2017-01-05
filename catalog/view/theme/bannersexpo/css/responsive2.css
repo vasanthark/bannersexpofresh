@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@media (max-width:767px) {
+.continue-shop {
+  font-size: 15px;
+}
+.regi-customer{ margin-top:10px;}
+.regi-customer p {
+ 
+  font-size: 21px;
+
+}
+.order-now a {
+  font-size: 17px;
+}
+.fixed {
+	position:relative;
+	top:0;
+	z-index:0;
+}
+.continue-shopping {
+ 
+  font-size: 20px;
+  padding: 4px;
+
+}
+.cont-shop {
+ margin-top:0px;
+}
+.cont-shop p {
+ 
+  font-size: 18px;
+}
+.order-body3 {
+  
+  margin-top: 0px;
+ 
+}
+.register-cart {
+
+  margin-top: 10px;
+}
+.check-details1 {
+  margin-top: 10px;
+}
+.payment {
+  margin-bottom: 10px;
+}
+	}
+@media (min-width:768px) and (max-width:991px) {
+	.fixed {
+	position:relative;
+	top:0;
+	z-index:0;
+}
+	.regi-customer span {
+  font-size: 14px;
+}
+.cont-shop p {
+  font-size: 20px;
+}
+.paypal p {
+  font-size: 12px;
+  padding: 0;
+}
+.regi-customer p {
+ 
+  margin-bottom: 11px;
+  padding: 8px;
+}
+.inner-pages h4 {
+  font-size: 19px;
+
+}
+.body-outer-cont h1 {
+  font-size: 33px;
+}
+	}
+ @media (min-width:992px) and (max-width:1199px) {
+	 
+	.order-now {
+  margin-top: 20px;
+}
+.paypal p {
+
+  padding: 0;
+} 
+.regi-customer p {
+  font-size: 21px;
+  margin-bottom: 7px;
+  padding: 7px;
+}
+	 
+	 }
+  @media (min-width:1200px) {
+.hidden-lg {
+display:none!important
+}
+}

@@ -1,0 +1,48 @@
+/* Custom CSS */
+.sliderate{
+    height: 1em;
+    line-height: 1em;
+    width: 1em;
+}
+
+.star_rating:before {
+    color: #818181;
+    content:  "\f005\f005\f005\f005\f005";
+    display: block;
+    font-family: FontAwesome;
+      font-size: 20px;
+    left: 0;
+    padding-left: 5px;   
+    top: 0;
+}
+
+.star_rating {
+    display: inline-block;
+    letter-spacing: 5px;
+    position: relative;
+}
+
+.star_rating p:before {
+    color: #ffbb00;
+    content:  "\f005\f005\f005\f005\f005";
+    display: block;
+    font-family: FontAwesome;
+    font-size:20px;
+    left: 0;
+    padding-left: 5px;
+    position: absolute;    
+    top: 0;
+}
+
+.star_rating p {
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.star_rating {
+    letter-spacing: 5px;
+}
