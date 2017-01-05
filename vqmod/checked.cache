@@ -217,3 +217,4 @@ admin/view/template/common/dashboard.tpl
 admin/controller/catalog/manufacturer.php
 admin/language/en-gb/catalog/category.php
 admin/view/template/catalog/category_list.tpl
+system/startup.php
