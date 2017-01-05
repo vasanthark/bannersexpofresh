@@ -1,0 +1,14 @@
+---------- Date: 2017-01-03 09:09:05 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /bannersexpofresh/index.php?route=common/home
+MOD DETAILS:
+   modFile   : /opt/lampp/htdocs/bannersexpofresh/vqmod/xml/testimonials_lite_front_end.vqmod.xml
+   id        : Testimonials Lite Front End
+   version   : 1.4.1
+   vqmver    : 
+   author    : vanstudio.co.ua
+
+File Name    : catalog/view/theme/*/template/common/footer.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+----------------------------------------------------------------------
+
+
