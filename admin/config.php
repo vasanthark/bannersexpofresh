@@ -1,25 +1,25 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/bannersexpofresh/admin/');
-define('HTTP_CATALOG', 'http://localhost/bannersexpofresh/');
+define('HTTP_SERVER', 'http://local.bannersexpofresh/admin/');
+define('HTTP_CATALOG', 'http://local.bannersexpofresh/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/bannersexpofresh/admin/');
-define('HTTPS_CATALOG', 'http://localhost/bannersexpofresh/');
+define('HTTPS_SERVER', 'http://local.bannersexpofresh/admin/');
+define('HTTPS_CATALOG', 'http://local.bannersexpofresh/');
 
 // DIR
-define('DIR_APPLICATION', '/opt/lampp/htdocs/bannersexpofresh/admin/');
-define('DIR_SYSTEM', '/opt/lampp/htdocs/bannersexpofresh/system/');
-define('DIR_IMAGE', '/opt/lampp/htdocs/bannersexpofresh/image/');
-define('DIR_LANGUAGE', '/opt/lampp/htdocs/bannersexpofresh/admin/language/');
-define('DIR_TEMPLATE', '/opt/lampp/htdocs/bannersexpofresh/admin/view/template/');
-define('DIR_CONFIG', '/opt/lampp/htdocs/bannersexpofresh/system/config/');
-define('DIR_CACHE', '/opt/lampp/htdocs/bannersexpofresh/system/storage/cache/');
-define('DIR_DOWNLOAD', '/opt/lampp/htdocs/bannersexpofresh/system/storage/download/');
-define('DIR_LOGS', '/opt/lampp/htdocs/bannersexpofresh/system/storage/logs/');
-define('DIR_MODIFICATION', '/opt/lampp/htdocs/bannersexpofresh/system/storage/modification/');
-define('DIR_UPLOAD', '/opt/lampp/htdocs/bannersexpofresh/system/storage/upload/');
-define('DIR_CATALOG', '/opt/lampp/htdocs/bannersexpofresh/catalog/');
+define('DIR_APPLICATION', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/admin/');
+define('DIR_SYSTEM', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/');
+define('DIR_IMAGE', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/image/');
+define('DIR_LANGUAGE', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/admin/language/');
+define('DIR_TEMPLATE', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/admin/view/template/');
+define('DIR_CONFIG', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/config/');
+define('DIR_CACHE', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/storage/cache/');
+define('DIR_DOWNLOAD', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/storage/download/');
+define('DIR_LOGS', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/storage/logs/');
+define('DIR_MODIFICATION', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/storage/modification/');
+define('DIR_UPLOAD', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/system/storage/upload/');
+define('DIR_CATALOG', '/opt/lampp/htdocs/bannersexpofresh/branches/dev/catalog/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
