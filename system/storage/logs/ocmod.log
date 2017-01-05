@@ -1,0 +1,648 @@
+2017-01-04 13:27:13 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 147
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:30:02 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 147
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:30:30 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 147
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:34:09 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 150
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:36:41 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 121
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:38:26 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 124
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:39:18 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 124
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:39:36 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 124
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
+2017-01-04 13:43:57 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Advanced Newsletter Subscribe PRO
+----------------------------------------------------------------
+MOD: Social Media Icons
+
+FILE: catalog/controller/common/header.php
+CODE: $data['cart'] = $this->load->controller('common/cart');
+LINE: 124
+
+FILE: catalog/view/theme/bannersexpo/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+LINE: 131
+
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <div class="socialicons"></div>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/view/theme/bannersexpo/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+LINE: 64
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <span>Get in touch</span>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['newsletter'] = $this->url->link('account/newsletter', '', true);
+LINE: 60
+
+FILE: admin/controller/setting/setting.php
+CODE: $this->load->model('tool/image');
+LINE: 520
+
+FILE: admin/view/template/setting/setting.tpl
+CODE: <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+LINE: 43
+CODE: <div class="tab-content">
+LINE: 79
+----------------------------------------------------------------
