@@ -347,3 +347,4 @@ catalog/view/theme/bannersexpo/template/common/header.tpl
 admin/controller/catalog/category.php
 admin/language/en-gb/catalog/category.php
 admin/view/template/catalog/category_list.tpl
+admin/view/template/catalog/option_form.tpl
