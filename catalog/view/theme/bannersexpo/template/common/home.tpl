@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 <div class="slider">
+    <img src="image/slider.jpg" alt="">
     <div class="slider-content">      
         <div class="container">
             <div class="row">

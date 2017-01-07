@@ -32,6 +32,7 @@
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/maps.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/bootstrap-select.min.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/owl.carousel.min.js"></script> 
+        <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/icheck.js"></script> 
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
@@ -46,6 +47,11 @@
                 $('.indicator').click(function (e) {
                     $(this).parent('li').children('ul:not(.fading)').slideToggle();
                     e.preventDefault();
+                });
+                
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-red',
+                    radioClass: 'iradio_square-red'
                 });
 
                 $('.selectpicker').selectpicker({

@@ -5,6 +5,7 @@ class ControllerCommonHeader extends Controller {
     public function index() {
         // Analytics
         $this->load->model('extension/extension');
+        $this->load->model('catalog/information');
 
         $this->document->addScript('catalog/view/javascript/jquery/newsletter/js/main.js');
         // $this->document->addScript('catalog/view/javascript/jquery/jquery.raty-fa.js');
