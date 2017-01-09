@@ -46,3 +46,7 @@
 .star_rating {
     letter-spacing: 5px;
 }
+
+.post-img-date a {  
+  padding: 8px;  
+}

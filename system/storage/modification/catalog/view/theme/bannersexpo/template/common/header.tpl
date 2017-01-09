@@ -20,7 +20,9 @@
         <link href="catalog/view/theme/bannersexpo/css/font-awesome.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/bootstrap-select.min.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/owl.carousel.css" rel="stylesheet">
-
+        <link href="catalog/view/theme/bannersexpo/css/responsive2.css" rel="stylesheet">
+        <link href="catalog/view/theme/bannersexpo/css/red.css" rel="stylesheet">
+                
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
@@ -115,7 +117,7 @@
                                     <ul class="nav navbar-nav navbar-left">                                   
                                         <li><a href="<?php echo $home; ?>"> Home </a> </li>
                                         <li><a href="<?php echo $about_us; ?>"> About us</a> </li>
-                                        <li><a href="#"> Blog </a> </li>
+                                        <li><a href="<?php echo $blog; ?>"> Blog </a> </li>
                                         <li><a href="#"> FAQs </a></li>
                                     </ul>
                                 </div>

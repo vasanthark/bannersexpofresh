@@ -18,6 +18,7 @@ $_['column_action']     = 'Action';
 $_['entry_name']        = 'Download Name';
 $_['entry_filename']    = 'Filename';
 $_['entry_mask']        = 'Mask';
+$_['entry_type']        = 'Download Type';
 
 // Help
 $_['help_filename']     = 'You can upload via the upload button or use FTP to upload to the download directory and enter the details below.';
