@@ -118,7 +118,7 @@
                                         <li><a href="<?php echo $home; ?>"> Home </a> </li>
                                         <li><a href="<?php echo $about_us; ?>"> About us</a> </li>
                                         <li><a href="<?php echo $blog; ?>"> Blog </a> </li>
-                                        <li><a href="#"> FAQs </a></li>
+                                        <li><a href="<?php echo $faq; ?>"> FAQs </a></li>
                                     </ul>
                                 </div>
                                 <!-- /.navbar-collapse --> 
