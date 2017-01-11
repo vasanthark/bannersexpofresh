@@ -50,3 +50,12 @@
 .post-img-date a {  
   padding: 8px;  
 }
+
+.faq-heading a {
+  color: #000000;
+  text-decoration: none;
+}
+.faq-block {
+  margin-bottom: 40px;
+  margin-top: 25px;
+}

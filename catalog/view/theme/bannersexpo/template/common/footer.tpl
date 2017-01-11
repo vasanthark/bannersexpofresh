@@ -41,14 +41,14 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="footer-part1"> <span>Main  LINKS</span>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#"> Blog</a></li>
-                            <li><a href="#"> FAQs</a></li>
-                            <li><a href="#"> Delivery Information</a></li>
-                            <li><a href="#"> Privacy Policy</a></li>
-                            <li><a href="#"> Terms & Conditions </a></li>
+                            <li><a href="<?php echo $about_us; ?>">About us</a></li>
+                            <li><a href="<?php echo $blog; ?>"> Blog</a></li>
+                            <li><a href="<?php echo $faq; ?>"> FAQs</a></li>
+                            <li><a href="<?php echo $delivery_info; ?>"> Delivery Information</a></li>
+                            <li><a href="<?php echo $privacy_policy; ?>"> Privacy Policy</a></li>
+                            <li><a href="<?php echo $terms_conditions; ?>"> Terms & Conditions </a></li>
                             <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-                            <li><a href="#">Site Map </a></li>
+                            <li><a href="<?php echo $sitemap; ?>">Site Map </a></li>
                         </ul>
                     </div>
                     <div class="footer-part1 footer2 "> <span>Contact DETAILS</span>

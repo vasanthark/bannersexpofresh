@@ -1,21 +1,19 @@
 <?php echo $header; ?>
-<div class="container">
-    <ul class="breadcrumb">
-        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-        <?php } ?>
-    </ul>
-    <div class="row"><?php echo $column_left; ?>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-sm-9'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-sm-12'; ?>
-        <?php } ?>
-        <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-            <h1><?php echo $heading_title; ?></h1>
-            <form class="form-horizontal" id="form-review">
+<div class="body-outer-cont">
+  <div class="container">
+    <div class="row">
+      <h1><?php echo $heading_title; ?></h1>
+    </div>
+  </div>
+</div>
+<div class="body-cont">
+    <div class="container">
+        <div class="row">
+            <?php echo $content_breadcrumbs; ?>        
+            <div class="about-page">
+                <div class="col-lg-12 col-md-12 col-sm-12 xol-xs-12">
+                    <div class="about-cont">
+                        <form class="form-horizontal" id="form-review">
                 <?php if ($review_status) { ?>
                 <div id="review"></div>
                 <?php if ($review_guest) { ?>
@@ -68,11 +66,15 @@
                 <?php echo $text_login; ?>
                 <?php } ?>
                 <?php } ?>
-            </form>
-            <?php echo $content_bottom; ?></div>
-        <?php echo $column_right; ?></div>
+            </form>                                   
+                    </div>                             
+                </div>
+            </div>
 
-    <script type="text/javascript"><!--
+        </div>
+    </div>   
+</div>
+<script type="text/javascript"><!--
         $('#review').delegate('.pagination a', 'click', function (e) {
             e.preventDefault();
             $('#review').load(this.href);
@@ -111,5 +113,4 @@
             });
         });
         //--></script>
-</div>
 <?php echo $footer; ?>

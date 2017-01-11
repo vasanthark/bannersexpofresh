@@ -16,6 +16,7 @@
         <!-- Bootstrap -->
         <link href="catalog/view/theme/bannersexpo/css/bootstrap.min.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/style.css" rel="stylesheet"> 
+        <link href="catalog/view/theme/bannersexpo/css/faq.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/responsive.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/font-awesome.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/bootstrap-select.min.css" rel="stylesheet">
