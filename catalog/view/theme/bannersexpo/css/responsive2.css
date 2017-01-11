@@ -48,6 +48,13 @@
 .payment {
   margin-bottom: 10px;
 }
+.contact-content i {
+  color: #444444;
+  float: left;
+  font-size: 2em;
+  margin-bottom: 45px;
+  margin-right: 10px;
+}
 	}
 @media (min-width:768px) and (max-width:991px) {
 	.fixed {
@@ -76,6 +83,13 @@
 }
 .body-outer-cont h1 {
   font-size: 33px;
+}
+.contact-content i {
+  color: #444444;
+  float: left;
+  font-size: 2em;
+  margin-bottom: 39px;
+  margin-right: 13px;
 }
 	}
  @media (min-width:992px) and (max-width:1199px) {

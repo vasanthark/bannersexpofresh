@@ -2388,3 +2388,99 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 
 
 .leave-comment  .form-control{ border-radius:0px;}
+
+/*Contactus*/
+
+
+
+.contactus-page {
+	width:100%;
+	float:left;
+	margin-top:65px;
+}
+.contact-page-form {
+	width:100%;
+	float:left;
+	margin-bottom:50px;
+}
+
+.contact-page-form  iframe{ width:100%; height:350px;}
+
+
+.contact-page-form h1,h2 {
+	font-size:24px;
+	color:#444444;
+	text-transform:uppercase;
+	font-weight:700;
+	margin-bottom:35px;
+	background:url(../images/contact-img2.png) left no-repeat;
+	padding:8px;
+}
+
+.send-msg {
+	float:left;
+	background:#0696d2;
+	padding:10px 18px;
+	font-size:15px;
+	text-transform:uppercase;
+	color:#ffffff;
+	margin-top:20px;
+	font-weight:500;
+	border-radius:0px;
+	display:block;
+}
+.send-msg:hover { background:#bbbbbb; color:#000000;
+	text-decoration:none;
+
+}
+.contact-content { background:#f5f5f5;
+	width:100%;
+	float:left;
+	margin-bottom:10px;
+	padding:9px;
+	border-bottom:#f0f0f0 solid 1px;
+}
+.contact-content span {
+	font-size:16px;
+	font-weight:500;
+	color:#191919;
+	padding:5px 0px;
+	color:#0696d2;
+}
+.contact-content p {
+	font-size:16px;
+	line-height:16px;
+	color:#191919;
+	margin-top:10px;
+}
+.contact-content i { margin-bottom:5px;
+	font-size:3em;
+	color:#444444;
+	float:left;
+	margin-right:40px;
+}
+.contactus-content {
+	width:100%;
+	float:left;
+	padding:5px;
+	border:#f0f0f0 solid 2px;
+}
+.contact-content:last-child {
+	border:none;
+}
+.contact-map iframe {
+	width:100%;
+	float:left;
+	height:350px;
+}
+.content-bg {
+	background:#2e2f33;
+	padding:15px;
+}
+.content-bg span {
+	padding:10px;
+	margin-bottom:20px;
+	color:#ffffff;
+	font-size:20px;
+}
+.contact-page-form .form-control{ font-size:15px; color:#000000 !important;}
