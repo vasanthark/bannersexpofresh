@@ -52,6 +52,15 @@ class ControllerCommonFooter extends Controller {
 		$data['order'] = $this->url->link('account/order', '', true);
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
+                
+                $data['home'] = $this->url->link('common/home');
+                $data['about_us'] = $this->url->link('information/information', 'information_id=4');
+                $data['faq'] = $this->url->link('information/faq', '', true);
+                $data['blog'] = $this->url->link('tltblog/tlttag', '', true);
+                $data['delivery_info'] = $this->url->link('information/information', 'information_id=6');
+                $data['privacy_policy'] = $this->url->link('information/information', 'information_id=3');
+                $data['terms_conditions'] = $this->url->link('information/information', 'information_id=5');
+                $data['sitemap'] = $this->url->link('information/sitemap', '', true);
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
