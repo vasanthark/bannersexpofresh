@@ -19,13 +19,13 @@
                 <?php if ($review_guest) { ?>
                 <h2><?php echo $text_write; ?></h2>
                 <div class="form-group required">
-                    <div class="col-sm-12">
+                    <div class="col-sm-5">
                         <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
                         <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group required">
-                    <div class="col-sm-12">
+                    <div class="col-sm-5">
                         <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
                         <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
 
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="form-group required">
-                    <div class="col-sm-12">
+                    <div class="col-sm-5">
                         <label class="control-label"><?php echo $entry_rating; ?></label>
                         &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
                         <input type="radio" name="rating" value="1" />
@@ -49,7 +49,7 @@
                 </div>
                 <?php if (isset($site_key) && $site_key) { ?>
                 <div class="form-group">
-                    <div class="col-sm-12">
+                    <div class="col-sm-5">
                         <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
                     </div>
                 </div>
@@ -57,10 +57,8 @@
                 <?php echo $captcha; ?>
                 <?php } ?>
                 <div class="buttons clearfix">
-                    <div class="pull-right">
                         <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>"
                                 class="btn btn-primary"><?php echo $button_continue; ?></button>
-                    </div>
                 </div>
                 <?php } else { ?>
                 <?php echo $text_login; ?>
