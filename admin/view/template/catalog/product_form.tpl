@@ -84,6 +84,12 @@
                       <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                     </div>
                   </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-footer-keywords<?php echo $language['language_id']; ?>"><?php echo $entry_footer_keywords; ?></label>
+                        <div class="col-sm-10">
+                            <textarea name="product_description[<?php echo $language['language_id']; ?>][footer_keywords]" rows="5" placeholder="<?php echo $entry_footer_keywords; ?>" id="input-footer-keywords<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['footer_keywords'] : ''; ?></textarea>
+                        </div>
+                    </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="<?php echo $help_tag; ?>"><?php echo $entry_tag; ?></span></label>
                     <div class="col-sm-10">

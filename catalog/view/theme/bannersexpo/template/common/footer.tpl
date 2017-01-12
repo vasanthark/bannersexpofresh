@@ -4,6 +4,13 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="footer-part1"> <span>Related Keywords</span>
+                        <?php if (!empty($footer_keywords)) {  ?>
+                        <ul>
+                            <?php foreach ($footer_keywords as $res) {
+                                    echo '<li>' . $res . '</li>';
+                                    }     ?>  
+                        </ul>
+                        <?php   }else{ ?> 
                         <ul>
                             <li>Snaps open Display</li>
                             <li>Tropica Display Sign Stand</li>
@@ -20,6 +27,7 @@
                             <li>Backdrop Stands</li>
                             <li>Promotional Banner Stands</li>                           
                         </ul>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

@@ -33,13 +33,36 @@ class ControllerCommonFooter extends Controller {
 		$data['informations'] = array();
 
 		foreach ($this->model_catalog_information->getInformations() as $result) {
-			if ($result['bottom']) {
-				$data['informations'][] = array(
-					'title' => $result['title'],
-					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
-				);
-			}
-		}
+                        if ($result['bottom']) {
+                                $data['informations'][] = array(
+                                        'title' => $result['title'],
+                                        'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+                                    );
+                                }
+                        }
+
+                /* ARK Footer Keywords*/
+                if (isset($this->request->get['product_id'])) {
+                    $product_id = (int) $this->request->get['product_id'];
+                } else {
+                    $product_id = 0;
+                }
+                $data['footer_keywords'] = '';
+                 $this->load->model('catalog/product');
+                 $product_info = $this->model_catalog_product->getProduct($product_id);
+
+                if ($product_info) {
+
+                    if (isset($product_info['footer_keywords']) && !empty($product_info['footer_keywords'])) {
+                        $footer_keywords = explode(',', $product_info['footer_keywords']);
+                    } else {
+                        $footer_keywords = array();
+                    }
+                    
+                    
+                                       
+                    $data['footer_keywords'] = $footer_keywords;
+                }
 
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
@@ -93,3 +116,6 @@ class ControllerCommonFooter extends Controller {
 		return $this->load->view('common/footer', $data);
 	}
 }
+
+
+ 
