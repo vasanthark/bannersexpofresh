@@ -72,7 +72,8 @@
             </div>
 
         </div>
-    </div>   
+    </div>  
+    <?php echo $content_bottom; ?>
 </div>
 <script type="text/javascript"><!--
         $('#review').delegate('.pagination a', 'click', function (e) {

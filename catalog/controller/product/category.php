@@ -33,11 +33,12 @@ class ControllerProductCategory extends Controller {
 			$page = 1;
 		}
 
-		if (isset($this->request->get['limit'])) {
-			$limit = (int)$this->request->get['limit'];
-		} else {
-			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
-		}
+//		if (isset($this->request->get['limit'])) {
+//			$limit = (int)$this->request->get['limit'];
+//		} else {
+//			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
+//		}
+                 $limit = 100;
 
 		$data['breadcrumbs'] = array();
 
@@ -64,7 +65,7 @@ class ControllerProductCategory extends Controller {
 			$path = '';
 
 			$parts = explode('_', (string)$this->request->get['path']);
-
+                        
 			$category_id = (int)array_pop($parts);
 
 			foreach ($parts as $path_id) {
@@ -88,7 +89,7 @@ class ControllerProductCategory extends Controller {
 		}
 
 		$category_info = $this->model_catalog_category->getCategory($category_id);
-
+                $data['category_id'] = $category_id;
 		if ($category_info) {
 			$this->document->setTitle($category_info['meta_title']);
 			$this->document->setDescription($category_info['meta_description']);
@@ -129,7 +130,7 @@ class ControllerProductCategory extends Controller {
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
-
+                        
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {
@@ -158,12 +159,20 @@ class ControllerProductCategory extends Controller {
 					'filter_sub_category' => true
 				);
 
-				$data['categories'][] = array(
-					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+//				$data['categories'][] = array(
+//					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+//					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+//				);
+                                
+                                $data['categories'][] = array(
+					'category_id'  => $result['category_id'],
+					'thumb'       => "image/" . $result['image'],
+					'name'        => $result['name'],	
+					'href'        => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
+                                        'action' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
 				);
 			}
-
+                        
 			$data['products'] = array();
 
 			$filter_data = array(
@@ -174,14 +183,15 @@ class ControllerProductCategory extends Controller {
 				'start'              => ($page - 1) * $limit,
 				'limit'              => $limit
 			);
-
+                        
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					//$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+                                    $image = "image/" . $result['image'];
 				} else {
 					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
 				}
@@ -209,7 +219,39 @@ class ControllerProductCategory extends Controller {
 				} else {
 					$rating = false;
 				}
+                                $product_id = $result['product_id'];
 
+                                $options = array();
+
+                                foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
+                                    $product_option_value_data = array();
+
+                                    if ($option['option_id'] == "11") {
+                                        foreach ($option['product_option_value'] as $option_value) {
+
+                                            if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+
+                                                $product_option_value_data[] = array(
+                                                    'product_option_value_id' => $option_value['product_option_value_id'],
+                                                    'option_value_id' => $option_value['option_value_id'],
+                                                    'name' => $option_value['name']
+                                                );
+                                            }
+                                        }
+
+                                        $options = array(
+                                            'product_option_id' => $option['product_option_id'],
+                                            'product_option_value' => $product_option_value_data,
+                                            'option_id' => $option['option_id'],
+                                            'name' => $option['name'],
+                                            'type' => $option['type'],
+                                            'value' => $option['value'],
+                                            'required' => $option['required']
+                                        );
+                                    }
+                                }
+                                
+                                $action = $this->url->link('product/product', 'product_id=' . $product_id);
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -220,10 +262,12 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
-					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url),
+                                        'options' => $options,
+                                        'action' => $action   
 				);
 			}
-
+                        
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {
@@ -265,7 +309,7 @@ class ControllerProductCategory extends Controller {
 				'value' => 'p.price-DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=DESC' . $url)
 			);
-
+                        
 			if ($this->config->get('config_review_status')) {
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_desc'),
@@ -311,7 +355,7 @@ class ControllerProductCategory extends Controller {
 			$limits = array_unique(array($this->config->get($this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
 
 			sort($limits);
-
+                        
 			foreach($limits as $value) {
 				$data['limits'][] = array(
 					'text'  => $value,
@@ -337,7 +381,7 @@ class ControllerProductCategory extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-
+                        
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
 			$pagination->page = $page;
@@ -360,7 +404,7 @@ class ControllerProductCategory extends Controller {
 			if ($limit && ceil($product_total / $limit) > $page) {
 			    $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');
 			}
-
+                        
 			$data['sort'] = $sort;
 			$data['order'] = $order;
 			$data['limit'] = $limit;
@@ -373,7 +417,7 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');            $data['content_breadcrumbs'] = $this->load->controller('common/breadbcrumb',$data['breadcrumbs']);
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
+                        
 			$this->response->setOutput($this->load->view('product/category', $data));
 		} else {
 			$url = '';
