@@ -2198,7 +2198,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 	float:left;
 	position:relative;
 }
-.post-img-date a {
+.post-img-date span a {
 	position:absolute;
 	top:0px;
 	background:#4db9df;
@@ -2212,16 +2212,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 .blog-info {
 	width:100%;
 	float:left;
-	padding:15px;
+	padding:10px 15px;
 	font-size:16px;
 }
-.blog-info-left a {
-	width: auto;
-	float: left;
-	color:#757575;
-	text-decoration:none;
-}
-.blog-info-right a {
+
+.blog-info-right  {
 	width:auto;
 	float:right;
 	color:#757575;
@@ -2229,13 +2224,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 .blog-info-right a:hover {
 	color:#4db9df;
 }
-.blog-info-left a:hover {
-	color:#4db9df;
-}
 .blog-text {
 	width:100%;
 	float:left;
-	padding:24px 10px;
+	padding:15px 10px;
 }
 .blog-text p a {
 	color:#000000;
@@ -2388,6 +2380,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 
 
 .leave-comment  .form-control{ border-radius:0px;}
+
+
+
+
+
+
+
+
+
+
 
 /*Contactus*/
 

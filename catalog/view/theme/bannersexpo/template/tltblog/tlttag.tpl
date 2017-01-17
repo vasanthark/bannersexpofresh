@@ -17,8 +17,8 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="single-post">
                         <div class="post-img-date">
-                            <a href="<?php echo $tltblog['href']; ?>"><?php echo date("M d",strtotime($tltblog['updated_at']));?></a>
-                            <img src="<?php echo $tltblog['thumb']; ?>" alt="<?php echo $tltblog['title']; ?>" title="<?php echo $tltblog['title']; ?>"/>
+                            <span><a href="<?php echo $tltblog['href']; ?>"><?php echo date("M d",strtotime($tltblog['updated_at']));?></a></span>
+                            <a href="<?php echo $tltblog['href']; ?>"><img src="<?php echo $tltblog['thumb']; ?>" alt="<?php echo $tltblog['title']; ?>" title="<?php echo $tltblog['title']; ?>"/></a>
                         </div>
                         <div class="blog-info">
 
