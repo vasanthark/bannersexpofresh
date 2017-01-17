@@ -556,6 +556,97 @@ class ControllerProductProduct extends Controller {
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
 	}
+        
+        public function calculate() 
+        {
+            $this->language->load('product/product');
+            $this->load->model('catalog/product');
+            
+            $product_info = $this->model_catalog_product->getProduct($_REQUEST['product_id']);
+            
+            $price = $product_info['price'];
+            
+            $height = 0;
+            $width  = 0;
+            
+            $json = array();
+
+            if(isset($_REQUEST['option']))
+            {
+                foreach ($_REQUEST['option'] as $key=>$op)
+                {
+                    $price  = $price + $this->model_catalog_product->getValue($key,$op); 
+                    
+                    if(isset($_REQUEST['pheight']) && $_REQUEST['pheight']!='' && isset($_REQUEST['pwidth']) && $_REQUEST['pwidth']!='')
+                    { 
+                        if($key == $_REQUEST['pheight'])
+                        {
+                            $height = $op;
+                        }
+
+                        if($key == $_REQUEST['pwidth'])
+                        {
+                            $width = $op;
+                        }
+                    }
+                }
+                
+                $priceperfeet_price = $_REQUEST['pfeetprice'];
+                
+                /* get discount Feet price*/                     
+                $discount_type = array("23");
+                $disc_qty_prc = array();
+                foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
+                    if (in_array($option['option_id'], $discount_type)) {
+                        $product_option_value_data = array();
+                        foreach ($option['product_option_value'] as $option_value) {
+                            $disc_qty = $option_value['name'];
+                            $disc_prc = $option_value['price'];
+                            $disc_qty_prc[$disc_qty] = $disc_prc;    
+                            
+                            if($_REQUEST['quantity']>=$disc_qty)
+                            {
+                                $priceperfeet_price = $disc_prc;
+                            }    
+                        }
+                    }
+                }
+                
+                $calculation_price = 0;
+                
+                if(isset($_REQUEST['pfeetprice']) && $_REQUEST['pfeetprice']!='')
+                {
+                   if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
+                   {                      
+                       
+                       $calculation_price  = $height*$width*$priceperfeet_price;
+                       $price  = $price + $calculation_price;
+                   }    
+                } 
+                
+            }
+            
+//            echo "price:".$price."=priceperfeet_price:".$_REQUEST['pfeetprice']."=width:".$width."= height:".$height."calculation_price=".$calculation_price;
+//                       exit;
+            
+            $json['calculated_feetprice']  = $calculation_price;
+            
+            $json['success'] = 1;
+            
+            $price = $this->tax->calculate($price, $product_info['tax_class_id'], true);
+            
+            if(isset($_REQUEST['quantity']) && is_numeric($_REQUEST['quantity']) && $_REQUEST['quantity']>0)
+            {         
+                
+                $price = $price*$_REQUEST['quantity'];
+            }    
+            
+            //$json['tax']   = $this->currency->format($price);//$str;//$size['price'];
+            $json['price']  = $this->currency->format($price, $this->config->get('config_currency'));
+            $json['price_without_currency']  = $price;
+            
+            $this->response->setOutput(json_encode($json));
+	}
 
 	public function review() {
 		$this->load->language('product/product');

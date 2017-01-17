@@ -1,34 +1,72 @@
-<?php echo $header; ?>
+<?php echo $header; 
+
+$height_feet = array("13");
+$height_inch = array("14");
+$width_feet  = array("15");
+$width_inch  = array("16");
+$double_side  = array("17");
+$material_type  = array("19");
+?>
 <div class="slider">
-    <img src="image/slider.jpg" alt="">
+    <img src="image/slider.jpg" alt="Home Slide">
     <div class="slider-content">      
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 pull-right ">
-                    <div class="your-order">
+                    <div class="your-order" id="producthome">
                         <h1>Start your order</h1>
                         <div class="your-order-cont">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ">
                                     <select class="selectpicker">
-                                        <option>Vinyl banner</option>
-                                        <option>banner stand</option>
-                                        <option>displays</option>
+                                        <option>Vinyl banner</option>                                       
                                     </select>
                                 </div>
-                                <div class="form-group ">
+                                <div id="product_options">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                             <label>Height</label>
                                             <div class="height">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet1">
-                                                        <label>Feet</label>
-                                                        <input type="text" class="form-control"  placeholder="0">
+                                                        <?php
+                                                        // Height Feet
+                                                        foreach ($options as $option) 
+                                                        { 
+                                                        if (in_array($option['option_id'], $height_feet))
+                                                        {
+                                                        $hf_optionid = $option['product_option_id'];  
+
+                                                        $option['value'] = ($option['value']=="")?1:$option['value'];
+                                                        ?>
+                                                        <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                            <label>Feet</label>
+                                                            <input type="text" class="form-control numberentry"  placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                        </div>
+                                                        <?php 
+                                                        } 
+                                                        } 
+                                                        ?>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet2">
-                                                        <label>Inch</label>
-                                                        <input type="text" class="form-control control2" placeholder="0">
+                                                        <?php
+                                                        // Height Inch
+                                                        foreach ($options as $option) 
+                                                        { 
+                                                        if (in_array($option['option_id'], $height_inch))
+                                                        {
+
+                                                        $hi_optionid = $option['product_option_id'];   
+                                                        $option['value'] = ($option['value']=="")?0:$option['value'];
+                                                        ?>
+                                                        <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                            <label>Inch</label>
+                                                            <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                        </div>
+                                                        <?php 
+                                                        } 
+                                                        } 
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -37,42 +75,146 @@
                                             <label>Width</label>
                                             <div class="height">
                                                 <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet1">
-                                                        <label>Feet</label>
-                                                        <input type="text" class="form-control control2"  placeholder="0">
-                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet1">                                                   
+                                                        <?php
+                                                        // Width Feet
+                                                        foreach ($options as $option) 
+                                                        { 
+                                                        if (in_array($option['option_id'], $width_feet))
+                                                        {
+                                                        $wf_optionid = $option['product_option_id'];
+                                                        $option['value'] = ($option['value']=="")?1:$option['value'];
+                                                        ?>
+                                                        <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                            <label>Feet</label>
+                                                            <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                        </div>
+                                                        <?php 
+                                                        } 
+                                                        } 
+                                                        ?>
+                                                    </div> 
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet2">
-                                                        <label>Inch</label>
-                                                        <input type="text" class="form-control control3" placeholder="0">
+                                                        <?php
+                                                        // Width Inch
+                                                        foreach ($options as $option) 
+                                                        { 
+                                                        if (in_array($option['option_id'], $width_inch))
+                                                        {
+                                                        $wi_optionid = $option['product_option_id']; 
+                                                        $option['value'] = ($option['value']=="")?0:$option['value'];
+                                                        ?>
+                                                        <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                            <label>Inch</label>
+                                                            <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                        </div>
+                                                        <?php 
+                                                        } 
+                                                        } 
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                    // Two side banner
+                                    foreach ($options as $option) 
+                                    { 
+                                    if (in_array($option['option_id'], $double_side))
+                                    { ?>
+                                    <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                        <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                        <input class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                        <?php } ?> 
+                                        <?php echo $option['name']; ?><br>
+                                    </div>
+                                    <?php 
+                                    } 
+                                    } 
+                                    ?>
+                                </div>  
+                                <?php     
+                                // material type
+                                foreach ($options as $option) 
+                                { 
+                                if (in_array($option['option_id'], $material_type))
+                                {
+                                ?>  
+                                <div class="form-group">                                
+                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( < ?php echo $product_id; ? > )">
+                                        <option value=""> <?php echo $option['name']; ?> </option>
+                                        <?php foreach ($option['product_option_value'] as $option_value) 
+                                        { ?>
+                                        <?php 
+                                        if ($option_value['priceonly']) { 
+                                        $additnal_price = $option_value['priceonly'];
+                                        }else{
+                                        $additnal_price = '0';
+                                        }   
+                                        ?>
+                                        <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                            <?php echo $option_value['name']; ?>
+                                            <?php if ($option_value['price']) { ?>
+                                            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                                            <?php } ?>
+                                        </option>
+                                        <?php 
+                                        } ?>
+                                    </select>                                   
                                 </div>
-                                <div class="form-group ">
-                                    <input value="1" name="subject" class="subject-list1" type="checkbox">
-                                    Two sided Banner<br>
-                                </div>
+                                <?php 
+                                }
+                                }
+                                ?>  
                                 <div class="form-group ">
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5">
-                                            <input type="text" class="form-control control4" placeholder="Qty">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">                                               
+                                            Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
                                         </div>
-                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-7">
-                                            <select class="selectpicker">
-                                                <option>Select shipping</option>
-                                                <option>select shipping1</option>
-                                                <option>select shipping2</option>
-                                            </select>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 feet2">
+                                            <div class="form-group ">
+                                                <div class="price">
+                                                    <?php 
+                                                    if ($price) 
+                                                    { 
+                                                    if (!$special) {  ?>
+                                                    <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
+                                                    <?php } else { ?>
+                                                    <span style="text-decoration: line-through;"><?php echo $price; ?></span>
+                                                    <span class="price1"><?php echo $special; ?></span>
+                                                    <?php
+                                                    }
+                                                    }?>                 
+                                                </div>
+                                            </div>
+                                        </div>                                      
+                                    </div>
+                                </div>   
+                                <?php                                 
+                                $price_per_feet_option = array("22");  
+                                foreach ($options as $option) 
+                                { 
+                                if (in_array($option['option_id'], $price_per_feet_option))
+                                {  ?>
+                                <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]"  value="<?php echo  $feetprice_only;?>">
+                                <?php
+                                }
+                                } 
+                                ?>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">                                          
+                                            <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
+                                            <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
+                                            <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
+                                            <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
+                                            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                                            <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-file1">Quick Order</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="price"> <span class="price1">Price: $15.00</span> <span class="btn btn-default btn-file">
-                                            <input type="file">
-                                            <i class="fa fa-picture-o" aria-hidden="true"></i> Upload Art Work</span> <span class="btn btn-default btn-file1"> quick order</span> </div>
-                                </div>
+                                </div>  
+
                             </div>
                         </div>
                     </div>
@@ -143,7 +285,7 @@
                 </div>
                 <?php } ?>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                   <?php echo $youtube_banner_expo;?>
+                    <?php echo $youtube_banner_expo;?>
                 </div>
             </div>
         </div>
@@ -152,7 +294,103 @@
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
+
+        $(".numberentry").keypress(function (e) {
+            e = e || event;
+            if (e.ctrlKey || e.altKey || e.metaKey)
+                return;
+            var chr = getChar(e);
+            if (chr == null)
+                return;
+            if (chr < '0' || chr > '9') {
+                return false;
+            }
+        });
+
         $('.star_rating').rating();
+        var pid = "<?php echo $product_id;?>";
+
+        addtoprice(pid);
+
+        $('#producthome input[type=\'text\']').bind('keyup', function (e) {
+            $.ajax({
+                url: 'index.php?route=product/product/calculate&product_id=' + pid,
+                type: 'post',
+                data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
+                dataType: 'json',
+                success: function (json) {
+                    if (json['success']) {
+                        $('#pricediv').html("Price: " + json['price']);
+                        $('#calculated_feetprice').val(json['calculated_feetprice']);
+                    }
+                }
+            });
+        });
+
+        $('input').on('ifChecked', function (event) {
+            addtoprice(pid);
+        });
+
+        $('input').on('ifUnchecked', function (event) {
+            addtoprice(pid);
+        });
+
+        $('#button-cart').on('click', function () {
+            $.ajax({
+                url: 'index.php?route=checkout/cart/step1',
+                type: 'post',
+                data: $('#producthome input[type=\'text\'], #producthome input[type=\'hidden\'], #producthome input[type=\'radio\']:checked, #producthome input[type=\'checkbox\']:checked, #producthome select, #producthome textarea'),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#button-cart').button('loading');
+                },
+                complete: function () {
+                    $('#button-cart').button('reset');
+                },
+                success: function (json) {
+                    $('.alert, .text-danger').remove();
+                    $('.form-group').removeClass('has-error');
+
+                    if (json['error']) {
+                        if (json['error']['option']) {
+                            for (i in json['error']['option']) {
+                                var element = $('#input-option' + i.replace('_', '-'));
+
+                                if (element.parent().hasClass('input-group')) {
+                                    //element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                    element.parent().after('<div class="text-danger"></div>');
+                                } else {
+                                    //element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                    element.after('<div class="text-danger"></div>');
+                                }
+                            }
+                        }
+
+                        // Highlight any found errors
+                        $('.text-danger').parent().addClass('has-error');
+                    }
+
+                    if (json['success']) {
+                        //  $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                        // $('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
+
+                        //  $('html, body').animate({scrollTop: 0}, 'slow');
+
+                        //  $('#carttotal').html(json['carttotal_disp']);
+                        // $('#carttotalamt').html(json['carttotalamt_disp']);
+
+                        // $('#cart > ul').load('index.php?route=common/cart/info ul li');
+
+                        $(location).attr('href', json['redirect']);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        });
+
     });
 
     $.fn.rating = function () {
@@ -165,5 +403,37 @@
             }, 1000));
         });
     };
+
+    function addtoprice(pid)
+    {
+        $.ajax({
+            url: 'index.php?route=product/product/calculate&product_id=' + pid,
+            type: 'post',
+            data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
+            dataType: 'json',
+            success: function (json) {
+                if (json['success']) {
+                    $('#pricediv').html("Price: " + json['price']);
+                    $('#calculated_feetprice').val(json['calculated_feetprice']);
+                }
+            }
+        });
+    }
+    
+    function getChar(event) {
+        if (event.which == null) {
+            if (event.keyCode < 32)
+                return null;
+            return String.fromCharCode(event.keyCode) // IE
+        }
+
+        if (event.which != 0 && event.charCode != 0) {
+            if (event.which < 32)
+                return null;
+            return String.fromCharCode(event.which)
+        }
+
+        return null;
+    }
 </script>
 <?php echo $footer; ?>
