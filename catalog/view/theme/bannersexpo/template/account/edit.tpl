@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <?php echo $content_breadcrumbs; ?> 
-           <div class="col-lg-12 col-md-12 col-sm-12 xol-xs-12">
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php if ($error_warning) { ?>
             <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?></div>
             <?php } ?>
@@ -221,8 +221,7 @@
                                     <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
                                 </div>
                             </div>
-                        </form>
-                        <?php echo $content_bottom; ?>
+                        </form>                        
                     </div>
                     <div id="content" class="col-sm-3">
                         <?php echo $column_right; ?>

@@ -14,9 +14,9 @@
   <a href="<?php echo $order; ?>" class="list-group-item"><?php echo $text_order; ?></a>
  <!--   <a href="<?php echo $download; ?>" class="list-group-item"><?php echo $text_download; ?></a>-->
 <!--  <a href="<?php echo $recurring; ?>" class="list-group-item"><?php echo $text_recurring; ?></a> 
-  <a href="<?php echo $reward; ?>" class="list-group-item"><?php echo $text_reward; ?></a> 
+  <a href="<?php echo $reward; ?>" class="list-group-item"><?php echo $text_reward; ?></a> -->
   <a href="<?php echo $return; ?>" class="list-group-item"><?php echo $text_return; ?></a> 
-  <a href="<?php echo $transaction; ?>" class="list-group-item"><?php echo $text_transaction; ?></a> -->
+  <a href="<?php echo $transaction; ?>" class="list-group-item"><?php echo $text_transaction; ?></a> 
   <a href="<?php echo $newsletter; ?>" class="list-group-item"><?php echo $text_newsletter; ?></a>
   <?php if ($logged) { ?>
   <a href="<?php echo $logout; ?>" class="list-group-item"><?php echo $text_logout; ?></a>

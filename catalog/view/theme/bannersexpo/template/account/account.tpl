@@ -13,7 +13,7 @@
 
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12 xol-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php if ($success) { ?>
                 <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?></div>
                 <?php } ?>

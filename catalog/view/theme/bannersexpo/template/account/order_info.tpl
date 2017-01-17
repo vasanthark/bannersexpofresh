@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <?php echo $content_breadcrumbs; ?> 
-            <div class="col-lg-12 col-md-12 col-sm-12 xol-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php if ($success) { ?>
                 <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -169,7 +169,7 @@
                         </div>
                         <?php echo $content_bottom; ?>
                     </div>
-                </div>
+                
                 <div id="content" class="col-sm-3">
                     <?php echo $column_right; ?>
                 </div>

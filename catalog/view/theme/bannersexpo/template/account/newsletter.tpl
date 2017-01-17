@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <?php echo $content_breadcrumbs; ?> 
-  <div class="col-lg-12 col-md-12 col-sm-12 xol-xs-12">                
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="row">                   
                     <div id="content" class="col-sm-9"> 
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
