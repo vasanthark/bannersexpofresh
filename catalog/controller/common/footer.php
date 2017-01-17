@@ -115,7 +115,4 @@ class ControllerCommonFooter extends Controller {
 
 		return $this->load->view('common/footer', $data);
 	}
-}
-
-
- 
+} 
