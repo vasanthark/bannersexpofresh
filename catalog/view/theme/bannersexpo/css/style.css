@@ -516,7 +516,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2a124', end
 }
 .body-heading {
 	border:#222222 solid 3px;
-	padding:16px;
+	/*padding:16px;*/
+        padding:4px;
 }
 .body-heading h2 {
 	font-family: 'Roboto Slab', serif;

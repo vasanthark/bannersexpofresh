@@ -7,8 +7,9 @@
                 </div>
             </div>
             <?php foreach ($products as $product) { ?>
+             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <form name="feature-product-form"  action="<?php echo $product['action']; ?>" method="post" enctype="multipart/form-data">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+               
                     <div class="thumbnail-cont">
                         <div class="product-thumbnails"> 
                         <a href="<?php echo $product['href']; ?>"><img src="image/<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>"/></a>            
@@ -27,8 +28,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>    
+                
+            </form>   
+                 </div>
             <?php } ?>
 
         </div>
