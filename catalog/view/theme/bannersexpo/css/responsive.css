@@ -47,7 +47,7 @@ display:block;
 border-bottom:none;
 height:87px;
 }
-.body-cont1{ margin-top:20px;}
+.body-cont1{ margin-top:0px;}
 .your-order-cont .form-group{ margin-bottom:5px;}
  .email {
 display:none;
@@ -102,9 +102,7 @@ float:left;
 .order-button {
  padding: 0px 10px 0px 10px;
 }
- .product-thumbnails-txt {
- height: 110px;
-}
+
  .order-btn {
  margin-bottom:5px;
  font-size: 12px;
@@ -112,6 +110,7 @@ float:left;
 .product-thumbnails-txt {
  padding: 5px;
  text-align:center;
+ font-weight: 500;
 }
 .body-heading {
  padding: 8px;
@@ -270,6 +269,50 @@ height:160px;
   width: 50%;
 }
 .footer-part1 ul li a { font-size:14px;}
+
+
+.slider, .slider-content{
+    position: relative;
+}
+.slider img
+{
+    display:none
+}
+.price {
+  margin-top: 15px;
+}
+
+.body-heading h2 
+{
+    background:none;
+    margin-bottom: 0px;
+    padding:0px;
+    line-height:40px;
+}
+
+.body-heading
+{
+    padding: 0px;
+    text-align: center;
+}
+
+.home-qty{
+    display: none;
+}
+
+.product-thumbnails-txt p strong a {
+
+  font-weight: 600;
+}
+
+.signup {
+  margin: 0;
+}
+body
+{
+    overflow-x:hidden;
+}
+
 }
 @media (min-width:768px) and (max-width:991px) {
  .body-cont2 {
@@ -484,8 +527,35 @@ height:190px;
  margin-top: 30px;
  padding: 5px;
 }
+
+.search {
+  margin-top: 15px;
+}
+
+.cart {
+  margin-top: 15px;
+}
+
+.product-thumbnails-txt{text-align:center;   padding: 10px;}
+
+
+.body-heading h2 {
+    text-align:center;
+  padding: 0px 10px;
+  background: none;
+  line-height: 63px;
+}
+
 }
  @media (min-width:992px) and (max-width:1199px) {
+     
+     .search {
+  margin-top: 20px;
+}
+
+.cart {
+  margin-top: 20px;
+}
  .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:hover, .body-cont2 .with-nav-tabs.panel .nav-tabs > li > a:focus {
  font-size: 20px;
  padding:5px 7px;
@@ -653,6 +723,19 @@ margin-bottom:10px;
 width:260px;
 height:190px;
 }
+
+.welcome-banner {
+  margin-top: 0;
+  padding: 15px;
+}
+
+.body-heading h2 {
+    text-align:center;
+  padding: 26px 20px;
+  background: none;
+  line-height: auto;
+}
+
 }
  @media (min-width:1200px) {
 .hidden-lg {

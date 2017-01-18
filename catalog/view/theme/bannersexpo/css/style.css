@@ -78,7 +78,6 @@ h1, h2, h3, h4, h5, h6 {
 	float:left;
 }
 .header-row1 {
-	margin-top:10px;
 	width:100%;
 	float:left;
 	background-color:#ffffff;
@@ -394,15 +393,21 @@ content: "\f0d7";
 	position:relative;
 	width:100%;
 	float:left;
-	margin-top:5px;
+
+}
+
+.slider img
+{
+    width: 100%;
+    height: 500px;
 }
 .slider-content {
 	position:absolute;
 	bottom:0px;
 	width:100%;
 	float:left;
-	margin-top:20px;
 	margin-bottom:24px;
+        top:5px;
 }
 .your-order {
 	width:100%;
@@ -447,9 +452,10 @@ content: "\f0d7";
 }
 .price {
 	text-align:center;
+        margin-top: 25px
 }
 .price1 {
-	font-size:28px;
+	font-size:25px;
 	color:#191919;
 	padding:10px;
 }
@@ -480,7 +486,7 @@ content: "\f0d7";
 }
 .your-order-cont .btn-file1 {
 	width:100%;
-	margin-top:10px;
+	/*margin-top:10px;*/
 	position: relative;
 	font-size:22px;
 	overflow: hidden;
@@ -694,15 +700,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.4);
 	float:left;
 	width:100%;
-	margin-top:20px;
+	margin-top:40px;
 	color:#4e4e4e;
 	font-size:18px;
 	line-height:28px;
 	font-weight:300;
 }
-.shop-now a:hover {
-	color:#000000;
-}
+
 .shop-now a {
 	color:#ffffff;
 	text-decoration:none;
@@ -711,6 +715,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 	text-transform:uppercase;
 	font-size:22px;
 	font-weight:500;
+}
+
+.shop-now a:hover{
+    background: #222222;
 }
 .shop-now {
 	float:right;
@@ -973,7 +981,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 }
 .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
 	z-index: 2;
-	margin-left: 6px;
+/*	margin-left: 6px;*/
 }
 .btn-default {
 	border:none;
@@ -2487,3 +2495,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3939', end
 	font-size:20px;
 }
 .contact-page-form .form-control{ font-size:15px; color:#000000 !important;}
+
+
+a, button{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.home-qty{
+    
+}

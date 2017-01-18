@@ -142,7 +142,7 @@ $material_type  = array("19");
                                 {
                                 ?>  
                                 <div class="form-group">                                
-                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( < ?php echo $product_id; ? > )">
+                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">
                                         <option value=""> <?php echo $option['name']; ?> </option>
                                         <?php foreach ($option['product_option_value'] as $option_value) 
                                         { ?>
@@ -169,10 +169,10 @@ $material_type  = array("19");
                                 ?>  
                                 <div class="form-group ">
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">                                               
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">                                               
                                             Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 feet2">
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
                                             <div class="form-group ">
                                                 <div class="price">
                                                     <?php 

@@ -22,7 +22,7 @@
                                         <a href="javascript:void(0);" class="order-btn"><img src="catalog/view/theme/bannersexpo/images/featured-cart.png" alt="Order now"> Order now</a>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 home-qty ">
                                     <input type="text" class="form-control" name="quantity" placeholder="Qty">
                                 </div>
                             </div>
