@@ -62,14 +62,14 @@ class ControllerExtensionModuleTltBlog extends Controller {
 				} else {
 					$path = 'blogs';
 				}
-								
+                                
 				foreach ($results as $result) {
 					if ($result['image']) {
-						$image = $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']);
+                                            $image = 'image/'.$result['image'];
+//						$image = $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']);
 					} else {
 						$image = $this->model_tool_image->resize('placeholder.png', $setting['width'], $setting['height']);
 					}
-					
 					if ($data['show_blogs'] && $result['show_description']) {
 						$data['tltblogs'][] = array(
 							'tltblog_id'  		=> $result['tltblog_id'],
