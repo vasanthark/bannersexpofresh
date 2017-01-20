@@ -120,5 +120,14 @@ $dispaly_category_id = '59';
     <?php echo $content_bottom; ?>
 </div>
 
-
+<script type="text/javascript"><!--
+     $(document).ready(function () {
+        $('form .order-btn').on({
+            click: function (event) {
+                event.preventDefault();
+                $(this).closest('form').submit();
+            }
+        });
+    });
+//--></script>
 <?php echo $footer; ?>

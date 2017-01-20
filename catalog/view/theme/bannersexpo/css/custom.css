@@ -83,3 +83,28 @@
 .blog-recentpost ul li a img {
   width: 100px;
 }
+.reviews .fa-stack{
+    font-size:8px;
+    color: #ddbc00;
+}
+
+.customer-detail .fa-stack{
+    float: none !important;
+    font-size:8px;
+    color: #ddbc00;
+}
+.review-button {
+  background: none repeat scroll 0 0 #4e4e4e;
+  border-radius: 5px;
+  color: #ffffff;
+  float: right;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.review-button:hover {
+  background: none repeat scroll 0 0 #4db9df;
+  color: #ffffff;
+}
