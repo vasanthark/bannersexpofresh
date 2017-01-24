@@ -59,7 +59,11 @@ class ModelCatalogProduct extends Model {
 
         public function getValue($p_optionid,$p_valid)
 	{
+//            echo "select price,price_prefix from " . DB_PREFIX . "product_option_value where product_option_id = '".$p_optionid."' and product_option_value_id = '".$p_valid."'  ";
+//            echo "<br>";
             
+            
+      
 		$query = $this->db->query("select price,price_prefix from " . DB_PREFIX . "product_option_value where product_option_id = '".$p_optionid."' and product_option_value_id = '".$p_valid."'  ");
 		if($query->num_rows)
 		{

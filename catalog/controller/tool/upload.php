@@ -66,6 +66,8 @@ class ControllerToolUpload extends Controller {
 
 			// Hide the uploaded file name so people can not link to it directly.
 			$this->load->model('tool/upload');
+                        
+                        $json['filename'] = $filename;
 
 			$json['code'] = $this->model_tool_upload->addUpload($filename, $file);
 

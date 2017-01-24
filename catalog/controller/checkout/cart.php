@@ -16,6 +16,8 @@ class ControllerCheckoutCart extends Controller {
 			'href' => $this->url->link('checkout/cart'),
 			'text' => $this->language->get('heading_title')
 		);
+                
+                $data['content_breadcrumbs'] = $this->load->controller('common/breadbcrumb',$data['breadcrumbs']);
 
 		if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
 			$data['heading_title'] = $this->language->get('heading_title');
@@ -117,10 +119,15 @@ class ControllerCheckoutCart extends Controller {
 
 				// Display prices
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+                                  
 					$unit_price = $this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
 					
 					$price = $this->currency->format($unit_price, $this->session->data['currency']);
-					$total = $this->currency->format($unit_price * $product['quantity'], $this->session->data['currency']);
+                                       
+					//$total = $this->currency->format($unit_price * $product['quantity'], $this->session->data['currency']);
+                                        $total = $this->currency->format($product['total'], $this->session->data['currency']);
+                                        
+                                        
 				} else {
 					$price = false;
 					$total = false;
@@ -281,105 +288,6 @@ class ControllerCheckoutCart extends Controller {
 		}
 	}
         
-        public function step1() {
-		$this->load->language('checkout/cart');
-
-		$json = array();
-
-		if (isset($this->request->post['product_id'])) {
-			$product_id = (int)$this->request->post['product_id'];
-		} else {
-			$product_id = 0;
-		}
-
-		$this->load->model('catalog/product');
-
-		$product_info = $this->model_catalog_product->getProduct($product_id);
-
-		if ($product_info) {
-			if (isset($this->request->post['quantity']) && ((int)$this->request->post['quantity'] >= $product_info['minimum'])) {
-				$quantity = (int)$this->request->post['quantity'];
-			} else {
-				$quantity = $product_info['minimum'] ? $product_info['minimum'] : 1;
-			}
-
-			if (isset($this->request->post['option'])) {
-				$option = array_filter($this->request->post['option']);
-                                $option['feet_calculate'] = $this->request->post['calculated_feetprice'];
-                                
-                                if(isset($this->request->post['pheight']) && $this->request->post['pheight']!='')
-                                {
-                                    $optionheight = $this->request->post['pheight'];
-                                    $heightvalue  = isset($option[$optionheight])?$option[$optionheight]:"";
-                                    
-                                    if(!is_numeric($heightvalue) || $heightvalue <= 0)
-                                    {
-                                        $json['error']['option'][$optionheight] = "Please give numeric values only";
-                                    }    
-                                } 
-                                
-                                if( isset($this->request->post['pwidth']) && $this->request->post['pwidth']!='')
-                                {    
-                                    $optionwidth = $this->request->post['pwidth'];
-                                    $widthvalue  = isset($option[$optionwidth])?$option[$optionwidth]:"";
-                                    
-                                    if(!is_numeric($widthvalue) || $widthvalue <= 0)
-                                    {
-                                        $json['error']['option'][$optionwidth] = "Please give numeric values only";
-                                    }  
-                                }    
-                                    
-			} else {
-				$option = array();
-			}
-
-			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
-                                             
-			foreach ($product_options as $product_option) {                            
-				if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
-					$json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
-				}
-			}
-
-			if (isset($this->request->post['recurring_id'])) {
-				$recurring_id = $this->request->post['recurring_id'];
-			} else {
-				$recurring_id = 0;
-			}
-
-			$recurrings = $this->model_catalog_product->getProfiles($product_info['product_id']);
-
-			if ($recurrings) {
-				$recurring_ids = array();
-
-				foreach ($recurrings as $recurring) {
-					$recurring_ids[] = $recurring['recurring_id'];
-				}
-
-				if (!in_array($recurring_id, $recurring_ids)) {
-					$json['error']['recurring'] = $this->language->get('error_recurring_required');
-				}
-			}
-
-			if (!$json) {
-                                
-                                $json['success'] = "Partially Added!!";                                
-				// Unset all shipping and payment methods
-				unset($this->session->data['shipping_method']);
-				unset($this->session->data['shipping_methods']);
-				unset($this->session->data['payment_method']);
-				unset($this->session->data['payment_methods']);
-
-				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('common/quickorder', 'product_id=' . $this->request->post['product_id']));
-			} else {
-				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
-			}
-		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
-
 	public function add() {
 		$this->load->language('checkout/cart');
 
@@ -495,6 +403,7 @@ class ControllerCheckoutCart extends Controller {
                                 
                                 $json['carttotal_disp']    =  $this->cart->countProducts();
                                 $json['carttotalamt_disp'] =  $this->currency->format($total, $this->session->data['currency']);
+                                $json['redirect'] = str_replace('&amp;', '&', $this->url->link('checkout/cart'));
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}

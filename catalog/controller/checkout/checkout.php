@@ -54,6 +54,8 @@ class ControllerCheckoutCheckout extends Controller {
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
+                
+                $data['content_breadcrumbs'] = $this->load->controller('common/breadbcrumb',$data['breadcrumbs']);
 
 		$data['text_checkout_option'] = sprintf($this->language->get('text_checkout_option'), 1);
 		$data['text_checkout_account'] = sprintf($this->language->get('text_checkout_account'), 2);

@@ -15,6 +15,7 @@ $material_type  = array("19");
                 <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 pull-right ">
                     <div class="your-order" id="producthome">
                         <h1>Start your order</h1>
+                        <form method="post" id="home_page_calc" name="home_page_calc" action="">
                         <div class="your-order-cont">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ">
@@ -122,7 +123,9 @@ $material_type  = array("19");
                                     foreach ($options as $option) 
                                     { 
                                     if (in_array($option['option_id'], $double_side))
-                                    { ?>
+                                    { 
+                                        $pdoubleside_optionid = $option['product_option_id'];
+                                    ?>
                                     <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
                                         <?php foreach ($option['product_option_value'] as $option_value) { ?>
                                         <input class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
@@ -140,6 +143,7 @@ $material_type  = array("19");
                                 { 
                                 if (in_array($option['option_id'], $material_type))
                                 {
+                                    $pmat_optionid = $option['product_option_id'];
                                 ?>  
                                 <div class="form-group">                                
                                     <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">
@@ -206,17 +210,22 @@ $material_type  = array("19");
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">                                          
                                             <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
+                                            <input type="hidden" name="pwidthinch" id="pwidthinch" value="<?php echo  $wi_optionid ;?>">
                                             <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
+                                            <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
+                                            <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                            <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                             <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
                                             <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
                                             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                                            <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-file1">Quick Order</button>
+                                            <button type="button" id="button-cart" data-loading-text="Loading.." class="btn btn-default btn-file1">Quick Order</button>
                                         </div>
                                     </div>
                                 </div>  
 
                             </div>
                         </div>
+                        </form>    
                     </div>
                 </div>
             </div>
@@ -337,7 +346,7 @@ $material_type  = array("19");
 
         $('#button-cart').on('click', function () {
             $.ajax({
-                url: 'index.php?route=checkout/cart/step1',
+                url: 'index.php?route=common/quickorder/step1',
                 type: 'post',
                 data: $('#producthome input[type=\'text\'], #producthome input[type=\'hidden\'], #producthome input[type=\'radio\']:checked, #producthome input[type=\'checkbox\']:checked, #producthome select, #producthome textarea'),
                 dataType: 'json',
@@ -370,19 +379,10 @@ $material_type  = array("19");
                         $('.text-danger').parent().addClass('has-error');
                     }
 
-                    if (json['success']) {
-                        //  $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                        // $('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
-
-                        //  $('html, body').animate({scrollTop: 0}, 'slow');
-
-                        //  $('#carttotal').html(json['carttotal_disp']);
-                        // $('#carttotalamt').html(json['carttotalamt_disp']);
-
-                        // $('#cart > ul').load('index.php?route=common/cart/info ul li');
-
-                        $(location).attr('href', json['redirect']);
+                    if (json['success']) {                                         
+                        $("#home_page_calc").attr("action", json['redirect']);
+                        $("form#home_page_calc").submit();
+                        return false;
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {

@@ -540,3 +540,16 @@ admin/view/template/extension/extension/payment.tpl
 admin/controller/extension/module/tlttag.php
 admin/controller/extension/module/faqcategory.php
 admin/view/template/extension/module/faqcategory.tpl
+catalog/controller/tool/upload.php
+catalog/language/en-gb/tool/upload.php
+catalog/controller/checkout/payment_method.php
+catalog/model/extension/payment/cod.php
+catalog/language/en-gb/extension/payment/cod.php
+catalog/model/extension/payment/free_checkout.php
+catalog/language/en-gb/extension/payment/free_checkout.php
+catalog/view/theme/bannersexpo/template/checkout/payment_method.tpl
+catalog/controller/checkout/confirm.php
+catalog/model/checkout/order.php
+catalog/controller/extension/payment/cod.php
+catalog/view/theme/bannersexpo/template/extension/payment/cod.tpl
+catalog/view/theme/bannersexpo/template/checkout/confirm.tpl

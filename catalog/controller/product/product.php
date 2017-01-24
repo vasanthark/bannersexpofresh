@@ -570,6 +570,8 @@ class ControllerProductProduct extends Controller {
             
             $height = 0;
             $width  = 0;
+            $pgroometprice = 0;
+            $pgroometqty = 0;
             
             $json = array();
 
@@ -577,6 +579,7 @@ class ControllerProductProduct extends Controller {
             {
                 foreach ($_REQUEST['option'] as $key=>$op)
                 {
+                                    
                     $price  = $price + $this->model_catalog_product->getValue($key,$op); 
                     
                     if(isset($_REQUEST['pheight']) && $_REQUEST['pheight']!='' && isset($_REQUEST['pwidth']) && $_REQUEST['pwidth']!='')
@@ -591,20 +594,41 @@ class ControllerProductProduct extends Controller {
                             $width = $op;
                         }
                     }
+                    
+                    if(isset($_REQUEST['pgroometprice']) && $_REQUEST['pgroometprice']!='' && isset($_REQUEST['pgroometqty']) && $_REQUEST['pgroometqty']!='')
+                    { 
+                        if($key == $_REQUEST['pgroometprice'])
+                        {
+                            $pgroometprice = $op;
+                        }
+
+                        if($key == $_REQUEST['pgroometqty'])
+                        {
+                            $pgroometqty = $op;
+                        }
+                    }
                 }
+                
+                if($pgroometprice>0 && $pgroometprice!="" && is_numeric($pgroometprice) && $pgroometqty>0 && $pgroometqty!='' && is_numeric($pgroometqty) )
+                { 
+                    $price  = $price + ($pgroometprice*$pgroometqty);
+                }    
+                
+                if(isset($_REQUEST['let_us_prc'])&& $_REQUEST['let_us_prc']!='')
+                {
+                    $price  = $price + $_REQUEST['let_us_prc'];
+                }  
                 
                 $priceperfeet_price = $_REQUEST['pfeetprice'];
                 
                 /* get discount Feet price*/                     
                 $discount_type = array("23");
-                $disc_qty_prc = array();
                 foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
                     if (in_array($option['option_id'], $discount_type)) {
                         $product_option_value_data = array();
                         foreach ($option['product_option_value'] as $option_value) {
                             $disc_qty = $option_value['name'];
                             $disc_prc = $option_value['price'];
-                            $disc_qty_prc[$disc_qty] = $disc_prc;    
                             
                             if($_REQUEST['quantity']>=$disc_qty)
                             {
@@ -619,8 +643,7 @@ class ControllerProductProduct extends Controller {
                 if(isset($_REQUEST['pfeetprice']) && $_REQUEST['pfeetprice']!='')
                 {
                    if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
-                   {                      
-                       
+                   { 
                        $calculation_price  = $height*$width*$priceperfeet_price;
                        $price  = $price + $calculation_price;
                    }    
