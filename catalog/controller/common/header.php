@@ -115,6 +115,10 @@ class ControllerCommonHeader extends Controller {
          /* Displays - Table Covers - CatId 63 */
         $data['dtc_products'] = $this->getcatproducts(63);
         
+        /* Get cats */       
+	$disp_category = $this->model_catalog_category->getCategoryInfo(59);
+        $data['disp_cat_img'] = $disp_category['image'];
+        
         $data['language'] = $this->load->controller('common/language');
         $data['currency'] = $this->load->controller('common/currency');
         $data['search'] = $this->load->controller('common/search');

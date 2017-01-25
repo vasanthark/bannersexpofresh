@@ -23,7 +23,7 @@
         <link href="catalog/view/theme/bannersexpo/css/owl.carousel.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/responsive2.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/red.css" rel="stylesheet">
-                
+
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
@@ -44,14 +44,15 @@
         <script src="<?php echo $script; ?>" type="text/javascript"></script>
         <?php } ?>            
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function () {   
+                
                 $(window).orion({speed: 500});
 
                 $('.indicator').click(function (e) {
                     $(this).parent('li').children('ul:not(.fading)').slideToggle();
                     e.preventDefault();
                 });
-                
+
                 $('input').iCheck({
                     checkboxClass: 'icheckbox_square-red',
                     radioClass: 'iradio_square-red'
@@ -81,7 +82,24 @@
                             items: 2,
                         }
                     }
-                })
+                });
+                
+                $(".dropdown").hover(            
+                    function() {
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("200");
+                        $(this).toggleClass('open');        
+                    },
+                    function() {
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("200");
+                        $(this).toggleClass('open');       
+                    }
+                );
+                
+               $(".dropdown-toggle").click(function (e) {
+                   var targetUrl = $(this).attr('href');
+                   $(location).attr('href', targetUrl);
+                });
+                
             });
         </script>
         <?php foreach ($analytics as $analytic) { ?>
@@ -165,71 +183,84 @@
             </div>
             <div class="header-row3">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 menu">
-                            <div class="menu-bg">
-                                <ul class="orion-menu red">
-                                    <li><a href="index.php?route=product/product&product_id=50">Vinyl banner</a> </li>
-                                    <li><a href="index.php?route=product/product&product_id=51">Mesh banners</a> </li>
-                                    <li><a href="index.php?route=product/category&path=59">Displays</a> 
-                                        <ul>
-                                            <li><a href="index.php?route=product/category&path=59_62">Floor Stands</a>
-                                                <?php if(!empty($dfs_products)){ ?>
-                                                <ul>
-                                                    <?php foreach($dfs_products as $dfsinfo){ ?>
-                                                    <li><a href="<?php echo $dfsinfo['href'];?>"><?php echo $dfsinfo['name'];?></a> </li>  
-                                                    <?php }?>
-                                                </ul>
-                                                <?php }?>
-                                            </li>
-                                            <li><a href="index.php?route=product/product&product_id=52">A frame Signs</a> </li>
-                                            <li><a href="index.php?route=product/category&path=59_63">Table Covers</a> 
-                                                <?php if(!empty($dtc_products)){ ?>
-                                                <ul>
-                                                    <?php foreach($dtc_products as $dtcinfo){ ?>
-                                                    <li><a href="<?php echo $dtcinfo['href'];?>"><?php echo $dtcinfo['name'];?></a> </li>  
-                                                    <?php }?>
-                                                </ul>
-                                                <?php }?>
-                                            </li>
-                                            <li><a href="index.php?route=product/product&product_id=75">Trade Show Displays</a> </li>
-                                        </ul>    
-                                    </li>        
-                                    <li><a href="index.php?route=product/product&product_id=53">Yard signs</a> </li>  
-                                    <li><a href="index.php?route=product/category&path=60">Rigid Signs</a>  
-                                        <?php if(!empty($rs_products)){ ?>
-                                        <ul>
-                                            <?php foreach($rs_products as $rinfo){ ?>
-                                            <li><a href="<?php echo $rinfo['href'];?>"><?php echo $rinfo['name'];?></a> </li>  
-                                            <?php }?>
-                                        </ul>
-                                        <?php }?>
-                                    </li> 
-                                    <li><a href="index.php?route=product/category&path=61">Banner stands</a> 
-                                         <?php if(!empty($bs_products)){ ?>
-                                        <ul>
-                                            <?php foreach($bs_products as $binfo){ ?>
-                                            <li><a href="<?php echo $binfo['href'];?>"><?php echo $binfo['name'];?></a> </li>  
-                                            <?php }?>
-                                        </ul>
-                                        <?php }?>
-                                    </li>  
-                                    <li><a href="index.php?route=product/product&product_id=56">Wall decals</a></li>
-                                    <li><a href="index.php?route=product/product&product_id=57"> Window wraps</a></li>
-                                    <li><a href="javascript:void(0);">More products</a>
-                                        <ul>
-                                            <li><a href="index.php?route=product/product&product_id=58">Magnetic Signs</a></li>
-                                            <li><a href="index.php?route=product/product&product_id=59">Paper Posters</a></li>
-                                            <li><a href="index.php?route=product/product&product_id=60">Canvas printing</a></li>
-                                            <li><a href="index.php?route=product/product&product_id=61">Backdrops </a></li>
-                                            <li><a href="index.php?route=product/product&product_id=62">Window decals</a></li>
-                                            <li><a href="index.php?route=product/product&product_id=63">Static Cling</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                    <nav class="navbar navbar-inverse">
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            <a class="navbar-brand" href="#">Products</a>
                         </div>
-                    </div>
+                        <div class="collapse navbar-collapse js-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.php?route=product/product&product_id=50">Vinyl banner</a> </li>
+                                <li><a href="index.php?route=product/product&product_id=51">Mesh banners</a> </li>
+                                <li class="dropdown mega-dropdown"> 
+                                    <a href="index.php?route=product/category&path=59" class="dropdown-toggle" data-toggle="dropdown"> Displays <span class="caret"></span></a>
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+                                        <li class="col-sm-3"><a href="index.php?route=product/category&path=59_62" class="dropdown-header">Floor Stands</a>
+                                           <?php if (!empty($dfs_products)) { ?>
+                                                <ul>
+                                                    <?php foreach ($dfs_products as $dfsinfo) { ?>
+                                                        <li><a href="<?php echo $dfsinfo['href']; ?>"><?php echo $dfsinfo['name']; ?></a> </li>  
+                                                    <?php } ?>
+                                                </ul>
+                                            <?php } ?>
+                                        </li>
+                                        <li class="col-sm-3"> <a href="index.php?route=product/product&product_id=75" class="dropdown-header"> Trade Show Displays</a>
+                                            <?php if (!empty($dtc_products)) { ?>
+                                                <ul>
+                                                    <?php foreach ($dtc_products as $dtcinfo) { ?>
+                                                        <li><a href="<?php echo $dtcinfo['href']; ?>"><?php echo $dtcinfo['name']; ?></a> </li>  
+                                                    <?php } ?>
+                                                </ul>
+                                            <?php } ?>
+                                        </li>
+                                        <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/product&product_id=52">A frame Signs</a> </li>
+                                        <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/category&path=59_63">Table Covers</a> 
+                                        <li class="col-sm-4 pull-right" style="padding-bottom:-50px;">
+                                            <?php if($disp_cat_img!=""){ ?>
+                                            <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              
+                                            <?php }?>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="index.php?route=product/product&product_id=53">Yard signs</a> </li>  
+                                <li class="dropdown mega-dropdown">
+                                    <a href="index.php?route=product/category&path=60" class="dropdown-toggle" data-toggle="dropdown">Rigid Signs <span class="caret"></span></a>
+                                     <?php if (!empty($rs_products)) { ?>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <?php foreach ($rs_products as $rinfo) { ?>
+                                                <li class="col-sm-3"><a href="<?php echo $rinfo['href']; ?>" class="dropdown-header"><?php echo $rinfo['name']; ?></a> </li>  
+                                            <?php } ?>
+                                        </ul>
+                                    <?php } ?>
+                                </li>  
+                                <li class="dropdown mega-dropdown"> 
+                                    <a href="index.php?route=product/category&path=61" class="dropdown-toggle" data-toggle="dropdown"> Banner stands <span class="caret"></span></a>
+                                     <?php if (!empty($bs_products)) { ?>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <?php foreach ($bs_products as $binfo) { ?>
+                                                <li class="col-sm-3"><a href="<?php echo $binfo['href']; ?>" class="dropdown-header"><?php echo $binfo['name']; ?></a> </li>  
+                                            <?php } ?>
+                                        </ul>
+                                    <?php } ?>
+                                </li>
+                                <li><a href="index.php?route=product/product&product_id=56">Wall decals</a></li>
+                                <li><a href="index.php?route=product/product&product_id=57"> Window wraps</a></li>
+                                <li class="dropdown mega-dropdown"> 
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> More products <span class="caret"></span></a>
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=58" class="dropdown-header">Magnetic Signs</a></li>
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=59" class="dropdown-header">Paper Posters</a></li>
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=60" class="dropdown-header">Canvas printing</a></li>
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=61" class="dropdown-header">Backdrops </a></li>
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=62" class="dropdown-header">Window decals</a></li>
+                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=63" class="dropdown-header">Static Cling</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.nav-collapse --> 
+                    </nav>
                 </div>
             </div>
+
         </div>

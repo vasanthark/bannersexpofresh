@@ -11,6 +11,12 @@ class ModelCatalogCategory extends Model {
 
 		return $query->rows;
 	}
+        
+          /* Add by ARK */
+        public function getCategoryInfo($category_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$category_id . "' ORDER BY sort_order ASC");
+		return $query->row;
+	}
 
 	public function getCategoryFilters($category_id) {
 		$implode = array();
