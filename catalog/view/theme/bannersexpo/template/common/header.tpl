@@ -86,11 +86,11 @@
                 
                 $(".dropdown").hover(            
                     function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("200");
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("500");
                         $(this).toggleClass('open');        
                     },
                     function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("200");
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("500");
                         $(this).toggleClass('open');       
                     }
                 );

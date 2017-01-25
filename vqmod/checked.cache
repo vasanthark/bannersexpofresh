@@ -553,3 +553,10 @@ catalog/model/checkout/order.php
 catalog/controller/extension/payment/cod.php
 catalog/view/theme/bannersexpo/template/extension/payment/cod.tpl
 catalog/view/theme/bannersexpo/template/checkout/confirm.tpl
+admin/controller/extension/module/featured.php
+admin/view/template/extension/module/featured.tpl
+admin/controller/design/banner.php
+admin/language/en-gb/design/banner.php
+admin/model/design/banner.php
+admin/view/template/design/banner_list.tpl
+admin/view/template/design/banner_form.tpl

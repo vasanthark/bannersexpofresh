@@ -7,9 +7,9 @@ $width_inch  = array("16");
 $double_side  = array("17");
 $material_type  = array("19");
 ?>
-<div class="slider">
-    <img src="image/slider.jpg" alt="Home Slide">
-    <div class="slider-content">      
+<div class="fullslider">
+   <?php echo $content_top; ?>
+    <div class="slider-form">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 pull-right ">
@@ -303,7 +303,7 @@ $material_type  = array("19");
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
-
+    
         $(".numberentry").keypress(function (e) {
             e = e || event;
             if (e.ctrlKey || e.altKey || e.metaKey)
