@@ -23,7 +23,7 @@
         <link href="catalog/view/theme/bannersexpo/css/owl.carousel.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/responsive2.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/red.css" rel="stylesheet">
-
+        <link href="catalog/view/theme/bannersexpo/css/SimpleStarRating.css" rel="stylesheet">
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
@@ -37,6 +37,7 @@
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/owl.carousel.min.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/icheck.js"></script> 
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+        <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/SimpleStarRating.js"></script> 
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>

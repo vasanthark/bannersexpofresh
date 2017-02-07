@@ -1,4 +1,12 @@
-<?php echo $header; ?>
+<?php echo $header; 
+
+$height_feet = array("13");
+$height_inch = array("14");
+$width_feet  = array("15");
+$width_inch  = array("16");
+$double_side  = array("17");
+$material_type  = array("19");
+?>
 <div class="body-outer-cont">
     <div class="container">
         <div class="row">
@@ -13,20 +21,15 @@
                 <div class="row">
                     <?php echo $content_breadcrumbs; ?>   
                 </div>
-            </div>
+            </div>          
+            <?php if($rating){ ?>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <div class="reviews1"><span><?php echo $rating; ?>/5</span> </div>
-                <div class="reviews ">                    
-                    <?php for ($i = 1; $i <= 5; $i++) { ?>
-                    <?php if ($rating < $i) { ?>
-                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                    <?php } else { ?>
-                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                    <?php } ?>
-                    <?php } ?>                                         
-                    <p><?php echo $reviews; ?></p>                    
+                <div class="reviews1"><span><?php echo $rating;?>/5</span> </div>
+                <div class="reviews "> <span class="rating" data-default-rating="<?php echo $rating;?>" disabled></span>  
+                  <p><?php echo $reviews; ?></p>
                 </div>
-            </div>
+           </div>   
+            <?php }?>
             <div class="detail-page">
                 <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
                     <?php if ($images) { ?>
@@ -59,482 +62,541 @@
                                     } ?>
                                     <?php echo ($status=='2')? '</div>' : '';?>                
                                 </div>
-                          </div>
-                                
-                                <!-- /carousel-inner --> 
-                                <?php if (count($images)>4) { ?>
-                                <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
-                            <?php } ?>  
-                            <?php } ?>  
-                        </div>
+                            </div>
+
+                            <!-- /carousel-inner --> 
+                            <?php if (count($images)>4) { ?>
+                            <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+                        <?php } ?>  
+                        <?php } ?>  
                     </div>
-                    <?php } ?>  
-                    <div class="preview-tab">
+                </div>
+                <?php } ?>  
+               <!-- <div class="preview-tab">
                     <div class="image-preview"> <span>Uploaded image Preview </span> </div>
-                    <img src="image/catalog/preview-img.jpg" alt=""> </div>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                    <div class="order-type">
-                      <h2> <img src="images/cart-det.png" alt=""> Start your order</h2>
-                      <div class="form-group">
-                        <label>Material Type</label>
-                        <select class="selectpicker">
-                          <option>----Please Select-----</option>
-                          <option>banner stand</option>
-                          <option>displays</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-7 col-xs-6">
-                            <label>Dimensions (w x h)</label>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
-                            <div class="radio-select">
-                              <input value="1" name="subject" class="subject-list1" type="radio">
-                              Feet
-                              <input value="1" name="subject" class="subject-list1" type="radio">
-                              Inch </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group ">
-                        <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <label>Height</label>
-                            <div class="height">
-                              <div class="inch">
-                                <label>Feet</label>
-                                <input type="text" class="form-control"  placeholder="0">
-                              </div>
-                              <div class="inch ">
-                                <label>Inch</label>
-                                <input type="text" class="form-control control2" placeholder="0">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <label>Width</label>
-                            <div class="height">
-                              <div class="inch">
-                                <label>Feet</label>
-                                <input type="text" class="form-control"  placeholder="0">
-                              </div>
-                              <div class="inch ">
-                                <label>Inch</label>
-                                <input type="text" class="form-control control2" placeholder="0">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group ">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Grommet Type</label>
-                            <select class="selectpicker">
-                              <option>----- Please Select--------</option>
-                              <option>select shipping1</option>
-                              <option>select shipping2</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group ">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Hemming</label>
-                            <select class="selectpicker">
-                              <option>----- Please Select--------</option>
-                              <option>select shipping1</option>
-                              <option>select shipping2</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group ">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Material Type</label>
-                            <select class="selectpicker">
-                              <option>----- Please Select--------</option>
-                              <option>select shipping1</option>
-                              <option>select shipping2</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="upload-img"> <img src="images/image.png" alt=""> I have an art work </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="upload-button">
-                              <p>Choose an Image From Your
-                                computer up to 15MB</p>
-                              <span class="btn btn-default btn-file"> Upload your image
-                              <input type="file">
-                              </span>
-                              <p><span>(PNG, JPG, BMP, TIF and PDF files accepted.)</span></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div  class="price-quant">
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 price-value">
-                              <p>Price: $15.00</p>
-                            </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
-                            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="start-order">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 "> 
-                                <a href="javascript:void(0);" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="add-cart">
-                                    <img src="image/catalog/start-order.png" alt="Add cart">Start your order
-                                </a>
-                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <img src="image/catalog/preview-img.jpg" alt="">
+                </div> -->
             </div>
-            <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                <div class="order-type" id="producthome">
+                    <h2> <img src="image/cart-det.png" alt=""> Start your order</h2>
+                    <form method="post" id="prod_page_calc" name="prod_page_calc" action="">
+                    <?php     
+                                // material type
+                                foreach ($options as $option) 
+                                { 
+                                if (in_array($option['option_id'], $material_type))
+                                {
+                                    $pmat_optionid = $option['product_option_id'];
+                                ?>  
+                                <div class="form-group">                                
+                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?> )">
+                                        <option value=""> <?php echo $option['name']; ?> </option>
+                                        <?php foreach ($option['product_option_value'] as $option_value) 
+                                        { ?>
+                                        <?php 
+                                        if ($option_value['priceonly']) { 
+                                        $additnal_price = $option_value['priceonly'];
+                                        }else{
+                                        $additnal_price = '0';
+                                        }   
+                                        ?>
+                                        <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                            <?php echo $option_value['name']; ?>
+                                            <?php if ($option_value['price']) { ?>
+                                            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                                            <?php } ?>
+                                        </option>
+                                        <?php 
+                                        } ?>
+                                    </select>                                   
+                                </div>
+                                <?php 
+                                }
+                                }
+                                ?>                 
+                                <div class="row">
+                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                           <label>Height</label>
+                                           <div class="height">
+                                               <div class="row">
+                                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet1">
+                                                       <?php
+                                                       // Height Feet
+                                                       foreach ($options as $option) 
+                                                       { 
+                                                       if (in_array($option['option_id'], $height_feet))
+                                                       {
+                                                       $hf_optionid = $option['product_option_id'];  
+
+                                                       $option['value'] = ($option['value']=="")?1:$option['value'];
+                                                       ?>
+                                                       <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                           <label>Feet</label>
+                                                           <input type="text" class="form-control numberentry"  placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                       </div>
+                                                       <?php 
+                                                       } 
+                                                       } 
+                                                       ?>
+                                                   </div>
+                                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet2">
+                                                       <?php
+                                                       // Height Inch
+                                                       foreach ($options as $option) 
+                                                       { 
+                                                       if (in_array($option['option_id'], $height_inch))
+                                                       {
+
+                                                       $hi_optionid = $option['product_option_id'];   
+                                                       $option['value'] = ($option['value']=="")?0:$option['value'];
+                                                       ?>
+                                                       <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                           <label>Inch</label>
+                                                           <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                       </div>
+                                                       <?php 
+                                                       } 
+                                                       } 
+                                                       ?>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                           <label>Width</label>
+                                           <div class="height">
+                                               <div class="row">
+                                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet1">                                                   
+                                                       <?php
+                                                       // Width Feet
+                                                       foreach ($options as $option) 
+                                                       { 
+                                                       if (in_array($option['option_id'], $width_feet))
+                                                       {
+                                                       $wf_optionid = $option['product_option_id'];
+                                                       $option['value'] = ($option['value']=="")?1:$option['value'];
+                                                       ?>
+                                                       <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                           <label>Feet</label>
+                                                           <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                       </div>
+                                                       <?php 
+                                                       } 
+                                                       } 
+                                                       ?>
+                                                   </div> 
+                                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 feet2">
+                                                       <?php
+                                                       // Width Inch
+                                                       foreach ($options as $option) 
+                                                       { 
+                                                       if (in_array($option['option_id'], $width_inch))
+                                                       {
+                                                       $wi_optionid = $option['product_option_id']; 
+                                                       $option['value'] = ($option['value']=="")?0:$option['value'];
+                                                       ?>
+                                                       <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                                                           <label>Inch</label>
+                                                           <input type="text" class="form-control control2 numberentry" placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">
+                                                       </div>
+                                                       <?php 
+                                                       } 
+                                                       } 
+                                                       ?>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                        </div>
+                    <?php
+                    // Two side banner
+                    foreach ($options as $option) 
+                    { 
+                    if (in_array($option['option_id'], $double_side))
+                    { 
+                        $pdoubleside_optionid = $option['product_option_id'];
+                    ?>
+                    <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">
+                        <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                        <input class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                        <?php } ?> 
+                        <?php echo $option['name']; ?><br>
+                    </div>
+                    <?php 
+                    } 
+                    } 
+                    ?>            
+                    <div class="form-group">
+                        <div class="row">
+                            <div  class="">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 price-value">                                    
+                                    <?php 
+                                    if ($price) 
+                                    { 
+                                    if (!$special) {  ?>
+                                    <p class="price_prod_detail" id="pricediv">Price: <?php echo $price; ?></p>  
+                                    <?php } else { ?>
+                                    <p style="text-decoration: line-through;"><?php echo $price; ?></p>
+                                    <p class="price_prod_detail"><?php echo $special; ?></span>
+                                    <?php
+                                    }
+                                    }?>      
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"> 
+                                    <label>Qty</label>
+                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                       <?php                                 
+                                $price_per_feet_option = array("22");  
+                                foreach ($options as $option) 
+                                { 
+                                if (in_array($option['option_id'], $price_per_feet_option))
+                                {  ?>
+                                <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]"  value="<?php echo  $feetprice_only;?>">
+                                <?php
+                                }
+                                } 
+                                ?>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="start-order">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 "> 
+                                    <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
+                                    <input type="hidden" name="pwidthinch" id="pwidthinch" value="<?php echo  $wi_optionid ;?>">
+                                    <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
+                                    <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
+                                    <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                    <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
+                                    <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
+                                    <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
+                                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />                                   
+                                    <a href="javascript:void(0);" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="add-cart">
+                                        <img src="image/catalog/start-order.png" alt="Add cart">Start your order
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="detail-body2">
-              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <div class="detail-content">
-                  <div class="panel with-nav-tabs panel">
-                    <div class="panel-heading">
-                      <ul class="nav nav-tabs">                                                
-                        <li class="active"> <a href="#tab1default" data-toggle="tab"><?php echo $tab_description; ?> </a></li>
-                        <?php if ($attribute_groups) { ?>
-                        <li><a href="#tab2default" data-toggle="tab"> <?php echo $tab_attribute; ?> </a></li>
-                        <?php } ?>
-                        <?php if ($review_status) { ?>
-                        <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
-                        <?php } ?>
-                      </ul>
-                    </div>
-                    <div class="panel-body">
-                      <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1default">
-                        <?php echo $description; ?>
-                        </div>
-                        <div class="tab-pane fade" id="tab2default"> <table class="table table-bordered table-color">
-                                    <?php foreach ($attribute_groups as $attribute_group) { ?>
-                                    <thead>
-                                        <tr>
-                                            <td class="text-color"  colspan="2"><strong><?php echo $attribute_group['name']; ?></strong></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-                                        <tr>
-                                            <td><?php echo $attribute['name']; ?></td>
-                                            <td><?php echo $attribute['text']; ?></td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <div class="detail-content">
+                        <div class="panel with-nav-tabs panel">
+                            <div class="panel-heading">
+                                <ul class="nav nav-tabs">                                                
+                                    <li class="active"> <a href="#tab1default" data-toggle="tab"><?php echo $tab_description; ?> </a></li>
+                                    <?php if ($attribute_groups) { ?>
+                                    <li><a href="#tab2default" data-toggle="tab"> <?php echo $tab_attribute; ?> </a></li>
                                     <?php } ?>
-                                </table> </div>
-                          <?php if ($review_status) { ?>
-                            <div class="tab-pane fade" id="tab-review">
-                                <div class="client-review">
-            <div class="client-heading">              
-              <a class="review-button text-right" id="review-form" href="javascript:void(0);">
-                        Write a review
-            </a>
-            </div>            
-            <div id="review"></div>
-            <form class="form-horizontal" id="form-review">                                    
-                <h2><?php echo $text_write; ?></h2>
-                <div id="rate_message"></div>
-                <?php if ($review_guest) { ?>
-                <div class="form-group required">
-                    <div class="col-sm-4">
-                        <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                        <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group required">
-                    <div class="col-sm-4">
-                        <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                        <div class="help-block"><?php echo $text_note; ?></div>
-                    </div>
-                </div>
-                <div class="form-group required">
-                    <div class="col-sm-6">
-                        <label class="control-label"><?php echo $entry_rating; ?></label>
-                        &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
-                        <input type="radio" name="rating" value="1" />
-                        &nbsp;
-                        <input type="radio" name="rating" value="2" />
-                        &nbsp;
-                        <input type="radio" name="rating" value="3" />
-                        &nbsp;
-                        <input type="radio" name="rating" value="4" />
-                        &nbsp;
-                        <input type="radio" name="rating" value="5" />
-                        &nbsp;<?php echo $entry_good; ?></div>
-                </div>
-                <?php echo $captcha; ?>
-                <div class="buttons clearfix">                                                
-                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">Submit</button>                                                
-                </div>
-                <?php } else { ?>
-                <?php echo $text_login; ?>
-                <?php } ?>
-            </form>
-          </div>
+                                    <?php if ($review_status) { ?>
+                                    <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
+                                    <?php } ?>
+                                </ul>
                             </div>
-                            <?php } ?>                          
-                      </div>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="tab1default">
+                                        <?php echo $description; ?>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab2default"> <table class="table table-bordered table-color">
+                                            <?php foreach ($attribute_groups as $attribute_group) { ?>
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-color"  colspan="2"><strong><?php echo $attribute_group['name']; ?></strong></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+                                                <tr>
+                                                    <td><?php echo $attribute['name']; ?></td>
+                                                    <td><?php echo $attribute['text']; ?></td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                            <?php } ?>
+                                        </table> </div>
+                                    <?php if ($review_status) { ?>
+                                    <div class="tab-pane fade" id="tab-review">                                       
+                                        <div class="client-review">                                                     
+                                            <a class="review-button text-right" id="review-form" href="javascript:void(0);">
+                                                Write a review
+                                            </a>  
+                                            <form class="form-horizontal" id="form-review">
+                                              
+                                                <h2><?php echo $text_write; ?></h2>
+                                                
+                                                <?php if ($review_guest) { ?>
+                                                <div class="form-group required">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+                                                        <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group required">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
+                                                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                                                        <div class="help-block"><?php echo $text_note; ?></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group required">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label"><?php echo $entry_rating; ?></label>
+                                                        &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
+                                                        <input type="radio" name="rating" value="1" />
+                                                        &nbsp;
+                                                        <input type="radio" name="rating" value="2" />
+                                                        &nbsp;
+                                                        <input type="radio" name="rating" value="3" />
+                                                        &nbsp;
+                                                        <input type="radio" name="rating" value="4" />
+                                                        &nbsp;
+                                                        <input type="radio" name="rating" value="5" />
+                                                        &nbsp;<?php echo $entry_good; ?></div>
+                                                </div>
+                                                <?php echo $captcha; ?>
+                                                <div class="buttons clearfix">                                                
+                                                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">Submit</button>                                                
+                                                </div>
+                                                <?php } else { ?>
+                                                <?php echo $text_login; ?>
+                                                <?php } ?>
+                                                  <div id="rate_message"></div>
+                                            </form>
+                                        </div>
+                                         <div id="review"></div>
+                                    </div>
+                                    <?php } ?>                          
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-          <div class="ask-que">
-            <h4>Ask Your question</h4>
-            <div class="ask-inner-part">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email Address">
-              </div>
-              <div class="form-group">
-                <textarea class="form-control message" rows="5" placeholder="what do you want to know ?"></textarea>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12">
-                    <button type="submit" class="btn btn-default">Send question</button>
-                  </div>
+                    <div class="ask-que">
+                        <h4>Ask Your question</h4>
+                        <div class="ask-inner-part">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control message" rows="5" placeholder="what do you want to know ?"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <button type="submit" class="btn btn-default">Send question</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-            </div>
-          </div>       
-        </div>
+        </div>       
     </div>
 </div>
-<script type="text/javascript"><!--
-$('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
-        $.ajax({
-            url: 'index.php?route=product/product/getRecurringDescription',
-            type: 'post',
-            data: $('input[name=\'product_id\'], input[name=\'quantity\'], select[name=\'recurring_id\']'),
-            dataType: 'json',
-            beforeSend: function () {
-                $('#recurring-description').html('');
-            },
-            success: function (json) {
-                $('.alert, .text-danger').remove();
+<script type="text/javascript">
+     var ratings = document.getElementsByClassName('rating');
+    for (var i = 0; i < ratings.length; i++) {
+        var r = new SimpleStarRating(ratings[i]);
 
-                if (json['success']) {
-                    $('#recurring-description').html(json['success']);
-                }
+        ratings[i].addEventListener('rate', function(e) {
+            console.log('Rating: ' + e.detail);
+        });
+    }
+
+    $(function () {
+    
+        $("#form-review").hide();
+
+        $('#review-form').on('click', function () {
+             $("#form-review").toggle();
+        });
+    
+        $(".numberentry").keypress(function (e) {
+            e = e || event;
+            if (e.ctrlKey || e.altKey || e.metaKey)
+                return;
+            var chr = getChar(e);
+            if (chr == null)
+                return;
+            if (chr < '0' || chr > '9') {
+                return false;
             }
         });
-    });
-//--></script>
-<script type="text/javascript"><!--
-$('#button-cart').on('click', function () {
-        $.ajax({
-            url: 'index.php?route=checkout/cart/add',
-            type: 'post',
-            data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-            dataType: 'json',
-            beforeSend: function () {
-                $('#button-cart').button('loading');
-            },
-            complete: function () {
-                $('#button-cart').button('reset');
-            },
-            success: function (json) {
-                $('.alert, .text-danger').remove();
-                $('.form-group').removeClass('has-error');
 
-                if (json['error']) {
-                    if (json['error']['option']) {
-                        for (i in json['error']['option']) {
-                            var element = $('#input-option' + i.replace('_', '-'));
+        $('.star_rating').rating();
+        var pid = "<?php echo $product_id;?>";
 
-                            if (element.parent().hasClass('input-group')) {
-                                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                            } else {
-                                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+        addtoprice(pid);
+
+        $('#producthome input[type=\'text\']').bind('keyup', function (e) {
+            $.ajax({
+                url: 'index.php?route=product/product/calculate&product_id=' + pid,
+                type: 'post',
+                data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
+                dataType: 'json',
+                success: function (json) {
+                    if (json['success']) {
+                        $('#pricediv').html("Price: " + json['price']);
+                        $('#calculated_feetprice').val(json['calculated_feetprice']);
+                    }
+                }
+            });
+        });
+
+        $('input').on('ifChecked', function (event) {
+            addtoprice(pid);
+        });
+
+        $('input').on('ifUnchecked', function (event) {
+            addtoprice(pid);
+        });
+
+        $('#button-cart').on('click', function () {
+            $.ajax({
+                url: 'index.php?route=common/quickorder/step1',
+                type: 'post',
+                data: $('#producthome input[type=\'text\'], #producthome input[type=\'hidden\'], #producthome input[type=\'radio\']:checked, #producthome input[type=\'checkbox\']:checked, #producthome select, #producthome textarea'),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#button-cart').button('loading');
+                },
+                complete: function () {
+                    $('#button-cart').button('reset');
+                },
+                success: function (json) {
+                    $('.alert, .text-danger').remove();
+                    $('.form-group').removeClass('has-error');
+
+                    if (json['error']) {
+                        if (json['error']['option']) {
+                            for (i in json['error']['option']) {
+                                var element = $('#input-option' + i.replace('_', '-'));
+
+                                if (element.parent().hasClass('input-group')) {
+                                    //element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                    element.parent().after('<div class="text-danger"></div>');
+                                } else {
+                                    //element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                    element.after('<div class="text-danger"></div>');
+                                }
                             }
                         }
+
+                        // Highlight any found errors
+                        $('.text-danger').parent().addClass('has-error');
                     }
 
-                    if (json['error']['recurring']) {
-                        $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+                    if (json['success']) {                                         
+                        $("#prod_page_calc").attr("action", json['redirect']);
+                        $("form#prod_page_calc").submit();
+                        return false;
                     }
-
-                    // Highlight any found errors
-                    $('.text-danger').parent().addClass('has-error');
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
+            });
+        });
+        
+        $('#review').delegate('.pagination a', 'click', function(e) {
+            e.preventDefault();
 
+            $('#review').fadeOut('slow');
+
+            $('#review').load(this.href);
+
+            $('#review').fadeIn('slow');
+        });
+
+        $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+
+        $('#button-review').on('click', function() {
+                $.ajax({
+                        url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $("#form-review").serialize(),
+                        beforeSend: function() {
+                                $('#button-review').button('loading');
+                        },
+                        complete: function() {
+                                $('#button-review').button('reset');
+                        },
+                        success: function(json) {
+                                $('.alert-success, .alert-danger').remove();
+
+                                if (json['error']) {
+                                        $('#rate_message').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                                }
+
+                                if (json['success']) {
+                                        $('#rate_message').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+                                        $('input[name=\'name\']').val('');
+                                        $('textarea[name=\'text\']').val('');
+                                        $('input[name=\'rating\']:checked').prop('checked', false);
+                                }
+                        }
+                });
+        });
+
+    });
+
+    $.fn.rating = function () {
+        var val = 0, size = 0, stars = 5;
+        return this.each(function (i, e) {
+            val = parseFloat($(e).text());
+            size = ($(e).width() / stars);
+            $(e).html($('<p/>').animate({
+                width: val * size
+            }, 1000));
+        });
+    };
+
+    function addtoprice(pid)
+    {
+        $.ajax({
+            url: 'index.php?route=product/product/calculate&product_id=' + pid,
+            type: 'post',
+            data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
+            dataType: 'json',
+            success: function (json) {
                 if (json['success']) {
-                    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                    $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-
-                    $('html, body').animate({scrollTop: 0}, 'slow');
-
-                    $('#carttotal').html(json['carttotal_disp']);
-                    $('#carttotalamt').html(json['carttotalamt_disp']);
-
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#pricediv').html("Price: " + json['price']);
+                    $('#calculated_feetprice').val(json['calculated_feetprice']);
                 }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
-    });
-//--></script>
-<script type="text/javascript"><!--
-$('.date').datetimepicker({
-        pickTime: false
-    });
-
-    $('.datetime').datetimepicker({
-        pickDate: true,
-        pickTime: true
-    });
-
-    $('.time').datetimepicker({
-        pickDate: false
-    });
-
-    $('button[id^=\'button-upload\']').on('click', function () {
-        var node = this;
-
-        $('#form-upload').remove();
-
-        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-
-        $('#form-upload input[name=\'file\']').trigger('click');
-
-        if (typeof timer != 'undefined') {
-            clearInterval(timer);
+    }
+    
+    function getChar(event) {
+        if (event.which == null) {
+            if (event.keyCode < 32)
+                return null;
+            return String.fromCharCode(event.keyCode) // IE
         }
 
-        timer = setInterval(function () {
-            if ($('#form-upload input[name=\'file\']').val() != '') {
-                clearInterval(timer);
+        if (event.which != 0 && event.charCode != 0) {
+            if (event.which < 32)
+                return null;
+            return String.fromCharCode(event.which)
+        }
 
-                $.ajax({
-                    url: 'index.php?route=tool/upload',
-                    type: 'post',
-                    dataType: 'json',
-                    data: new FormData($('#form-upload')[0]),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $(node).button('loading');
-                    },
-                    complete: function () {
-                        $(node).button('reset');
-                    },
-                    success: function (json) {
-                        $('.text-danger').remove();
-
-                        if (json['error']) {
-                            $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
-                        }
-
-                        if (json['success']) {
-                            alert(json['success']);
-
-                            $(node).parent().find('input').val(json['code']);
-                        }
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                    }
-                });
-            }
-        }, 500);
-    });
-//--></script>
-<script type="text/javascript"><!--
-$('#review').delegate('.pagination a', 'click', function (e) {
-        e.preventDefault();
-
-        $('#review').fadeOut('slow');
-
-        $('#review').load(this.href);
-
-        $('#review').fadeIn('slow');
-    });
-
-    $("#form-review").hide();
-    
-    $('#review-form').on('click', function () {
-         $("#form-review").toggle();
-    });
-    
-    $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
-    
-    $('#button-review').on('click', function () {
-        $.ajax({
-            url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
-            type: 'post',
-            dataType: 'json',
-            data: $("#form-review").serialize(),
-            beforeSend: function () {
-                $('#button-review').button('loading');
-            },
-            complete: function () {
-                $('#button-review').button('reset');
-            },
-            success: function (json) {
-                $('.alert-success, .alert-danger').remove();
-
-                if (json['error']) {
-                    $('#rate_message').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
-                }
-
-                if (json['success']) {
-                    $('#rate_message').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-
-                    $('input[name=\'name\']').val('');
-                    $('textarea[name=\'text\']').val('');
-                    $('input[name=\'rating\']:checked').prop('checked', false);
-                }
-            }
-        });
-    });
-
-    $(document).ready(function () {
-        $('.thumbnails').magnificPopup({
-            type: 'image',
-            delegate: 'a',
-            gallery: {
-                enabled: true
-            }
-        });
-    });
-//--></script>
+        return null;
+    }
+</script>            
 <?php echo $footer; ?>

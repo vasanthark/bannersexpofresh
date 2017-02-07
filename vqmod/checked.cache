@@ -560,3 +560,8 @@ admin/language/en-gb/design/banner.php
 admin/model/design/banner.php
 admin/view/template/design/banner_list.tpl
 admin/view/template/design/banner_form.tpl
+admin/controller/common/logout.php
+catalog/controller/information/contact.php
+catalog/language/en-gb/information/contact.php
+catalog/model/localisation/location.php
+catalog/view/theme/bannersexpo/template/information/contact.tpl

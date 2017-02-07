@@ -391,7 +391,11 @@ class ControllerProductProduct extends Controller {
 			}
 
 			$data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
-			$data['rating'] = (int)$product_info['rating'];
+                        
+                        $data['rating'] = "";
+                        if($prod_rate = $this->model_catalog_product->getAvgrating($this->request->get['product_id'])){                            
+                            $data['rating'] =  number_format((float)$prod_rate, 1, '.', '');                     
+                        }
 
 			// Captcha
 			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
@@ -465,6 +469,23 @@ class ControllerProductProduct extends Controller {
 					);
 				}
 			}
+                        
+                         /* Price per feet display price */
+                        $priceperfeet_option = array("22");
+                        $data['feetprice_curr'] = "";
+                        $data['feetprice_only'] = 0;
+
+                        if (!empty($data['options'])) {
+                            foreach ($data['options'] as $option) {
+                                if (in_array($option['option_id'], $priceperfeet_option)) {
+                                    $priceperfeet_price = $option['value'];
+                                    if ($option['option_id'] == "22") {
+                                        $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
+                                        $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
+                                    }
+                                }
+                            }
+                        }
 
 			$data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
 
