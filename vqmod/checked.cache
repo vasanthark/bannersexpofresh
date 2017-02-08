@@ -565,3 +565,5 @@ catalog/controller/information/contact.php
 catalog/language/en-gb/information/contact.php
 catalog/model/localisation/location.php
 catalog/view/theme/bannersexpo/template/information/contact.tpl
+catalog/language/en-gb/mail/review.php
+system/library/mail.php

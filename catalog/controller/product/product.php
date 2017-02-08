@@ -774,6 +774,46 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+        
+        public function askyourquestion() {
+		$this->load->language('product/product');
+
+		$json = array();
+
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			if ((utf8_strlen($this->request->post['uname']) < 3) || (utf8_strlen($this->request->post['uname']) > 25)) {
+				$json['error'] = "Name must be between 3 and 25 characters!";
+			}
+                        
+                        if ((utf8_strlen($this->request->post['uemail']) > 96) || !filter_var($this->request->post['uemail'], FILTER_VALIDATE_EMAIL)) {
+                                $json['error'] = "Please enter valid email address.";
+                        }
+
+			if ((utf8_strlen($this->request->post['ucomment']) < 25) || (utf8_strlen($this->request->post['ucomment']) > 1000)) {
+				$json['error'] = "Message must be between 25 and 1000 characters!";
+			}
+			
+			// Captcha
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
+				$captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
+
+				if ($captcha) {
+					$json['error'] = $captcha;
+				}
+			}
+
+			if (!isset($json['error'])) {
+				$this->load->model('catalog/review');
+
+				$this->model_catalog_review->sendquestion($this->request->get['product_id'], $this->request->post);
+
+				$json['success'] = "Thank you!!Store owner will review your mail and ping you back.";
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 
 	public function getRecurringDescription() {
 		$this->load->language('product/product');

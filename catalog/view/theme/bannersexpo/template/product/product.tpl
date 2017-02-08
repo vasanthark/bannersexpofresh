@@ -383,24 +383,27 @@ $material_type  = array("19");
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="ask-que">
                         <h4>Ask Your question</h4>
+                        <form name="ask_question" id="ask_question">
+                            <div id="ask_message"></div>
                         <div class="ask-inner-part">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" name="uname" class="form-control" placeholder="Your Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email Address">
+                                <input type="email" name="uemail" class="form-control" placeholder="Email Address">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control message" rows="5" placeholder="what do you want to know ?"></textarea>
+                                <textarea class="form-control message" name="ucomment" rows="5" placeholder="what do you want to know ?"></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
-                                        <button type="submit" class="btn btn-default">Send question</button>
+                                        <button type="button" id="send_question" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default">Send question</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -409,15 +412,49 @@ $material_type  = array("19");
 </div>
 <script type="text/javascript">
      var ratings = document.getElementsByClassName('rating');
-    for (var i = 0; i < ratings.length; i++) {
-        var r = new SimpleStarRating(ratings[i]);
+    if(ratings.length>0){    
+        for (var i = 0; i < ratings.length; i++) {
+            var r = new SimpleStarRating(ratings[i]);
 
-        ratings[i].addEventListener('rate', function(e) {
-            console.log('Rating: ' + e.detail);
-        });
+            ratings[i].addEventListener('rate', function(e) {
+                console.log('Rating: ' + e.detail);
+            });
+        }
     }
 
     $(function () {
+    
+        /* Ask your question */
+        $('#send_question').on('click', function() {
+                $.ajax({
+                        url: 'index.php?route=product/product/askyourquestion&product_id=<?php echo $product_id; ?>',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $("#ask_question").serialize(),
+                        beforeSend: function() {
+                                $('#send_question').button('loading');
+                        },
+                        complete: function() {
+                                $('#send_question').button('reset');
+                        },
+                        success: function(json) {
+                    
+                                $('.alert-success, .alert-danger').remove();
+
+                                if (json['error']) {
+                                        $('#ask_message').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                                }
+
+                                if (json['success']) {
+                                        $('#ask_message').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+                                        $('input[name=\'uname\']').val('');
+                                        $('input[name=\'uemail\']').val('');
+                                        $('textarea[name=\'ucomment\']').val('');
+                                }
+                        }
+                });
+        });
     
         $("#form-review").hide();
 
