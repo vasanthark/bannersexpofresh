@@ -1036,7 +1036,7 @@ h1, h2, h3, h4, h5, h6 {
     width:100%;
     font-weight:500;
     float:left;
-    font-size:18px;
+    font-size:15px;
     font-family: 'Roboto Slab', sans-serif;
     color:#ffffff;
     text-decoration:none;
@@ -1054,7 +1054,8 @@ h1, h2, h3, h4, h5, h6 {
     color:#4e4e4e;
     font-size:16px;
     font-weight:300;
-    margin:35px 0px 120px 0px;
+    /*margin:35px 0px 120px 0px;*/
+    margin:35px 0px 35px 0px;
     line-height:24px;
 }
 .about-expo h2 {
@@ -1101,7 +1102,7 @@ h1, h2, h3, h4, h5, h6 {
 .body-cont1-product {
     width:100%;
     float:left;
-    margin-top:0px;
+    margin-top:10px;
 }
 .reviews {
     width:auto;
@@ -1110,6 +1111,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight:500;
     font-family: 'Roboto', sans-serif;
     float:right;
+    margin-top:5px;
 }
 .reviews1 {
     margin-top:10px;
@@ -1384,8 +1386,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top:15px;
 }
 .customer-detail p {
-    font-size:16px;
-    line-height:16px;
+    font-size:16px;  
 }
 .customer-detail span {
     font-size:18px;
@@ -1442,7 +1443,7 @@ h1, h2, h3, h4, h5, h6 {
 .detail-body2 {
     width:100%;
     float:left;
-    margin-top:30px;
+    margin-top:10px;
 }
 .detail-content .nav > li > a {
     display: block;
@@ -1513,7 +1514,7 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    padding: 10px 5px;
+    /*padding: 10px 5px;*/
 }
 .detail-content .nav-tabs > li > a {
     border:none;
@@ -2687,7 +2688,7 @@ a, button{
 .width-filed {
     float: left;
     margin-right: 3%;
-    width: 22% !important;
+    width: 22.7% !important;
 }
 
 

@@ -76,40 +76,31 @@ class ModelCatalogReview extends Model {
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
 
-        $subject = $product_info['name']." - ASk Question by ".html_entity_decode($data['uname'], ENT_QUOTES, 'UTF-8');
+        $subject = $product_info['name']." - Ask Question by ".html_entity_decode($data['uname'], ENT_QUOTES, 'UTF-8');
 
-        $message = $this->language->get('text_waiting') . "\n";
+        $message = "Here the below question asked for '".$product_info['name']."' product" . "\n";
         $message .= sprintf($this->language->get('text_product'), html_entity_decode($product_info['name'], ENT_QUOTES, 'UTF-8')) . "\n";
-        $message .= sprintf("Name", html_entity_decode($data['uname'], ENT_QUOTES, 'UTF-8')) . "\n";
-        $message .= sprintf("Email", $data['uemail']) . "\n";
+      //  $message .= sprintf("Name", html_entity_decode($data['uname'], ENT_QUOTES, 'UTF-8')) . "\n";
+      //  $message .= sprintf("Email", $data['uemail']) . "\n";
         $message .= "Question" . "\n";
         $message .= html_entity_decode($data['ucomment'], ENT_QUOTES, 'UTF-8') . "\n\n";
 
         $mail = new Mail();
         $mail->protocol = $this->config->get('config_mail_protocol');
         $mail->parameter = $this->config->get('config_mail_parameter');
-        $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-        $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-        $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-        $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-        $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+        echo $this->config->get('config_mail_protocol'); echo "<br>";
+//        $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+//        $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+//        $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+//        $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+//        $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
         $mail->setTo($this->config->get('config_email'));
-        $mail->setFrom($this->config->get('config_email'));
-        $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+        $mail->setFrom($data['uemail']);
+        $mail->setSender(html_entity_decode($data['uname'], ENT_QUOTES, 'UTF-8'));
         $mail->setSubject($subject);
         $mail->setText($message);
-        $mail->send();
-
-        // Send to additional alert emails
-        $emails = explode(',', $this->config->get('config_alert_email'));
-
-        foreach ($emails as $email) {
-            if ($email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $mail->setTo($email);
-                $mail->send();
-            }
-        }
+        $mail->send();       
     }
 
 }

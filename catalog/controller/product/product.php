@@ -159,6 +159,14 @@ class ControllerProductProduct extends Controller {
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
+
+                       $data['siteurl'] =  $this->config->get('config_url');
+
+                        $data['feature_size_option'] = "";
+                        if ($this->request->server['REQUEST_METHOD'] == 'POST' && isset($this->request->post['feature_size_option'])) {
+                            $data['feature_size_option'] = $this->request->post['feature_size_option'];
+                        }
+                    
 			$url = '';
 
 			if (isset($this->request->get['path'])) {
@@ -344,8 +352,10 @@ class ControllerProductProduct extends Controller {
 					if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
 						if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
 							$price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+                                                        $priceonly = $this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
 						} else {
 							$price = false;
+                                                        $priceonly = false;
 						}
 
 						$product_option_value_data[] = array(
@@ -498,7 +508,14 @@ class ControllerProductProduct extends Controller {
                         $data['content_breadcrumbs'] = $this->load->controller('common/breadbcrumb',$data['breadcrumbs']);
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
+                        
+                        $nodirect_checkout_prods = array("50","51","61");
+                        
+                        if(in_array($this->request->get['product_id'],$nodirect_checkout_prods))
+                        $data['direct_checkout'] = 1;
+                        else
+                        $data['direct_checkout'] = 0;
+                        
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';

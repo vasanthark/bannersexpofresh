@@ -39,12 +39,18 @@ $let_us_design_prc  = array("43");
 $proofing = array("44");
 $proofing_email = array("45");
 
+$lamination  = array("47");
+$metalsteaks = array("48");
+
 $hqty = 1;
 $calculated_feetprice = "0";
 $height_feet_value = 1;
 $width_feet_value = 1 ;
 $pmat_type_val = "";
 $pdoubleside_val = "";
+
+$plamination_val = "";
+$pmetalsteaks_val = "";
 
 if($home_postdata){
 
@@ -66,16 +72,28 @@ if($home_postdata){
         $height_inch_value = isset($home_postdata['option'][$h_iid])?$home_postdata['option'][$h_iid]:0;
     }
     
-    /* material type */
-    if(isset($home_postdata['pmat_type'])){
+    /* material type */    
+    if(isset($home_postdata['pmat_type']) && $home_postdata['pmat_type']!=""){    
         $pmat_type_id  = $home_postdata['pmat_type'];
         $pmat_type_val = $home_postdata['option'][$pmat_type_id];
     }
     
     /* Double side */
-    if(isset($home_postdata['pdoubleside'])){
+    if(isset($home_postdata['pdoubleside']) && $home_postdata['pdoubleside']!=""){
         $pdoubleside_id  = $home_postdata['pdoubleside'];
         $pdoubleside_val = isset($home_postdata['option'][$pdoubleside_id])?$home_postdata['option'][$pdoubleside_id]:"";
+    }
+    
+    /* lamination */
+    if(isset($home_postdata['plamination']) && $home_postdata['plamination']!=""){
+        $plamination_id  = $home_postdata['plamination'];
+        $plamination_val = isset($home_postdata['option'][$plamination_id])?$home_postdata['option'][$plamination_id]:"";
+    }
+    
+    /* Metal Steaks */
+    if(isset($home_postdata['pmetalsteaks']) && $home_postdata['pmetalsteaks']!=""){
+        $pmetalsteaks_id  = $home_postdata['pmetalsteaks'];
+        $pmetalsteaks_val = isset($home_postdata['option'][$pmetalsteaks_id])?$home_postdata['option'][$pmetalsteaks_id]:"";
     }
 }  
 
@@ -168,7 +186,7 @@ if($home_postdata){
                                             if (in_array($option['option_id'], $width_inch)){
                                             $option['value'] = (isset($width_inch_value) && $width_inch_value!="")?$width_inch_value:0;
                                             ?>
-                                            <div class="form-group width-filed <?php echo ($option['required'] ? ' required' : ''); ?>">          
+                                            <div class="form-group width-filed w-inch <?php echo ($option['required'] ? ' required' : ''); ?>">          
                                                 <div class="">
                                                     <label> W'(Inch)</label>
                                                     <input type="text" class="form-control numberentry"  placeholder="0" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>">                                             
@@ -249,28 +267,73 @@ if($home_postdata){
                                     }?> 
                                     
                                     <?php
+                                    // Lamination                                    
+                                    foreach ($options as $option){ 
+                                        if (in_array($option['option_id'], $lamination)){ 
+                                        ?>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
+                                            <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
+                                                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <input <?php if($plamination_val!=""){ echo "checked";} ?> class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <?php } ?> 
+                                                <label> <?php echo $option['name']; ?></label>                                               
+                                                <?php if ($option_value['price']) { ?>
+                                                (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <?php 
+                                        } 
+                                    }?> 
+                                    
+                                    <?php
+                                    // Metal steaks                                    
+                                    foreach ($options as $option){ 
+                                        if (in_array($option['option_id'], $metalsteaks)){ 
+                                        ?>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
+                                            <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
+                                                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <input <?php if($pmetalsteaks_val!=""){ echo "checked";} ?> class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <?php } ?> 
+                                                <label> <?php echo $option['name']; ?></label>                                               
+                                                <?php if ($option_value['price']) { ?>
+                                                (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <?php 
+                                        } 
+                                    }?> 
+                                    
+                                    <?php
                                     // Grommets per price                                   
                                     foreach ($options as $option){
                                         if (in_array($option['option_id'], $grommets_per_price)){ 
                                         ?> 
+                                       
                                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <h5> Grommets <span>  (per grommet price $<?php echo $option['value']; ?>) </span></h5>
                                         </div>   
+                                       
                                          <input type="hidden" value="<?php echo $option['value']; ?>" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>">
                                          <input type="hidden" name="pgroometprice" id="pgroometprice" value="<?php echo $option['product_option_id']; ?>">    
                                         <?php 
                                         }
-                                    }
+                                    }?>
+                                    <div class="form-group">
+                                    <?php
                                       
                                     // Grommets Type
                                     foreach ($options as $option){ 
                                         if (in_array($option['option_id'], $grommets_type))
                                         {
                                         ?>  
-                                        <div class="col-xs-9 col-sm-6 col-md-6 col-lg-3">
+                                       
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                                             <label>Grommets Types</label>
                                         </div>
-                                        <div class="col-xs-9 col-sm-6 col-md-6 col-lg-6">                                                                   
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">                                                                   
                                             <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?>)">
                                                 <option value="">---Select One---</option>
                                                 <?php foreach ($option['product_option_value'] as $option_value) 
@@ -282,6 +345,7 @@ if($home_postdata){
                                                 } ?>
                                             </select>  
                                         </div>
+                                           
                                         <?php 
                                         } 
                                     } 
@@ -290,10 +354,10 @@ if($home_postdata){
                                     foreach ($options as $option) {      
                                         if (in_array($option['option_id'], $grommets_qty)){
                                         ?>
-                                            <div class="col-xs-3 col-sm-6 col-md-6 col-lg-1">
+                                            <div class="col-xs-2 col-sm-6 col-md-6 col-lg-1 mobile-qty">
                                                 <label> Qty </label>
                                             </div>
-                                            <div class="col-xs-3 col-sm-6 col-md-6 col-lg-2">
+                                            <div class="col-xs-4 col-sm-6 col-md-6 col-lg-2 mobile-qty">
                                                 <div class="qty-filed qty-filed3">                                              
                                                     <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control numberentry" />                                               
                                                 </div>
@@ -302,7 +366,9 @@ if($home_postdata){
                                         <?php 
                                         } //end of second if
                                     //end of loop
-                                    } 
+                                    } ?>
+                                     </div>
+                                    <?php
                                     
                                     // Placement
                                     foreach ($options as $option){ 
@@ -555,7 +621,7 @@ if($home_postdata){
                                     // additional_finishing
                                     foreach ($options as $optionParent){ 
                                         if (in_array($optionParent['option_id'], $additional_finishing)){ ?>
-                                        <div class="form-group">
+                                        <div class="">
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 <h5> Additional finishing</h5>
                                             </div>
@@ -710,32 +776,34 @@ if($home_postdata){
                                         }
                                     }                                       
                                     ?>
-                                    <div class="form-group">
+                                    
                                         <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+<div class="form-group">
                                             <label> Qty </label>
                                             <input class="form-control" type="text" name="quantity" value="<?php echo $hqty;?>" id="input-quantity" min="1" max="<?php echo $postDataRequest['quantity']; ?>"  onchange="addtoprice(this, <?php echo $product_id;?>)"/>
+ </div>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
-                                            <div class="form-group ">
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 feet2">
+                                            <div class="">
                                                 <div class="price">
                                                     <?php 
                                                     if ($price){ 
                                                         if (!$special) {  ?>
-                                                        <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
+                                                        <span class="price1 badge" id="pricediv">Price: <?php echo $price; ?></span>  
                                                         <?php } else { ?>
                                                         <span style="text-decoration: line-through;"><?php echo $price; ?></span>
-                                                        <span class="price1"><?php echo $special; ?></span>
+                                                        <span class="price1 badge"><?php echo $special; ?></span>
                                                         <?php
                                                         }
                                                     }?>                 
                                                 </div>
                                             </div>
                                         </div>       
-                                    </div>
+                                   
 
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">                                           
-                                            <div class="form-group">
+                                            <div class="quick-order">
                                                 <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
                                                 <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
                                                 <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 

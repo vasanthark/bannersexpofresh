@@ -2,6 +2,62 @@
 /* CSS Document */
 
 @media (max-width:767px) {
+    
+    .form-left h5{
+        font-size: 18px; 
+    }
+    
+    
+.price .badge{
+
+    margin-top: -15px;
+}
+
+    .mobile-qty{
+        margin-top: 15px;
+    }
+    .inner-pages h4 {
+  font-size: 17px; 
+}
+.inner-pages h4 img{
+    float:left;
+    margin-right: 10px;
+}
+    
+    .form-left .btn-file {
+ 
+  line-height: 40px;
+}
+.start-designbtn{
+    line-height: 40px;
+}
+    .quick-order{
+        margin-top: 15px;
+        
+}
+
+.detail-content .nav-tabs > li {
+
+  text-align: center;
+  width: 100%;
+}
+
+.price {
+    text-align: center !important;
+}
+
+.price .badge{
+    font-size: 20px !important;
+}
+
+
+.body-outer-cont {
+  margin-top: 50px;
+}
+
+.ortxt {
+  line-height: 25px;
+}
 	.footer-row1 {
   padding: 20px 0 30px;
 }
@@ -242,7 +298,9 @@ margin-bottom: 30px;
  margin-top: 15px;
 }
 .body-outer-cont h1 {
- font-size: 35px;
+ font-size:24px;
+ padding:10px 0px 10px 10px;
+ margin-bottom:0px;
 }
 .order-type {
 margin-top:10px;

@@ -26,10 +26,6 @@ $dispaly_category_id = '59';
 
                   <div class="row">
                     <form name="feature-product-form"  action="<?php echo $product['action']; ?>" method="post" enctype="multipart/form-data">
-
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <div  class="order-btn"><a href="javascript:void(0);" ><img src="catalog/view/theme/bannersexpo/images/featured-cart.png" alt="Order now"> Order now</a></div>
-                        </div>                    
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
                             <?php 
                             $options = $product['options'];
@@ -48,6 +44,10 @@ $dispaly_category_id = '59';
                             <?php                      
                             } ?>                               
                         </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <div  class="order-btn"><a href="javascript:void(0);" ><img src="catalog/view/theme/bannersexpo/images/featured-cart.png" alt="Order now"> Order now</a></div>
+                        </div>                    
+                        
                     </form>                                
                   </div>
 

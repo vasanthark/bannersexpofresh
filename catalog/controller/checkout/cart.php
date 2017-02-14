@@ -304,6 +304,7 @@ class ControllerCheckoutCart extends Controller {
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
+                    
 			if (isset($this->request->post['quantity']) && ((int)$this->request->post['quantity'] >= $product_info['minimum'])) {
 				$quantity = (int)$this->request->post['quantity'];
 			} else {
@@ -403,7 +404,7 @@ class ControllerCheckoutCart extends Controller {
                                 
                                 $json['carttotal_disp']    =  $this->cart->countProducts();
                                 $json['carttotalamt_disp'] =  $this->currency->format($total, $this->session->data['currency']);
-                                $json['redirect'] = str_replace('&amp;', '&', $this->url->link('checkout/cart'));
+                                $json['redirect'] = str_replace('&amp;', '&', $this->url->link('checkout/checkout'));
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
