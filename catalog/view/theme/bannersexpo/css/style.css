@@ -467,7 +467,7 @@ h1, h2, h3, h4, h5, h6 {
     float: left;
     font-family: "Roboto",sans-serif;
     font-weight: 700;
-    margin-top: 15px;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -1305,7 +1305,7 @@ h1, h2, h3, h4, h5, h6 {
     padding:0px 40px;
     float:left;
     text-align:center !important;
-    margin-top:15px;
+    /*margin-top:15px;*/
 }
 .start-order a {
     width:auto;

@@ -693,13 +693,7 @@ $wi_optionid = "";
                         <?php 
                         } 
                         } 
-
-                         // Upload Art work
-                        foreach ($options as $option) 
-                        { 
-                        if (in_array($option['option_id'], $upload_your_artwork))
-                        {                       
-                        ?> 
+                       ?>
                         <div> 
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
@@ -708,6 +702,13 @@ $wi_optionid = "";
                                         <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="quote-quantity" class="form-control" />                                   
                                    </div> 
                                 </div>
+                            <?php
+                              // Upload Art work
+                            foreach ($options as $option) 
+                            { 
+                            if (in_array($option['option_id'], $upload_your_artwork))
+                            {                       
+                            ?> 
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="art_work">  
                                     <div class="form-group">
                                     <label>Upload File</label>
@@ -715,13 +716,14 @@ $wi_optionid = "";
                                       <span id="file_name_disp"></span>
                                      <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" id="input-option<?php echo $option['product_option_id']; ?>" />                                                               
                                     </div>  
-                                </div>                               
+                                </div>   
+                            <?php
+                            }
+                            }
+                            ?>                             
                             </div>                          
                         </div>  
-                        <?php
-                        }
-                        }
-                        ?> 
+                       
 
                         <?php
                         if($direct_checkout=="0")
