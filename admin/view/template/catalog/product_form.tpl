@@ -37,6 +37,8 @@
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+            <!-- PDF specification -->
+           <li><a href="#tab-specification" data-toggle="tab">PDF Specification</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -923,6 +925,46 @@
                 </table>
               </div>
             </div>
+              
+             <div class="tab-pane" id="tab-specification">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-pencil"></i> Technical Specification PDF</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-download" class="form-horizontal">                                    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-filename">Colur Code PDF File</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <input type="text" readonly="readonly" name="filename" value="" id="input-filename" class="form-control" />
+                                        <span class="input-group-btn">
+                                            <button type="button" id="button-upload2" data-loading-text="Uploading..." class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
+                                        </span> </div>                                              
+                                </div>
+                            </div>                                       
+                            <input name="spec_download_id" type="hidden" id="specdownload_id" value="<?php echo $spec_download_id;?>">
+                        </form>
+                        <?php if($spec_download_id) { ?>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="text-left">FileName</td>
+                                    <td class="text-left">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="filedip">
+                                    <td class="text-left"><?php echo $filename; ?></td>
+                                    <td><a href="javascript:void(0)" id="delete_spec_download" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                                </tr>                                       
+                            </tbody>
+                        </table>
+                        <?php }?>
+                    </div>
+                </div>
+            </div>   
+              
           </div>
         </form>
       </div>
@@ -932,6 +974,27 @@
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
   <script type="text/javascript"><!--
+      
+      $('#delete_spec_download').click(function(){
+            var specdownload_id = $("#specdownload_id").val();
+            var check = confirm("Are you sure you want to delete?");
+            if (check == true) {
+                $.ajax({
+                    url: 'index.php?route=catalog/product/deletespecdownload&token=<?php echo $token; ?>',
+                    type: 'post',                   
+                    data: "specdownload_id="+specdownload_id,
+                    success: function (json) {
+                        if(json=="Success")
+                        {    
+                            $("#filedip").remove();                              
+                        }    
+                    }
+                });   
+                alert("File deleted successfully!");
+            }
+            return false;
+        });
+      
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
 	'source': function(request, response) {
@@ -1417,4 +1480,54 @@ $('.datetime').datetimepicker({
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
 //--></script></div>
+<script type="text/javascript"><!--
+$('#button-upload2').on('click', function () {
+        $('#form-upload').remove();
+
+        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+        $('#form-upload input[name=\'file\']').trigger('click');
+
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function () {
+            if ($('#form-upload input[name=\'file\']').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?route=catalog/product/upload&token=<?php echo $token; ?>',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('#button-upload2').button('loading');
+                    },
+                    complete: function () {
+                        $('#button-upload2').button('reset');
+                    },
+                    success: function (json) {
+                        if (json['error']) {
+                            alert(json['error']);
+                        }
+
+                        if (json['success']) {
+                            alert(json['success']);
+
+                            $('input[name=\'filename\']').val(json['filename']);
+                            $('input[name=\'mask\']').val(json['mask']);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+//--></script>
 <?php echo $footer; ?>

@@ -23,6 +23,7 @@ define('DIR_MODIFICATION', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/modificat
 define('DIR_UPLOAD', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/upload/');
 define('DIR_CATALOG', $_SERVER['DOCUMENT_ROOT'] . 'catalog/');
 
+define('DIR_TECHSPEC', $_SERVER['DOCUMENT_ROOT']. 'techspecification/');
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');

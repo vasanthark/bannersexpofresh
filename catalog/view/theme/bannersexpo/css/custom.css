@@ -143,3 +143,37 @@
 #file_name_disp{
     float: left;
 }
+
+.tech {
+    float: left;
+    margin: 5px;
+}
+
+#plightbox {
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background:url(overlay.png) repeat; 
+    text-align:center;
+}
+
+#plightbox p {
+    text-align:right; 
+    color:#fff; 
+    margin-right:20px; 
+    font-size:12px; 
+}
+
+#plightbox img {
+    box-shadow:0 0 25px #111;
+    -webkit-box-shadow:0 0 25px #111;
+    -moz-box-shadow:0 0 25px #111;
+    max-width:940px;
+}
+
+#cboxOverlay {
+    background: #000 none repeat scroll 0 0;
+    opacity: 0.8;
+}

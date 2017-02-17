@@ -56,6 +56,7 @@ class Mail {
 	}
 
 	public function send() {
+                        
 		if (!$this->to) {
 			throw new \Exception('Error: E-Mail to required!');
 		}
@@ -151,7 +152,13 @@ class Mail {
 
 		if ($this->protocol == 'mail') {
 			ini_set('sendmail_from', $this->from);
-
+//                        echo $to;
+//                        echo "<br>";
+//                        echo $this->subject;
+//                        echo "<br>";
+//                        echo $message;
+//                        exit;                       
+                      
 			if ($this->parameter) {
 				mail($to, '=?UTF-8?B?' . base64_encode($this->subject) . '?=', $message, $header, $this->parameter);
 			} else {

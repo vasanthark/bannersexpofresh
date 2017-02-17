@@ -7,12 +7,12 @@
         <title><?php echo $title; ?></title>
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
-        <meta name="description" content="<?php echo $description; ?>" />
+<meta name="description" content="<?php echo $description; ?>" />
         <?php } ?>
         <?php if ($keywords) { ?>
-        <meta name="keywords" content= "<?php echo $keywords; ?>" />
+<meta name="keywords" content= "<?php echo $keywords; ?>" />
         <?php } ?>
-
+<meta name="robots" content="noindex, nofollow" />
         <!-- Bootstrap -->
         <link href="catalog/view/theme/bannersexpo/css/bootstrap.min.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/style.css" rel="stylesheet"> 
@@ -24,9 +24,11 @@
         <link href="catalog/view/theme/bannersexpo/css/responsive2.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/red.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/SimpleStarRating.css" rel="stylesheet">
+        <link href="catalog/view/theme/bannersexpo/css/jquery.fancybox.css" rel="stylesheet">
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
+        
         <link href="catalog/view/theme/bannersexpo/css/custom.css" rel="stylesheet">
 
         <script src="catalog/view/theme/bannersexpo/js/jquery.1.11.3.js"></script> 
@@ -38,6 +40,7 @@
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/icheck.js"></script> 
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/SimpleStarRating.js"></script> 
+         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/jquery.fancybox.js"></script> 
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
@@ -205,7 +208,7 @@
                                                 </ul>
                                             <?php } ?>
                                         </li>
-                                        <li class="col-sm-3"> <a href="index.php?route=product/product&product_id=75" class="dropdown-header"> Trade Show Displays</a>
+                                         <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/category&path=59_63">Table Covers</a>                                        
                                             <?php if (!empty($dtc_products)) { ?>
                                                 <ul>
                                                     <?php foreach ($dtc_products as $dtcinfo) { ?>
@@ -215,7 +218,7 @@
                                             <?php } ?>
                                         </li>
                                         <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/product&product_id=52">A frame Signs</a> </li>
-                                        <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/category&path=59_63">Table Covers</a> 
+                                        <li class="col-sm-3"> <a href="index.php?route=product/product&product_id=75" class="dropdown-header"> Trade Show Displays</a>
                                         <li class="col-sm-4 pull-right" style="padding-bottom:-50px;">
                                             <?php if($disp_cat_img!=""){ ?>
                                             <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              

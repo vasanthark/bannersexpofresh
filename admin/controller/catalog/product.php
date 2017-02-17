@@ -1314,6 +1314,32 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('design/layout');
 
 		$data['layouts'] = $this->model_design_layout->getLayouts();
+                
+                 /* PDF specification - ARK */
+                if (isset($this->error['filename'])) {
+                    $data['error_filename'] = $this->error['filename'];
+                } else {
+                    $data['error_filename'] = '';
+                }
+
+                if (isset($this->request->get['product_id']))
+                    $pdf_download_info = $this->model_catalog_product->getSpecDownload($this->request->get['product_id']);
+                else
+                    $pdf_download_info = array();
+
+                if (isset($this->request->post['filename'])) {
+                    $data['filename'] = $this->request->post['filename'];
+                } elseif (!empty($pdf_download_info)) {
+                    $data['filename'] = $pdf_download_info['filename'];
+                } else {
+                    $data['filename'] = '';
+                }
+
+                if (!empty($pdf_download_info)) {
+                    $data['spec_download_id'] = $pdf_download_info['spec_download_id'];
+                } else {
+                    $data['spec_download_id'] = '';
+                }
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -1321,6 +1347,105 @@ class ControllerCatalogProduct extends Controller {
 
 		$this->response->setOutput($this->load->view('catalog/product_form', $data));
 	}
+        
+        public function deletespecdownload() {          
+                $this->load->model('catalog/product');
+
+                if (isset($this->request->post['specdownload_id']) && $this->request->post['specdownload_id']!="") {
+                    $specdownload_id = $this->request->post['specdownload_id'];
+                    $this->model_catalog_product->delete_pdf_download($specdownload_id);
+                    echo "Success";
+                }else{
+                    echo "Fail";
+                }
+               exit;
+        }
+        
+        public function upload() {
+            $this->load->language('catalog/download');
+
+            $json = array();
+
+            if (!$json) {
+                if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
+                    // Sanitize the filename
+                    $filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
+
+                    // Validate the filename length
+                    if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 128)) {
+                        $json['error'] = $this->language->get('error_filename');
+                    }
+
+                    // Allowed file extension types
+                    $allowed = array();
+
+                    $extension_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_ext_allowed'));
+
+                    $filetypes = explode("\n", $extension_allowed);
+
+                    foreach ($filetypes as $filetype) {
+                        $allowed[] = trim($filetype);
+                    }
+
+                   // $file_org_name = array_shift(explode(".", basename($filename)));
+                    $file_exp = explode(".", basename($filename));
+                    $file_org_name = $file_exp[0];
+                    $file_uniquename = $file_org_name."_".rand();
+                    $file_uniquename = preg_replace('/\s+/', '_', $file_uniquename);
+
+
+                    if (!in_array(strtolower(substr(strrchr($filename, '.'), 1)), $allowed)) {
+                        $json['error'] = $this->language->get('error_filetype');
+                    }
+
+                    // Allowed file mime types
+                    $allowed = array();
+
+                    $mime_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_mime_allowed'));
+
+                    $filetypes = explode("\n", $mime_allowed);
+
+                    foreach ($filetypes as $filetype) {
+                        $allowed[] = trim($filetype);
+                    }
+
+                    if (!in_array($this->request->files['file']['type'], $allowed)) {
+                        $json['error'] = $this->language->get('error_filetype');
+                    }
+
+                    // Check to see if any PHP files are trying to be uploaded
+                    $content = file_get_contents($this->request->files['file']['tmp_name']);
+
+                    if (preg_match('/\<\?php/i', $content)) {
+                        $json['error'] = $this->language->get('error_filetype');
+                    }
+
+                    // Return any upload error
+                    if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
+                        $json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);
+                    }
+                } else {
+                    $json['error'] = $this->language->get('error_upload');
+                }
+            }
+
+            if (!$json) {
+
+                //$file = $filename;
+                $extname = strtolower(substr(strrchr($filename, '.'), 1));           
+                $file =  $file_uniquename.".".$extname;            
+
+                move_uploaded_file($this->request->files['file']['tmp_name'], DIR_TECHSPEC . $file);
+
+                $json['filename'] = $file;
+
+                $json['success'] = $this->language->get('text_upload');
+            }
+
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
+        }
+
 
 	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'catalog/product')) {

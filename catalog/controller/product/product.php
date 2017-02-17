@@ -153,12 +153,35 @@ class ControllerProductProduct extends Controller {
 		} else {
 			$product_id = 0;
 		}
+                
+                 $data['special_p'] = 0;
+                // Direct Req Quote Forms
+                $special_products = array(56);
+                if(in_array($product_id,$special_products)){
+                     $data['special_p'] = 1;
+                }
+                
+                $data['yard_p'] = 0;
+                $yard_product = array(53);
+                if(in_array($product_id,$yard_product)){
+                     $data['yard_p'] = 1;
+                }
 
 		$this->load->model('catalog/product');
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
+                    
+                    if (isset($this->request->get['product_id']))
+                    {                   
+                        $download_infos = $this->model_catalog_product->getSpecDownload($product_id);
+                        if($download_infos){                    
+                            $data['pdf_name'] = $download_infos['filename'];
+                        }else{
+                            $data['pdf_name'] = "";
+                        }
+                    }
 
                        $data['siteurl'] =  $this->config->get('config_url');
 
@@ -831,6 +854,91 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+        
+        public function getaquote(){
+             
+            $this->load->language('checkout/cart');
+
+            $json = array();
+
+            if (isset($this->request->post['product_id'])) {
+                    $product_id = (int)$this->request->post['product_id'];
+            } else {
+                    $product_id = 0;
+            }
+
+            $this->load->model('catalog/product');
+
+            $product_info = $this->model_catalog_product->getProduct($product_id);
+
+            if ($product_info) {
+
+                if (isset($this->request->post['option'])) {
+                        $option = array_filter($this->request->post['option']);
+                } else {
+                        $option = array();
+                }
+
+                $product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
+
+                foreach ($product_options as $product_option) {
+                        if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
+                                $json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
+                        }
+                }
+                
+                if($this->request->post['quote_hf']=='' && !is_numeric($this->request->post['quote_hf']) || $this->request->post['quote_hf'] <= 0)
+                {
+                        $json['error']['quote_hf'] = "Required!";                      
+                } 
+                
+                if($this->request->post['quote_hi']=='' && !is_numeric($this->request->post['quote_hi']) || $this->request->post['quote_hi'] < 0)
+                {
+                        $json['error']['quote_hi'] = "Required!";                      
+                } 
+                
+                if($this->request->post['quote_wf']=='' && !is_numeric($this->request->post['quote_wf']) || $this->request->post['quote_wf'] <= 0)
+                {
+                        $json['error']['quote_wf'] = "Required!";                      
+                } 
+                
+                if($this->request->post['quote_wi']=='' && !is_numeric($this->request->post['quote_wi']) || $this->request->post['quote_wi'] < 0)
+                {
+                        $json['error']['quote_wi'] = "Required!";                      
+                } 
+                
+                 if($this->request->post['quantity']=='' && !is_numeric($this->request->post['quantity']) || $this->request->post['quantity'] <= 0)
+                {
+                        $json['error']['quantity'] = "Qty Required!";                      
+                } 
+                
+                if ((utf8_strlen(trim($this->request->post['username'])) < 1) || (utf8_strlen(trim($this->request->post['username'])) > 32)) {
+			$json['error']['username'] = "Name must be between 1 and 32 characters!";
+		}
+                
+                if ((utf8_strlen($this->request->post['useremail']) > 96) || !filter_var($this->request->post['useremail'], FILTER_VALIDATE_EMAIL)) {
+			$json['error']['uemail'] = "Not Valid!";
+		}
+                
+                if ((utf8_strlen(trim($this->request->post['userphone'])) < 1)|| (utf8_strlen(trim($this->request->post['userphone'])) > 10)){                
+                        $json['error']['uphone'] =  "Please give correct number!";
+		}
+                
+                if (isset($this->request->post['usercomment']) && ( (utf8_strlen($this->request->post['usercomment']) < 25) || (utf8_strlen($this->request->post['usercomment']) > 1000))) {
+                        $json['error']['ucomment'] = "Please aleast give 25 characters in comments!";;
+                }
+
+                if (!$json) {
+                                        
+                    $this->model_catalog_product->sendquote($this->request->get['product_id'], $this->request->post);
+                    
+                    $json['success'] = "Thank you for your quote!!Store owner will review your quote and ping you back.";
+                }
+            }  
+            
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
+        }
 
 	public function getRecurringDescription() {
 		$this->load->language('product/product');
