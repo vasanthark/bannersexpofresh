@@ -656,6 +656,31 @@ $wi_optionid = "";
                         }
                         }
 
+                        if($direct_checkout=="0")
+                        {
+                            // Grommets
+                            foreach ($options as $option) 
+                            { 
+                            if (in_array($option['option_id'], $grommets_placements))
+                            {                       
+                            ?>  
+                                <div class="form-group">                                
+                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?> )">
+                                        <option value=""><?php echo $option['name']; ?> </option>    
+                                         <?php foreach ($option['product_option_value'] as $option_value) 
+                                                { ?>                                               
+                                                <option value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                    <?php echo $option_value['name']; ?>                                                    
+                                                </option>
+                                                <?php 
+                                                } ?>
+                                    </select>                                   
+                                </div>
+                            <?php 
+                            }
+                            }
+                        }
+
                         $plamination_optionid = "";
                         
                         // Lamination
@@ -724,33 +749,6 @@ $wi_optionid = "";
                             </div>                          
                         </div>  
                        
-
-                        <?php
-                        if($direct_checkout=="0")
-                        {
-                            // Grommets
-                            foreach ($options as $option) 
-                            { 
-                            if (in_array($option['option_id'], $grommets_placements))
-                            {                       
-                            ?>  
-                                <div class="form-group">                                
-                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?> )">
-                                        <option value=""><?php echo $option['name']; ?> </option>    
-                                         <?php foreach ($option['product_option_value'] as $option_value) 
-                                                { ?>                                               
-                                                <option value="<?php echo $option_value['product_option_value_id']; ?>">
-                                                    <?php echo $option_value['name']; ?>                                                    
-                                                </option>
-                                                <?php 
-                                                } ?>
-                                    </select>                                   
-                                </div>
-                            <?php 
-                            }
-                            }
-                        }
-                        ?> 
                         <div class="form-group" id="prod-price-qty">
                             <div class="row">
                                 <div  class="">

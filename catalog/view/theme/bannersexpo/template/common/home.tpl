@@ -19,8 +19,32 @@ $material_type  = array("19");
                         <div class="your-order-cont">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ">
-                                    <select class="selectpicker">
-                                        <option>Vinyl banner</option>                                       
+                                    <select name="home_cat" class="selectpicker" id="home-product-calc">
+                                        <option value="50">Vinyl Banner</option>
+                                        <option value="51">Mesh Banners</option>
+                                        <option value="<?php echo $displays;?>">Displays</option>
+                                        <option value="<?php echo $yard_signs;?>" >Yard Signs</option>
+                                        <?php if (!empty($rs_products)) { ?>
+                                        <optgroup label="Rigid Signs">
+                                            <?php foreach ($rs_products as $rinfo) { 
+                                                if($rinfo['name']=="Coroplast")
+                                                $ovalue = $rinfo['href'];
+                                                else
+                                                $ovalue = $rinfo['product_id'];
+                                            ?>
+                                            <option value="<?php echo $ovalue;?>"><?php echo $rinfo['name']; ?></option>
+                                            <?php } ?>
+                                        </optgroup>
+                                        <option value="<?php echo $banner_stands;?>" >Banner stands</option>   
+                                        <option value="<?php echo $wall_decals;?>" >Wall Decals</option>
+                                        <option value="57" >Window Wraps</option>
+                                        <option value="58" >Magnetic Signs</option>
+                                        <option value="59" >Paper Posters</option>
+                                        <option value="60" >Canvas printing</option>
+                                        <option value="61" >Backdrops</option>
+                                        <option value="62" >Window decals</option>
+                                        <option value="63" >Static Cling</option>
+                                        <?php } ?>  
                                     </select>
                                 </div>
                                 <div id="product_options">
@@ -118,6 +142,7 @@ $material_type  = array("19");
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <?php
                                     // Two side banner
                                     foreach ($options as $option) 
@@ -134,95 +159,92 @@ $material_type  = array("19");
                                     </div>
                                     <?php 
                                     } 
-                                    } 
-                                    ?>
-                                </div>  
-                                <?php     
-                                // material type
-                                foreach ($options as $option) 
-                                { 
-                                if (in_array($option['option_id'], $material_type))
-                                {
-                                    $pmat_optionid = $option['product_option_id'];
-                                ?>  
-                                <div class="form-group">                                
-                                    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">
-                                        <option value=""> <?php echo $option['name']; ?> </option>
-                                        <?php foreach ($option['product_option_value'] as $option_value) 
-                                        { ?>
-                                        <?php 
-                                        if ($option_value['priceonly']) { 
-                                        $additnal_price = $option_value['priceonly'];
-                                        }else{
-                                        $additnal_price = '0';
-                                        }   
-                                        ?>
-                                        <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value['product_option_value_id']; ?>">
-                                            <?php echo $option_value['name']; ?>
-                                            <?php if ($option_value['price']) { ?>
-                                            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                                            <?php } ?>
-                                        </option>
-                                        <?php 
-                                        } ?>
-                                    </select>                                   
-                                </div>
-                                <?php 
-                                }
-                                }
-                                ?>  
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">                                               
-                                            Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
-                                            <div class="form-group ">
-                                                <div class="price">
-                                                    <?php 
-                                                    if ($price) 
-                                                    { 
-                                                    if (!$special) {  ?>
-                                                    <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
-                                                    <?php } else { ?>
-                                                    <span style="text-decoration: line-through;"><?php echo $price; ?></span>
-                                                    <span class="price1"><?php echo $special; ?></span>
-                                                    <?php
-                                                    }
-                                                    }?>                 
-                                                </div>
+                                    }
+                                    
+                                    // Material type
+                                    foreach ($options as $option) 
+                                    { 
+                                    if (in_array($option['option_id'], $material_type))
+                                    {
+                                        $pmat_optionid = $option['product_option_id'];
+                                    ?>  
+                                    <div class="form-group">                                
+                                        <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">
+                                            <option value=""> <?php echo $option['name']; ?> </option>
+                                            <?php foreach ($option['product_option_value'] as $option_value) 
+                                            { ?>
+                                            <?php 
+                                            if ($option_value['priceonly']) { 
+                                            $additnal_price = $option_value['priceonly'];
+                                            }else{
+                                            $additnal_price = '0';
+                                            }   
+                                            ?>
+                                            <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <?php echo $option_value['name']; ?>                                               
+                                            </option>
+                                            <?php 
+                                            } ?>
+                                        </select>                                   
+                                    </div>
+                                    <?php 
+                                    }
+                                    }
+                                    ?>  
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">                                               
+                                                Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
                                             </div>
-                                        </div>                                      
-                                    </div>
-                                </div>   
-                                <?php                                 
-                                $price_per_feet_option = array("22");  
-                                foreach ($options as $option) 
-                                { 
-                                if (in_array($option['option_id'], $price_per_feet_option))
-                                {  ?>
-                                <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]"  value="<?php echo  $feetprice_only;?>">
-                                <?php
-                                }
-                                } 
-                                ?>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">                                          
-                                            <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
-                                            <input type="hidden" name="pwidthinch" id="pwidthinch" value="<?php echo  $wi_optionid ;?>">
-                                            <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
-                                            <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
-                                            <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
-                                            <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
-                                            <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
-                                            <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
-                                            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                                            <button type="button" id="button-cart" data-loading-text="Loading.." class="btn btn-default btn-file1">Quick Order</button>
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
+                                                <div class="form-group ">
+                                                    <div class="price">
+                                                        <?php 
+                                                        if ($price) 
+                                                        { 
+                                                        if (!$special) {  ?>
+                                                        <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
+                                                        <?php } else { ?>
+                                                        <span style="text-decoration: line-through;"><?php echo $price; ?></span>
+                                                        <span class="price1"><?php echo $special; ?></span>
+                                                        <?php
+                                                        }
+                                                        }?>                 
+                                                    </div>
+                                                </div>
+                                            </div>                                      
                                         </div>
-                                    </div>
-                                </div>  
-
+                                    </div>                                     
+                                     <div class="form-group ">
+                                        <?php                                 
+                                        $price_per_feet_option = array("22");  
+                                        foreach ($options as $option) 
+                                        { 
+                                            if (in_array($option['option_id'], $price_per_feet_option))
+                                            {  ?>
+                                            <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]"  value="<?php echo  $feetprice_only;?>">
+                                            <?php
+                                            }
+                                        } 
+                                        ?>       
+                                        <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
+                                        <input type="hidden" name="pwidthinch" id="pwidthinch" value="<?php echo  $wi_optionid ;?>">
+                                        <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
+                                        <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
+                                        <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                        <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
+                                        <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
+                                        <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
+                                        <input type="hidden" name="product_id" id="org_prod_id" value="<?php echo $product_id; ?>" />
+                                        <input type="hidden" name="process_type" id="process_type" value="1" /> 
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">   
+                                                <button type="button" id="button-cart" data-loading-text="Loading.." class="btn btn-default btn-file1">Quick Order</button>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    
+                               </div>                                    
                             </div>
                         </div>
                         </form>    
@@ -300,11 +322,120 @@ $material_type  = array("19");
         </div>
     </div>   
 </div>
+
+ 
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
     
-        $(".numberentry").keypress(function (e) {
+        $('.star_rating').rating();   
+        
+        var pid = $("#org_prod_id").val();
+        
+        addtoprice(pid);
+        
+        $('#home-product-calc').on('change', function(e) {
+           
+            var option_text   = $(this).find("option:selected").text();
+            var option_value  = $(this).find("option:selected").val();
+
+            if(option_text=="Displays" || option_text=="Banner stands" || option_text=="Coroplast" || option_text=="Yard Signs" || option_text=="Wall Decals")
+            {
+               window.location.href = option_value;
+            } 
+            
+            $.ajax({
+                url : 'index.php?route=common/home/viewoptions&product_id=' + option_value,
+                type: 'post',
+                data: 'product_id='+option_value,      
+                async: false,
+                success: function (response) {                       
+
+                    if(response!="FAIL")
+                    $('#product_options').html(response);   
+                                
+                    $('.selectpicker').selectpicker('refresh');
+                                         
+                    $('input').iCheck({
+                        checkboxClass: 'icheckbox_square-red',
+                        radioClass: 'iradio_square-red'
+                    });                    
+                }
+            });  
+            
+            addtoprice(option_value);
+            
+            $('.home-product-calc').selectpicker("refresh");
+        });
+        
+        /* Size select */     
+        $(document).on('change', '.productsize', function() { 
+            var pid = $("#org_prod_id").val();
+            var option_text = $(this).find("option:selected").text();        
+           
+            if($.trim(option_text)=="Custom Size")
+            {  
+              var produrl = $("#product_url").val();             
+              window.location.href = produrl;
+            }
+            
+            addtoprice(pid);
+        });   
+        
+        /* Upload Art work */
+        $(document).on('click', 'button[id^=\'button-upload\']', function() { 
+                var node = this;
+
+                $('#form-upload').remove();
+
+                $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+                $('#form-upload input[name=\'file\']').trigger('click');
+
+                if (typeof timer != 'undefined') {
+                     clearInterval(timer);
+                }
+
+                timer = setInterval(function() {
+                        if ($('#form-upload input[name=\'file\']').val() != '') {
+                                clearInterval(timer);
+
+                                $.ajax({
+                                        url: 'index.php?route=tool/upload',
+                                        type: 'post',
+                                        dataType: 'json',
+                                        data: new FormData($('#form-upload')[0]),
+                                        cache: false,
+                                        contentType: false,
+                                        processData: false,
+                                        beforeSend: function() {
+                                                $(node).button('loading');
+                                        },
+                                        complete: function() {
+                                                $(node).button('reset');
+                                        },
+                                        success: function(json) {
+                                                $('.text-danger').remove();
+
+                                                if (json['error']) {
+                                                        $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
+                                                }
+
+                                                if (json['success']) {
+                                                     $("#file_name_disp").html("<i class='fa fa-file-image-o' ></i> " + json['filename']);
+                                                        alert(json['success']);
+                                                        $(node).parent().find('input').val(json['code']);
+                                                }
+                                        },
+                                        error: function(xhr, ajaxOptions, thrownError) {
+                                                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                        }
+                                });
+                        }
+                }, 500);
+        });
+        
+        $(document).on('keypress','.numberentry',function( e ) { 
             e = e || event;
             if (e.ctrlKey || e.altKey || e.metaKey)
                 return;
@@ -315,38 +446,33 @@ $material_type  = array("19");
                 return false;
             }
         });
-
-        $('.star_rating').rating();
-        var pid = "<?php echo $product_id;?>";
-
-        addtoprice(pid);
-
-        $('#producthome input[type=\'text\']').bind('keyup', function (e) {
-            $.ajax({
-                url: 'index.php?route=product/product/calculate&product_id=' + pid,
-                type: 'post',
-                data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
-                dataType: 'json',
-                success: function (json) {
-                    if (json['success']) {
-                        $('#pricediv').html("Price: " + json['price']);
-                        $('#calculated_feetprice').val(json['calculated_feetprice']);
-                    }
-                }
-            });
+       
+        $(document).on('keyup','#producthome input[type=\'text\']',function( e ) { 
+            var prodid = $("#org_prod_id").val();
+            addtoprice(prodid);
         });
 
-        $('input').on('ifChecked', function (event) {
+        $(document).on('ifChecked', 'input' ,function (event) {
+            var pid = $("#org_prod_id").val();
+            addtoprice(pid);
+        });
+        
+        $(document).on('ifUnchecked', 'input' ,function (event) {
+            var pid = $("#org_prod_id").val();
             addtoprice(pid);
         });
 
-        $('input').on('ifUnchecked', function (event) {
-            addtoprice(pid);
-        });
-
-        $('#button-cart').on('click', function () {
+        $(document).on('click','#button-cart',function( e ) { 
+        
+        var process_type = $("#process_type").val();
+        
+        if(process_type==1)
+          var process_url = 'index.php?route=common/quickorder/step1';
+        else
+          var process_url = 'index.php?route=checkout/cart/add';  
+            
             $.ajax({
-                url: 'index.php?route=common/quickorder/step1',
+                url : process_url,
                 type: 'post',
                 data: $('#producthome input[type=\'text\'], #producthome input[type=\'hidden\'], #producthome input[type=\'radio\']:checked, #producthome input[type=\'checkbox\']:checked, #producthome select, #producthome textarea'),
                 dataType: 'json',
@@ -364,14 +490,21 @@ $material_type  = array("19");
                         if (json['error']['option']) {
                             for (i in json['error']['option']) {
                                 var element = $('#input-option' + i.replace('_', '-'));
-
+                                
                                 if (element.parent().hasClass('input-group')) {
                                     //element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                                    element.parent().after('<div class="text-danger"></div>');
+                                    if(process_type==1)
+                                      element.parent().after('<div class="text-danger"></div>');
+                                    else
+                                      element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
                                 } else {
                                     //element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                                    element.after('<div class="text-danger"></div>');
+                                    if(process_type==1)
+                                      element.parent().after('<div class="text-danger"></div>');
+                                    else
+                                      element.parent().after('<div class="text-danger"></div>');  
                                 }
+                                
                             }
                         }
 
@@ -379,7 +512,8 @@ $material_type  = array("19");
                         $('.text-danger').parent().addClass('has-error');
                     }
 
-                    if (json['success']) {                                         
+                    if (json['success']) {     
+                    
                         $("#home_page_calc").attr("action", json['redirect']);
                         $("form#home_page_calc").submit();
                         return false;
@@ -406,6 +540,7 @@ $material_type  = array("19");
 
     function addtoprice(pid)
     {
+        var pid = $("#org_prod_id").val();
         $.ajax({
             url: 'index.php?route=product/product/calculate&product_id=' + pid,
             type: 'post',

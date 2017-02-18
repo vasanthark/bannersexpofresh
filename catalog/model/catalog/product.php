@@ -731,4 +731,28 @@ class ModelCatalogProduct extends Model {
         $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "spec_download WHERE product_id = '" . (int) $product_id . "' ");
         return $query->row;
     }
+    
+    public function getCatproducts($category_id) {
+            
+        $products = array();
+                
+        $filter_data = array(
+            'filter_category_id' => $category_id,
+            'sort' => 'p.sort_order',
+            'order' => "ASC",
+            'start' => 0,
+            'limit' => 15
+        );
+        $results = $this->model_catalog_product->getProducts($filter_data);
+
+        foreach ($results as $result) {
+            $products[] = array(
+                'product_id' => $result['product_id'],
+                'name' => $result['name'],
+                'href' => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+            );
+        }
+
+        return $products;
+    }
 }

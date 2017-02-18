@@ -104,20 +104,43 @@ class ControllerCommonHeader extends Controller {
         
 
         /* Rigid Signs - CatId 60 */
-        $data['rs_products'] = $this->getcatproducts(60);
+        $data['rs_products'] = $this->model_catalog_product->getCatproducts(60);
         
         /* Banner Stands - CatId 61 */
-        $data['bs_products'] = $this->getcatproducts(61);
+        $data['bs_products'] = $this->model_catalog_product->getCatproducts(61);
         
         /* Displays - Floor stand - CatId 62 */
-        $data['dfs_products'] = $this->getcatproducts(62);
+        $data['dfs_products'] = $this->model_catalog_product->getCatproducts(62);
 
          /* Displays - Table Covers - CatId 63 */
-        $data['dtc_products'] = $this->getcatproducts(63);
+        $data['dtc_products'] = $this->model_catalog_product->getCatproducts(63);
         
         /* Get cats */       
 	$disp_category = $this->model_catalog_category->getCategoryInfo(59);
         $data['disp_cat_img'] = $disp_category['image'];
+        
+        $data['vinyl_banner'] = $this->url->link('product/product', 'product_id=50');
+        $data['mesh_banner'] = $this->url->link('product/product', 'product_id=51');
+        
+        $data['displays'] = $this->url->link('product/category', 'path=59');        
+        $data['floor_stands']= $this->url->link('product/category', 'path=59_62');
+        $data['table_covers']= $this->url->link('product/category', 'path=59_63');
+        
+        $data['a_frame_signs'] = $this->url->link('product/product', 'product_id=52');
+        $data['trade_show'] = $this->url->link('product/product', 'product_id=75');
+        $data['yard_signs'] = $this->url->link('product/product', 'product_id=53');
+        
+        $data['rigid_signs'] = $this->url->link('product/category', 'path=60');   
+        $data['banner_stands'] = $this->url->link('product/category', 'path=61'); 
+        
+        $data['wall_decals'] = $this->url->link('product/product', 'product_id=56');
+        $data['window_wraps'] = $this->url->link('product/product', 'product_id=57');
+        $data['magnetic_signs'] = $this->url->link('product/product', 'product_id=58');
+        $data['paper_posters'] = $this->url->link('product/product', 'product_id=59');
+        $data['canvas_printing'] = $this->url->link('product/product', 'product_id=60');
+        $data['backdrops'] = $this->url->link('product/product', 'product_id=61');
+        $data['window_decals'] = $this->url->link('product/product', 'product_id=62');
+        $data['static_cling'] = $this->url->link('product/product', 'product_id=63');
         
         $data['language'] = $this->load->controller('common/language');
         $data['currency'] = $this->load->controller('common/currency');
@@ -152,29 +175,5 @@ class ControllerCommonHeader extends Controller {
 
         return $this->load->view('common/header', $data);
     }
-
-    public function getcatproducts($category_id) {
-        $products = array();
-                
-        $filter_data = array(
-            'filter_category_id' => $category_id,
-            'sort' => 'p.sort_order',
-            'order' => "ASC",
-            'start' => 0,
-            'limit' => 15
-        );
-        $results = $this->model_catalog_product->getProducts($filter_data);
-
-        foreach ($results as $result) {
-            $products[] = array(
-                'product_id' => $result['product_id'],
-                'name' => $result['name'],
-                'href' => $this->url->link('product/product', 'product_id=' . $result['product_id'])
-            );
-        }
-
-        return $products;
-    }
-
+    
 }
-

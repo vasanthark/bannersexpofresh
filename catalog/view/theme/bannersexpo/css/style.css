@@ -525,7 +525,7 @@ h1, h2, h3, h4, h5, h6 {
     float:left;
 }
 .your-order-cont .form-group {
-    margin-top:5px;
+   /* margin-top:5px;*/
 }
 .body-cont1 {
     width:100%;
@@ -1308,8 +1308,8 @@ h1, h2, h3, h4, h5, h6 {
     /*margin-top:15px;*/
 }
 .start-order a {
-    width:auto;
-    float:left;
+/*    width:auto;
+    float:left;*/
     text-align:center !important;
     color:#ffffff;
     padding:6px 12px 6px 8px;

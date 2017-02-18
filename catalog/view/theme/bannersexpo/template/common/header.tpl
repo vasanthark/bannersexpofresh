@@ -194,12 +194,12 @@
                         </div>
                         <div class="collapse navbar-collapse js-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php?route=product/product&product_id=50">Vinyl banner</a> </li>
-                                <li><a href="index.php?route=product/product&product_id=51">Mesh banners</a> </li>
+                                <li><a href="<?php echo $vinyl_banner;?>">Vinyl banner</a> </li>
+                                <li><a href="<?php echo $mesh_banner;?>">Mesh banners</a> </li>
                                 <li class="dropdown mega-dropdown"> 
-                                    <a href="index.php?route=product/category&path=59" class="dropdown-toggle" data-toggle="dropdown"> Displays <span class="caret"></span></a>
+                                    <a href="<?php echo $displays;?>" class="dropdown-toggle" data-toggle="dropdown">Displays <span class="caret"></span></a>
                                     <ul class="dropdown-menu mega-dropdown-menu">
-                                        <li class="col-sm-3"><a href="index.php?route=product/category&path=59_62" class="dropdown-header">Floor Stands</a>
+                                        <li class="col-sm-3"><a href="<?php echo $floor_stands;?>" class="dropdown-header">Floor Stands</a>
                                            <?php if (!empty($dfs_products)) { ?>
                                                 <ul>
                                                     <?php foreach ($dfs_products as $dfsinfo) { ?>
@@ -208,7 +208,7 @@
                                                 </ul>
                                             <?php } ?>
                                         </li>
-                                         <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/category&path=59_63">Table Covers</a>                                        
+                                        <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $table_covers;?>">Table Covers</a>                                        
                                             <?php if (!empty($dtc_products)) { ?>
                                                 <ul>
                                                     <?php foreach ($dtc_products as $dtcinfo) { ?>
@@ -217,8 +217,8 @@
                                                 </ul>
                                             <?php } ?>
                                         </li>
-                                        <li class="col-sm-3"><a class="dropdown-header" href="index.php?route=product/product&product_id=52">A frame Signs</a> </li>
-                                        <li class="col-sm-3"> <a href="index.php?route=product/product&product_id=75" class="dropdown-header"> Trade Show Displays</a>
+                                        <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $a_frame_signs;?>">A frame Signs</a> </li>
+                                        <li class="col-sm-3"> <a href="<?php echo $trade_show;?>" class="dropdown-header">Trade Show Displays</a>
                                         <li class="col-sm-4 pull-right" style="padding-bottom:-50px;">
                                             <?php if($disp_cat_img!=""){ ?>
                                             <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              
@@ -226,9 +226,9 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="index.php?route=product/product&product_id=53">Yard signs</a> </li>  
+                                <li><a href="<?php echo $yard_signs;?>">Yard signs</a> </li>  
                                 <li class="dropdown mega-dropdown">
-                                    <a href="index.php?route=product/category&path=60" class="dropdown-toggle" data-toggle="dropdown">Rigid Signs <span class="caret"></span></a>
+                                    <a href="<?php echo $rigid_signs;?>" class="dropdown-toggle" data-toggle="dropdown">Rigid Signs <span class="caret"></span></a>
                                      <?php if (!empty($rs_products)) { ?>
                                         <ul class="dropdown-menu mega-dropdown-menu">
                                             <?php foreach ($rs_products as $rinfo) { ?>
@@ -238,7 +238,7 @@
                                     <?php } ?>
                                 </li>  
                                 <li class="dropdown mega-dropdown"> 
-                                    <a href="index.php?route=product/category&path=61" class="dropdown-toggle" data-toggle="dropdown"> Banner stands <span class="caret"></span></a>
+                                    <a href="<?php echo $banner_stands;?>" class="dropdown-toggle" data-toggle="dropdown">Banner stands <span class="caret"></span></a>
                                      <?php if (!empty($bs_products)) { ?>
                                         <ul class="dropdown-menu mega-dropdown-menu">
                                             <?php foreach ($bs_products as $binfo) { ?>
@@ -247,17 +247,17 @@
                                         </ul>
                                     <?php } ?>
                                 </li>
-                                <li><a href="index.php?route=product/product&product_id=56">Wall decals</a></li>
-                                <li><a href="index.php?route=product/product&product_id=57"> Window wraps</a></li>
+                                <li><a href="<?php echo $wall_decals; ?>">Wall decals</a></li>
+                                <li><a href="<?php echo $window_wraps; ?>">Window wraps</a></li>
                                 <li class="dropdown mega-dropdown"> 
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> More products <span class="caret"></span></a>
                                     <ul class="dropdown-menu mega-dropdown-menu">
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=58" class="dropdown-header">Magnetic Signs</a></li>
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=59" class="dropdown-header">Paper Posters</a></li>
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=60" class="dropdown-header">Canvas printing</a></li>
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=61" class="dropdown-header">Backdrops </a></li>
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=62" class="dropdown-header">Window decals</a></li>
-                                        <li class="col-sm-3"><a href="index.php?route=product/product&product_id=63" class="dropdown-header">Static Cling</a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $magnetic_signs; ?>" class="dropdown-header">Magnetic Signs</a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $paper_posters; ?>" class="dropdown-header">Paper Posters</a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $canvas_printing; ?>" class="dropdown-header">Canvas printing</a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $backdrops; ?>" class="dropdown-header">Backdrops </a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $window_decals; ?>" class="dropdown-header">Window decals</a></li>
+                                        <li class="col-sm-3"><a href="<?php echo $static_cling; ?>" class="dropdown-header">Static Cling</a></li>
                                     </ul>
                                 </li>
                             </ul>

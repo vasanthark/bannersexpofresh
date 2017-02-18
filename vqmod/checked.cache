@@ -567,3 +567,5 @@ catalog/model/localisation/location.php
 catalog/view/theme/bannersexpo/template/information/contact.tpl
 catalog/language/en-gb/mail/review.php
 system/library/mail.php
+catalog/view/theme/bannersexpo/template/common/viewoptions.tpl
+catalog/view/theme/bannersexpo/template/common/viewoptions.tpl
