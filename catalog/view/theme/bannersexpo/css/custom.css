@@ -177,3 +177,11 @@
     background: #000 none repeat scroll 0 0;
     opacity: 0.8;
 }
+
+.dropdown-menu .divider{
+    background: none;
+    margin: 0px;
+}
+.bootstrap-select.btn-group .dropdown-menu li a.opt{
+    padding-left: 3.25em;
+}

@@ -212,10 +212,11 @@ class ControllerProductSearch extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
-
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+                                        //$image = $this->model_tool_image->resize($result['image'], 290, 210);
+                                   // $image = "image/" . $result['image'];
 				} else {
 					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
 				}
@@ -243,7 +244,39 @@ class ControllerProductSearch extends Controller {
 				} else {
 					$rating = false;
 				}
+                                
+                                 $product_id = $result['product_id'];
 
+                                $options = array();
+
+                                foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
+                                    $product_option_value_data = array();
+
+                                    if ($option['option_id'] == "11") {
+                                        foreach ($option['product_option_value'] as $option_value) {
+
+                                            if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+
+                                                $product_option_value_data[] = array(
+                                                    'product_option_value_id' => $option_value['product_option_value_id'],
+                                                    'option_value_id' => $option_value['option_value_id'],
+                                                    'name' => $option_value['name']
+                                                );
+                                            }
+                                        }
+
+                                        $options = array(
+                                            'product_option_id' => $option['product_option_id'],
+                                            'product_option_value' => $product_option_value_data,
+                                            'option_id' => $option['option_id'],
+                                            'name' => $option['name'],
+                                            'type' => $option['type'],
+                                            'value' => $option['value'],
+                                            'required' => $option['required']
+                                        );
+                                    }
+                                }
+                                $action = $this->url->link('product/product', 'product_id=' . $product_id);
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -254,7 +287,9 @@ class ControllerProductSearch extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+                                        'options' => $options,  
+                                        'action' =>  $action
 				);
 			}
 
@@ -487,6 +522,8 @@ class ControllerProductSearch extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+                
+                $data['content_breadcrumbs'] = $this->load->controller('common/breadbcrumb',$data['breadcrumbs']);
 
 		$this->response->setOutput($this->load->view('product/search', $data));
 	}

@@ -1,5 +1,6 @@
 <?php echo $header; 
 $dispaly_category_id = '59';
+
 ?>
 <div class="body-outer-cont">
   <div class="container">
@@ -16,7 +17,16 @@ $dispaly_category_id = '59';
         <?php if ($products) { 
              $i = 1; ?>
         <?php foreach ($products as $product) { ?>  
+        
+        <?php if($category_id=="60"){ 
+                $clearfixval = 3;
+        ?>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+       <?php }else{
+                $clearfixval = 4;
+       ?>         
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+        <?php }?>        
               <div class="thumbnail-cont">
                 <div class="product-thumbnails">             
                    <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>"/></a>        
@@ -56,8 +66,9 @@ $dispaly_category_id = '59';
 
               </div>
                 </div>
-            <?php
-                if($i%4==0){
+            <?php          
+            
+                if($i%$clearfixval==0){
                 ?>
                 <div class="clearfix"></div>
                 <?php }

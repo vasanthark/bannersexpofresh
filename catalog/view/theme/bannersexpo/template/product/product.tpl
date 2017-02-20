@@ -1022,30 +1022,37 @@ $wi_optionid = "";
             var option_text = e.target.options[e.target.selectedIndex].text;
             var option_val = $('.productsize').val();
             
-            if(option_text=="Custom Size")
-            {  
-                $("#start_order").hide();
-                $("#prod-price-qty").hide();
-                
-              //  $("#art_work").show();
-                $(".quote-fields").show();
-                $(".size-fields").show();
-                $("#request_order").show();
-            }else {
-                $("#start_order").show();
-                $("#prod-price-qty").show();
-                
-               // $("#art_work").hide();
-                $(".quote-fields").hide();
-                $(".size-fields").hide();
-                $("#request_order").hide();
-            }
+            customsize_disp(option_text);
             
             if(special_flag==1)
             {
                 hide_show();
             }    
         });   
+        
+        var sel_option_val = $.trim($('.productsize').find("option:selected").text()); 
+        
+        if(sel_option_val=="Custom Size")
+        customsize_disp(sel_option_val);        
+        
+        function customsize_disp(option_text){
+            if(option_text=="Custom Size")
+            {  
+                $("#start_order").hide();
+                $("#prod-price-qty").hide();                
+            
+                $(".quote-fields").show();
+                $(".size-fields").show();
+                $("#request_order").show();
+            }else {
+                $("#start_order").show();
+                $("#prod-price-qty").show();                
+             
+                $(".quote-fields").hide();
+                $(".size-fields").hide();
+                $("#request_order").hide();
+            }
+        }
         
         /* Get a quote */
         $('#request-quote').on('click', function() {

@@ -569,3 +569,7 @@ catalog/language/en-gb/mail/review.php
 system/library/mail.php
 catalog/view/theme/bannersexpo/template/common/viewoptions.tpl
 catalog/view/theme/bannersexpo/template/common/viewoptions.tpl
+admin/controller/extension/extension/theme.php
+admin/view/template/extension/extension/theme.tpl
+admin/controller/extension/theme/theme_default.php
+admin/view/template/extension/theme/theme_default.tpl
