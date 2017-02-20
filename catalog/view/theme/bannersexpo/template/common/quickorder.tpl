@@ -97,6 +97,12 @@ if($home_postdata){
     }
 }  
 
+$pmat_optionid = "";
+$hf_optionid = "";
+$hi_optionid = "";
+$wf_optionid = "";
+$wi_optionid = "";
+$pdoubleside_optionid = "";
 ?>
 <div class="body-outer-cont">
     <div class="container">
@@ -152,6 +158,7 @@ if($home_postdata){
                                         // Height Inch
                                         foreach ($options as $option){ 
                                             if (in_array($option['option_id'], $height_inch)){  
+                                            $hi_optionid = $option['product_option_id'];  
                                             $option['value'] = (isset($height_inch_value) && $height_inch_value!="")?$height_inch_value:0;
                                             ?>
                                             <div class="form-group width-filed <?php echo ($option['required'] ? ' required' : ''); ?>">          
@@ -168,7 +175,7 @@ if($home_postdata){
                                         foreach ($options as $option){ 
                                             if (in_array($option['option_id'], $width_feet)){
                                             $wf_optionid = $option['product_option_id']; 
-                                          
+                                           
                                             $option['value'] = $width_feet_value;
                                             ?>
                                             <div class="form-group width-filed <?php echo ($option['required'] ? ' required' : ''); ?>">          
@@ -184,6 +191,7 @@ if($home_postdata){
                                         // Width Inch
                                         foreach ($options as $option){ 
                                             if (in_array($option['option_id'], $width_inch)){
+                                            $wi_optionid = $option['product_option_id'];
                                             $option['value'] = (isset($width_inch_value) && $width_inch_value!="")?$width_inch_value:0;
                                             ?>
                                             <div class="form-group width-filed w-inch <?php echo ($option['required'] ? ' required' : ''); ?>">          
@@ -212,6 +220,7 @@ if($home_postdata){
                                     // Material type                                   
                                     foreach ($options as $option){ 
                                         if (in_array($option['option_id'], $material_type)){
+                                              $pmat_optionid = $option['product_option_id'];
                                         ?>  
                                         <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>"">
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
@@ -250,6 +259,7 @@ if($home_postdata){
                                     
                                     foreach ($options as $option){ 
                                         if (in_array($option['option_id'], $double_side)){ 
+                                         $pdoubleside_optionid = $option['product_option_id'];
                                         ?>
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
                                             <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
@@ -803,9 +813,13 @@ if($home_postdata){
 
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 ">                                           
-                                            <div class="quick-order">
+                                            <div class="quick-order">                                
                                                 <input type="hidden" name="pwidth" id="pwidth" value="<?php echo  $wf_optionid ;?>">
+                                                <input type="hidden" name="pwidthinch" id="pwidthinch" value="<?php echo  $wi_optionid ;?>">
                                                 <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
+                                                <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
+                                                <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                                <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                                 <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
                                                 <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="<?php echo $calculated_feetprice;?>">
                                                 <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
