@@ -633,6 +633,10 @@ class ControllerProductProduct extends Controller {
             $width  = 0;
             $pgroometprice = 0;
             $pgroometqty = 0;
+            $hcinch = 0;
+            $heightinch = 0;  
+            $wcinch = 0;
+            $widthinch = 0;
             
             $json = array();
 
@@ -641,18 +645,42 @@ class ControllerProductProduct extends Controller {
                 foreach ($_REQUEST['option'] as $key=>$op)
                 {
                                     
-                    $price  = $price + $this->model_catalog_product->getValue($key,$op); 
-                    
-                    if(isset($_REQUEST['pheight']) && $_REQUEST['pheight']!='' && isset($_REQUEST['pwidth']) && $_REQUEST['pwidth']!='')
+                    $price  = $price + $this->model_catalog_product->getValue($key,$op);                     
+                   
+                    if(isset($_REQUEST['pheight']) && $_REQUEST['pheight']!='')
                     { 
                         if($key == $_REQUEST['pheight'])
                         {
-                            $height = $op;
-                        }
-
+                            if($op>0)
+                            {
+                                $hcinch = $op*12;
+                            }    
+                        }                        
+                    }                    
+                   
+                    if(isset($_REQUEST['pheightinch']) && $_REQUEST['pheightinch']!='')
+                    {                        
+                        if($key == $_REQUEST['pheightinch'])
+                        {
+                            $heightinch = $op;
+                        }                       
+                    }                    
+                   
+                    if(isset($_REQUEST['pwidth']) && $_REQUEST['pwidth']!='')
+                    {
                         if($key == $_REQUEST['pwidth'])
                         {
-                            $width = $op;
+                            if($op>0)
+                            {
+                                $wcinch = $op*12;
+                            }  
+                        }
+                    }                    
+                   
+                    if(isset($_REQUEST['pwidthinch']) && $_REQUEST['pwidthinch']!=''){
+                        if($key == $_REQUEST['pwidthinch'])
+                        {
+                            $widthinch = $op;
                         }
                     }
                     
@@ -668,49 +696,53 @@ class ControllerProductProduct extends Controller {
                             $pgroometqty = $op;
                         }
                     }
+                    
+                    if($pgroometprice>0 && $pgroometprice!="" && is_numeric($pgroometprice) && $pgroometqty>0 && $pgroometqty!='' && is_numeric($pgroometqty) )
+                    { 
+                        $price  = $price + ($pgroometprice*$pgroometqty);
+                    }   
                 }
+            }
+            
+            if(isset($_REQUEST['let_us_prc'])&& $_REQUEST['let_us_prc']!='')
+            {
+                $price  = $price + $_REQUEST['let_us_prc'];
+            }  
+
+            $priceperfeet_price = $_REQUEST['pfeetprice'];   
                 
-                if($pgroometprice>0 && $pgroometprice!="" && is_numeric($pgroometprice) && $pgroometqty>0 && $pgroometqty!='' && is_numeric($pgroometqty) )
-                { 
-                    $price  = $price + ($pgroometprice*$pgroometqty);
-                }    
-                
-                if(isset($_REQUEST['let_us_prc'])&& $_REQUEST['let_us_prc']!='')
-                {
-                    $price  = $price + $_REQUEST['let_us_prc'];
-                }  
-                
-                $priceperfeet_price = $_REQUEST['pfeetprice'];
-                
-                /* get discount Feet price*/                     
-                $discount_type = array("23");
-                foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
-                    if (in_array($option['option_id'], $discount_type)) {
-                        $product_option_value_data = array();
-                        foreach ($option['product_option_value'] as $option_value) {
-                            $disc_qty = $option_value['name'];
-                            $disc_prc = $option_value['price'];
-                            
-                            if($_REQUEST['quantity']>=$disc_qty)
-                            {
-                                $priceperfeet_price = $disc_prc;
-                            }    
-                        }
+            /* get discount Feet price*/                     
+            $discount_type = array("23");
+            foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
+                if (in_array($option['option_id'], $discount_type)) {
+                    $product_option_value_data = array();
+                    foreach ($option['product_option_value'] as $option_value) {
+                        $disc_qty = $option_value['name'];
+                        $disc_prc = $option_value['price'];
+
+                        if($_REQUEST['quantity']>=$disc_qty)
+                        {
+                            $priceperfeet_price = $disc_prc;
+                        }    
                     }
                 }
-                
-                $calculation_price = 0;
-                
-                if(isset($_REQUEST['pfeetprice']) && $_REQUEST['pfeetprice']!='')
-                {
-                   if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
-                   { 
-                       $calculation_price  = $height*$width*$priceperfeet_price;
-                       $price  = $price + $calculation_price;
-                   }    
-                } 
-                
-            }
+             }
+            
+            $calculation_price = 0;
+            
+            $height = ($hcinch+$heightinch)/12;
+            $width = ($wcinch+$widthinch)/12;
+           // echo "HCinch".$hcinch."#heightinch".$heightinch."#hegith".$height; 
+           //   echo "WCinch".$wcinch."#Wightinch".$widthinch."#With".$width;
+           //  exit;
+            if(isset($_REQUEST['pfeetprice']) && $_REQUEST['pfeetprice']!='')
+            {
+               if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
+               { 
+                   $calculation_price  = $height*$width*$priceperfeet_price;
+                   $price  = $price + $calculation_price;
+               }    
+            } 
             
 //            echo "price:".$price."=priceperfeet_price:".$_REQUEST['pfeetprice']."=width:".$width."= height:".$height."calculation_price=".$calculation_price;
 //                       exit;

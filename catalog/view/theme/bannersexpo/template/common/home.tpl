@@ -144,6 +144,7 @@ $material_type  = array("19");
                                     </div>
                                     
                                     <?php
+                                    $pdoubleside_optionid = "";
                                     // Two side banner
                                     foreach ($options as $option) 
                                     { 
@@ -161,6 +162,7 @@ $material_type  = array("19");
                                     } 
                                     }
                                     
+                                    $pmat_optionid = "";
                                     // Material type
                                     foreach ($options as $option) 
                                     { 
