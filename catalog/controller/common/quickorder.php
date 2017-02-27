@@ -218,7 +218,8 @@ class ControllerCommonQuickorder extends Controller {
                             unset($this->session->data['payment_method']);
                             unset($this->session->data['payment_methods']);
 
-                            $json['redirect'] = str_replace('&amp;', '&', $this->url->link('common/quickorder', 'product_id=' . $this->request->post['product_id']));
+//                            $json['redirect'] = str_replace('&amp;', '&', $this->url->link('common/quickorder', 'product_id=' . $this->request->post['product_id']));
+                            $json['redirect'] = $this->url->link('quickorder=' . $this->request->post['product_id']);
                     } else {
                             $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
                     }

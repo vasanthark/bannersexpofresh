@@ -19,6 +19,8 @@ class ModelAccountCustomer extends Model {
 
 		$address_id = $this->db->getLastId();
 
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'address_id=" . (int)$address_id . "', keyword = 'account-address-edit-" . (int)$address_id . "'");
+                
 		$this->db->query("UPDATE " . DB_PREFIX . "customer SET address_id = '" . (int)$address_id . "' WHERE customer_id = '" . (int)$customer_id . "'");
 
 		$this->load->language('mail/customer');

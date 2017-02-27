@@ -30,7 +30,8 @@ class ControllerInformationFaq extends Controller {
                             'faq_id' => $faq_result['faq_id'],
                             'title' => $faq_result['title'],
                             'description' => html_entity_decode($faq_result['description'], ENT_QUOTES, 'UTF-8'),
-                            'href'     => $this->url->link('information/faq/faq_single','faq_id=' . $faq_result['faq_id'])
+//                            'href'     => $this->url->link('information/faq/faq_single','faq_id=' . $faq_result['faq_id'])
+                            'href'     => $this->url->link('faq_id=' . $faq_result['faq_id'])
                         );
                     }
                 }

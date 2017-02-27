@@ -95,7 +95,7 @@ class ControllerCommonHeader extends Controller {
         $data['faq'] = $this->url->link('information/faq', '', true);
         $data['blog'] = $this->url->link('tltblog/tlttag', '', true);
 
-        $data['about_us'] = $this->url->link('information/information', 'information_id=4');
+        $data['about_us'] = $this->url->link('information/information', 'information_id=4', true);
 
         // Menu
         $this->load->model('catalog/category');

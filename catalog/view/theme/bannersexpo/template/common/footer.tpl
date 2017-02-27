@@ -33,16 +33,16 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="footer-part1"> <span>Products</span>
                         <ul>
-                            <li><a href="index.php?route=product/product&product_id=50">Vinyl banner</a> </li>
-                            <li><a href="index.php?route=product/product&product_id=51">Mesh banners</a> </li>               
-                            <li><a href="index.php?route=product/product&product_id=53">Yard signs</a> </li>               
-                            <li><a href="index.php?route=product/product&product_id=56">Wall decals</a></li>
-                            <li><a href="index.php?route=product/product&product_id=57"> Window wraps</a></li>                               
-                            <li><a href="index.php?route=product/product&product_id=59">Paper Posters</a></li>
-                            <li><a href="index.php?route=product/product&product_id=60">Canvas printing</a></li>
-                            <li><a href="index.php?route=product/product&product_id=61">Backdrops </a></li>
-                            <li><a href="index.php?route=product/product&product_id=62">Window decals</a></li>
-                            <li><a href="index.php?route=product/product&product_id=63">Static Cling</a></li>                                       
+                            <li><a href="<?php echo $product[1]; ?>">Vinyl banner</a> </li>
+                            <li><a href="<?php echo $product[2]; ?>">Mesh banners</a> </li>               
+                            <li><a href="<?php echo $product[3]; ?>">Yard signs</a> </li>               
+                            <li><a href="<?php echo $product[4]; ?>">Wall decals</a></li>
+                            <li><a href="<?php echo $product[5]; ?>"> Window wraps</a></li>                               
+                            <li><a href="<?php echo $product[6]; ?>">Paper Posters</a></li>
+                            <li><a href="<?php echo $product[7]; ?>">Canvas printing</a></li>
+                            <li><a href="<?php echo $product[8]; ?>">Backdrops </a></li>
+                            <li><a href="<?php echo $product[9]; ?>">Window decals</a></li>
+                            <li><a href="<?php echo $product[10]; ?>">Static Cling</a></li>                                       
                         </ul>
                     </div>
                 </div>

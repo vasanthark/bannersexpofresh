@@ -52,14 +52,15 @@ $(document).ready(function() {
 
 	/* Search */
 	$('#search input[name=\'search\']').parent().find('button').on('click', function() {
-		var url = $('base').attr('href') + 'index.php?route=product/search';
-
+            
+//		var url = $('base').attr('href') + 'index.php?route=product/search';
+                var url = $('base').attr('href') + 'search/';
 		var value = $('#search input[name=\'search\']').val();
 
 		if (value) {
-			url += '&search=' + encodeURIComponent(value);
+//			url += '&search=' + encodeURIComponent(value);
+                        url += encodeURIComponent(value);
 		}
-
 		location = url;
 	});
 

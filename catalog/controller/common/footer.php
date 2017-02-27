@@ -42,14 +42,18 @@ class ControllerCommonFooter extends Controller {
                         }
 
                 /* ARK Footer Keywords*/
+                $data['footer_keywords'] = '';
+                $product_info = '';
                 if (isset($this->request->get['product_id'])) {
                     $product_id = (int) $this->request->get['product_id'];
-                } else {
-                    $product_id = 0;
-                }
-                $data['footer_keywords'] = '';
-                 $this->load->model('catalog/product');
-                 $product_info = $this->model_catalog_product->getProduct($product_id);
+                    $this->load->model('catalog/product');
+                    $product_info = $this->model_catalog_product->getProduct($product_id);
+                } else if (isset($this->request->get['route']) && $this->request->get['route'] == 'product/category') {
+                    $this->load->model('catalog/category');
+                    $category_id = (int) $this->request->get['path'];
+                    $product_info = $this->model_catalog_category->getCategory($category_id);
+                } 
+                
 
                 if ($product_info) {
 
@@ -84,7 +88,19 @@ class ControllerCommonFooter extends Controller {
                 $data['privacy_policy'] = $this->url->link('information/information', 'information_id=3');
                 $data['terms_conditions'] = $this->url->link('information/information', 'information_id=5');
                 $data['sitemap'] = $this->url->link('information/sitemap', '', true);
-
+                
+                $data['product'][1] = $this->url->link('product/product', 'product_id=50');
+                $data['product'][2] = $this->url->link('product/product', 'product_id=51');
+                $data['product'][3] = $this->url->link('product/product', 'product_id=53');
+                $data['product'][4] = $this->url->link('product/product', 'product_id=56');
+                $data['product'][5] = $this->url->link('product/product', 'product_id=57');
+                $data['product'][6] = $this->url->link('product/product', 'product_id=59');
+                $data['product'][7] = $this->url->link('product/product', 'product_id=60');
+                $data['product'][8] = $this->url->link('product/product', 'product_id=61');
+                $data['product'][9] = $this->url->link('product/product', 'product_id=62');
+                $data['product'][10] = $this->url->link('product/product', 'product_id=63');
+                
+               
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
 		// Whos Online
