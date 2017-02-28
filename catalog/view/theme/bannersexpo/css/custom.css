@@ -185,3 +185,72 @@
 .bootstrap-select.btn-group .dropdown-menu li a.opt{
     padding-left: 3.25em;
 }
+.detail-page .carousel-control.left {
+  background-image: none !important;
+ background-repeat: repeat-x;
+ display: block;
+ 
+}
+
+.detail-page .left.carousel-control {
+ left: 2px !important;
+ left: inherit;
+}
+.detail-page .carousel-control.right {
+  background-image: none !important;
+ background-repeat: repeat-x;
+ left: auto;
+ right: 0;
+ height: 100%;
+ display: block;
+
+}
+.detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  margin-left: -36px;
+}
+.detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  font-size: 12px;
+  line-height: 30px;
+  text-shadow: none;
+  top: 450px;
+}
+.detail-page .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+  margin-right: -33px;
+}
+
+@media (max-width: 767px) {
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  margin-left: 0px;
+}
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+        top: 160px;
+    }
+    .detail-page .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+        margin-right: 0px;
+      }
+}
+@media (min-width:768px) and (max-width:991px){
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  margin-left: -12px;
+}
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+        top: 195px;
+    }
+    .detail-page .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+        margin-right: -15px;
+      }
+}
+@media (min-width:992px) and (max-width:1199px){ 
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  margin-left: -12px;
+}
+    .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+        top: 305px;
+    }
+    .detail-page .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+        margin-right: -15px;
+      }
+}

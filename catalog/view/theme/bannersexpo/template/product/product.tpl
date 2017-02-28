@@ -72,11 +72,13 @@ $wi_optionid = "";
                         <div id="carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <?php foreach ($images as $key => $image) { ?>
-                                <div class="item <?php echo ( $key=='0')?'active':'';?>" data-thumb="<?php echo $key;?>"> <img src="image/<?php echo $image['popup'];?>" alt="<?php echo $heading_title; ?>"> </div>                               
+                                <div class="item <?php echo ( $key=='0')?'active':'';?>" data-thumb="<?php echo $key;?>">
+                                    <img src="image/<?php echo $image['popup'];?>" alt="<?php echo $heading_title; ?>"> 
+                                </div>                               
                                 <?php } ?>
                             </div>
                         </div>
-                        <div class="clearfix">
+                        <div class="clearfix"></div>
                             <?php if (count($images)>1) { ?>
                             <div id="thumbcarousel" class="carousel slide" data-interval="false">
                                 <div class="carousel-inner">
@@ -86,7 +88,9 @@ $wi_optionid = "";
                                     if($i == 1){ ?>
                                     <div class="item <?php echo ($flag==0)?  'active': ''; $flag = 1; ?>">
                                         <?php $status = 2; } ?>                                                                                                                    
-                                        <div data-target="#carousel" data-slide-to="<?php echo $key;?>" class="thumb"><img src="image/<?php echo $image['popup'];?>" alt="<?php echo $heading_title; ?>"></div>
+                                        <div data-target="#carousel" data-slide-to="<?php echo $key;?>" class="thumb">
+                                            <img src="image/<?php echo $image['popup'];?>" alt="<?php echo $heading_title; ?>">
+                                        </div>
                                         <?php if($i == 4){ ?>
                                     </div>
                                     <?php 
@@ -101,11 +105,15 @@ $wi_optionid = "";
 
                             <!-- /carousel-inner --> 
                             <?php if (count($images)>4) { ?>
-                            <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+                            <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a> 
+                            <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"> 
+                                <span class="glyphicon glyphicon-chevron-right"></span> 
+                            </a> 
                         <?php } ?>  
                         <?php } ?>  
                     </div>
-                </div>
                 <?php } ?>  
                <!-- <div class="preview-tab">
                     <div class="image-preview"> <span>Uploaded image Preview </span> </div>
