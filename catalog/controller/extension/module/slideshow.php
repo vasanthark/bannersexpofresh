@@ -9,8 +9,8 @@ class ControllerExtensionModuleSlideshow extends Controller {
 		//$this->document->addStyle('catalog/view/javascript/jquery/owl-carousel/owl.carousel.css');
 		//$this->document->addScript('catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js');
                 
-                $this->document->addStyle('catalog/view/javascript/jquery/flexslider/simple-responsive-slideshow.css');
-                $this->document->addScript('catalog/view/javascript/jquery/flexslider/jquery.flexslider.js');
+               // $this->document->addStyle('catalog/view/javascript/jquery/flexslider/simple-responsive-slideshow.css');
+               // $this->document->addScript('catalog/view/javascript/jquery/flexslider/jquery.flexslider.js');
 
 		$data['banners'] = array();
 

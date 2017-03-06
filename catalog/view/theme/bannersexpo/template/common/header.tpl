@@ -208,7 +208,7 @@
                                                 </ul>
                                             <?php } ?>
                                         </li>
-                                        <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $table_covers;?>">Table Covers</a>                                        
+                                       <!-- <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $table_covers;?>">Table Covers</a>                                        
                                             <?php if (!empty($dtc_products)) { ?>
                                                 <ul>
                                                     <?php foreach ($dtc_products as $dtcinfo) { ?>
@@ -218,7 +218,7 @@
                                             <?php } ?>
                                         </li>
                                         <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $a_frame_signs;?>">A frame Signs</a> </li>
-                                        <li class="col-sm-3"> <a href="<?php echo $trade_show;?>" class="dropdown-header">Trade Show Displays</a>
+                                        <li class="col-sm-3"> <a href="<?php echo $trade_show;?>" class="dropdown-header">Trade Show Displays</a> -->
                                         <li class="col-sm-4 pull-right" style="padding-bottom:-50px;">
                                             <?php if($disp_cat_img!=""){ ?>
                                             <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              

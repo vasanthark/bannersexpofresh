@@ -221,6 +221,10 @@
   margin-right: -33px;
 }
 
+.carousel-indicators{
+  display: none;   
+}
+
 @media (max-width: 767px) {
     .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
   margin-left: 0px;

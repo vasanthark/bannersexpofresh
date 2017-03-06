@@ -157,14 +157,14 @@ class ControllerTltBlogTltTag extends Controller {
 	
 			$this->response->setOutput($this->load->view('tltblog/tlttag', $data));
 		} else {
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_error'),
-				'href' => $this->url->link('tltblog/tlttag', isset($this->request->get['tlttag_id']) ? 'tltpath=' . $path . '&tlttag_id=' . $this->request->get['tlttag_id'] : 'tltpath=' . $path . '&tlttag_id=' . $this->request->get['tlttag_id'])
-			);
+//			$data['breadcrumbs'][] = array(
+//				'text' => $this->language->get('text_error'),
+//				'href' => $this->url->link('tltblog/tlttag', isset($this->request->get['tlttag_id']) ? 'tltpath=' . $path . '&tlttag_id=' . $this->request->get['tlttag_id'] : '')
+//			);
 			
-			$this->document->setTitle($this->language->get('text_error'));
+			$this->document->setTitle("Blogs");
 
-			$data['heading_title'] = $this->language->get('text_error');
+			$data['heading_title'] = "Blogs";
 
 			$data['text_error'] = $this->language->get('text_error');
 
