@@ -119,6 +119,12 @@ class ControllerCommonHeader extends Controller {
 	$disp_category = $this->model_catalog_category->getCategoryInfo(59);
         $data['disp_cat_img'] = $disp_category['image'];
         
+        $rs_category = $this->model_catalog_category->getCategoryInfo(60);
+        $data['rs_cat_img'] = $rs_category['image'];
+        
+        $bs_category = $this->model_catalog_category->getCategoryInfo(61);
+        $data['bs_cat_img'] = $bs_category['image'];
+        
         $data['vinyl_banner'] = $this->url->link('product/product', 'product_id=50');
         $data['mesh_banner'] = $this->url->link('product/product', 'product_id=51');
         

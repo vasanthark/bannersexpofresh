@@ -2556,7 +2556,7 @@ a, button{
     text-decoration: none;
 }
 .mega-dropdown-menu .dropdown-header {
-    font-size: 18px;
+    font-size: 17px;
     color: #ff3546;
     padding: 0px 60px 0px 10px;
     line-height: 25px;
@@ -2594,7 +2594,7 @@ a, button{
 
 .dropdown-header
 {
-    font-weight:600 !important;
+    /*font-weight:600 !important;*/
     color:#222222 !important;
     border-left:#43c3eb solid 3px;
     background:none !important;

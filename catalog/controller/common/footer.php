@@ -89,16 +89,29 @@ class ControllerCommonFooter extends Controller {
                 $data['terms_conditions'] = $this->url->link('information/information', 'information_id=5');
                 $data['sitemap'] = $this->url->link('information/sitemap', '', true);
                 
-                $data['product'][1] = $this->url->link('product/product', 'product_id=50');
-                $data['product'][2] = $this->url->link('product/product', 'product_id=51');
-                $data['product'][3] = $this->url->link('product/product', 'product_id=53');
-                $data['product'][4] = $this->url->link('product/product', 'product_id=56');
-                $data['product'][5] = $this->url->link('product/product', 'product_id=57');
-                $data['product'][6] = $this->url->link('product/product', 'product_id=59');
-                $data['product'][7] = $this->url->link('product/product', 'product_id=60');
-                $data['product'][8] = $this->url->link('product/product', 'product_id=61');
-                $data['product'][9] = $this->url->link('product/product', 'product_id=62');
-                $data['product'][10] = $this->url->link('product/product', 'product_id=63');
+                /* Products */                
+                $data['vinyl_banner'] = $this->url->link('product/product', 'product_id=50');
+                $data['mesh_banner'] = $this->url->link('product/product', 'product_id=51');
+
+                $data['displays'] = $this->url->link('product/category', 'path=59');        
+                $data['floor_stands']= $this->url->link('product/category', 'path=59_62');
+               // $data['table_covers']= $this->url->link('product/category', 'path=59_63');
+
+               // $data['a_frame_signs'] = $this->url->link('product/product', 'product_id=52');
+               // $data['trade_show'] = $this->url->link('product/product', 'product_id=75');
+                $data['yard_signs'] = $this->url->link('product/product', 'product_id=53');
+
+                $data['rigid_signs'] = $this->url->link('product/category', 'path=60');   
+                $data['banner_stands'] = $this->url->link('product/category', 'path=61'); 
+
+                $data['wall_decals'] = $this->url->link('product/product', 'product_id=56');
+                $data['window_wraps'] = $this->url->link('product/product', 'product_id=57');
+                $data['magnetic_signs'] = $this->url->link('product/product', 'product_id=58');
+                $data['paper_posters'] = $this->url->link('product/product', 'product_id=59');
+                $data['canvas_printing'] = $this->url->link('product/product', 'product_id=60');
+                $data['backdrops'] = $this->url->link('product/product', 'product_id=61');
+                $data['window_decals'] = $this->url->link('product/product', 'product_id=62');
+                $data['static_cling'] = $this->url->link('product/product', 'product_id=63');
                 
                
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));

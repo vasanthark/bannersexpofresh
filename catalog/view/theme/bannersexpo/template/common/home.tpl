@@ -293,16 +293,18 @@ $material_type  = array("19");
                         <h3>Loved by our Customers -Reviews</h3>
                         <p>Our customers have rated us <?php echo $avg_rate;?> out of 5 based on <?php echo $totalreviews;?> reviews and counting! 
                             See what some of our customers have to say:</p>
-                        <div class="star_rating"><?php echo $avg_rate;?></div>
+                      <!--  <div class="star_rating"><?php echo $avg_rate;?></div> -->
+                      <span class="rating avgrate" data-default-rating="<?php echo $avg_rate;?>" disabled></span>
 
-                        <p><span> <?php echo $avg_rate;?>  /  5 </span></p>
+                        <p><span> <?php echo $avg_rate;?>  /  5 </span>
+                        </p>
                     </div>
                     <div class="scroll-cont">
                         <div class="owl-carousel">
                             <?php foreach ($reviews as $review) { ?>
                             <div class="popular-cont-txt"> <span><?php echo $review['author']; ?></span>
                                 <p><?php echo $review['text']; ?></p>
-                                <div class="rating">
+                                <div class="rating homerate">
                                     <?php for ($i = 1; $i <= 5; $i++) { ?>
                                     <?php if ($review['rating'] < $i) { ?>
                                     <div class="fa fa-stack sliderate"><i class="fa fa-star-o fa-stack-1x" style='color: #fbb00;'></i></div>
@@ -329,8 +331,17 @@ $material_type  = array("19");
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
-    
-        $('.star_rating').rating();   
+       var ratings = document.getElementsByClassName('rating');
+
+        for (var i = 0; i < ratings.length; i++) {
+            var r = new SimpleStarRating(ratings[i]);
+
+            ratings[i].addEventListener('rate', function(e) {
+                console.log('Rating: ' + e.detail);
+            });
+        }
+        
+       // $('.star_rating').rating();   
         
         var pid = $("#org_prod_id").val();
         
@@ -529,7 +540,7 @@ $material_type  = array("19");
 
     });
 
-    $.fn.rating = function () {
+   $.fn.rating = function () {
         var val = 0, size = 0, stars = 5;
         return this.each(function (i, e) {
             val = parseFloat($(e).text());
@@ -539,6 +550,7 @@ $material_type  = array("19");
             }, 1000));
         });
     };
+    
 
     function addtoprice(pid)
     {

@@ -225,7 +225,67 @@
   display: none;   
 }
 
+.products-links span
+{
+ width:100%;
+ float:left;
+ text-align:center;
+ margin-top:0px;
+}
+
+.products-links ul 
+{
+ width:100%;
+ float:left;
+}
+
+
+
+.footer-part1 ul
+{
+ margin-top:10px;
+}
+
+.footer-part1
+{
+ padding:0px !important;
+}
+
+.dropdown-menu > li > a{
+    font-size: 17px;
+}
+
+.floor-stand-menu ul li {
+width: 33.33%;
+float:left;    
+}
+
+.dropdown-menu{
+    font-size: 15px;
+}
+
+.homerate .star{
+    display: none;
+}
+
+.avgrate .star{
+    color:#FFBB00;
+    font-size: 25px;
+}
+.rating .star::before{
+    color:#fcba55;
+}
+
 @media (max-width: 767px) {
+    
+    .floor-stand-menu ul li {
+width: 100%;
+float:left;    
+}
+.mega-dropdown img{
+    display: none;
+}
+
     .detail-page .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
   margin-left: 0px;
 }

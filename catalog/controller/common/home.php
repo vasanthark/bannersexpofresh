@@ -61,7 +61,8 @@ class ControllerCommonHome extends Controller {
             foreach ($results as $result) {
                 $data['reviews'][] = array(
                     'review_id' => $result['review_id'],
-                    'text' => utf8_substr(strip_tags(html_entity_decode($result['text'], ENT_QUOTES, 'UTF-8')), 0, 150) . '..',
+                   // 'text' => utf8_substr(strip_tags(html_entity_decode($result['text'], ENT_QUOTES, 'UTF-8')), 0, 150) . '..',
+                     'text' => strip_tags(html_entity_decode($result['text'], ENT_QUOTES, 'UTF-8')),
                     'rating' => (int) $result['rating'],
                     'author' => $result['author'],
                     'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),

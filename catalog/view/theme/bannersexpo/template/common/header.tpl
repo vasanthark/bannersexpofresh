@@ -90,11 +90,11 @@
                 
                 $(".dropdown").hover(            
                     function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("500");
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,false).slideDown("400");
                         $(this).toggleClass('open');        
                     },
-                    function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("500");
+                      function() {
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,false).slideUp("400");
                         $(this).toggleClass('open');       
                     }
                 );
@@ -199,7 +199,7 @@
                                 <li class="dropdown mega-dropdown"> 
                                     <a href="<?php echo $displays;?>" class="dropdown-toggle" data-toggle="dropdown">Displays <span class="caret"></span></a>
                                     <ul class="dropdown-menu mega-dropdown-menu">
-                                        <li class="col-sm-3"><a href="<?php echo $floor_stands;?>" class="dropdown-header">Floor Stands</a>
+                                        <li class="col-sm-8 floor-stand-menu"><a href="<?php echo $floor_stands;?>" class="dropdown-header">Floor Stands</a>
                                            <?php if (!empty($dfs_products)) { ?>
                                                 <ul>
                                                     <?php foreach ($dfs_products as $dfsinfo) { ?>
@@ -208,32 +208,23 @@
                                                 </ul>
                                             <?php } ?>
                                         </li>
-                                       <!-- <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $table_covers;?>">Table Covers</a>                                        
-                                            <?php if (!empty($dtc_products)) { ?>
-                                                <ul>
-                                                    <?php foreach ($dtc_products as $dtcinfo) { ?>
-                                                        <li><a href="<?php echo $dtcinfo['href']; ?>"><?php echo $dtcinfo['name']; ?></a> </li>  
-                                                    <?php } ?>
-                                                </ul>
-                                            <?php } ?>
-                                        </li>
-                                        <li class="col-sm-3"><a class="dropdown-header" href="<?php echo $a_frame_signs;?>">A frame Signs</a> </li>
-                                        <li class="col-sm-3"> <a href="<?php echo $trade_show;?>" class="dropdown-header">Trade Show Displays</a> -->
-                                        <li class="col-sm-4 pull-right" style="padding-bottom:-50px;">
+                                        <li class="col-sm-3 pull-right">
                                             <?php if($disp_cat_img!=""){ ?>
                                             <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              
                                             <?php }?>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="<?php echo $yard_signs;?>">Yard signs</a> </li>  
-                                <li class="dropdown mega-dropdown">
+                                <li><a href="<?php echo $yard_signs;?>">Yard signs</a> </li>                                 
+                                <li class="dropdown">
                                     <a href="<?php echo $rigid_signs;?>" class="dropdown-toggle" data-toggle="dropdown">Rigid Signs <span class="caret"></span></a>
                                      <?php if (!empty($rs_products)) { ?>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <?php foreach ($rs_products as $rinfo) { ?>
-                                                <li class="col-sm-3"><a href="<?php echo $rinfo['href']; ?>" class="dropdown-header"><?php echo $rinfo['name']; ?></a> </li>  
-                                            <?php } ?>
+                                        <ul class="dropdown-menu">
+                                            <?php 
+                                            $p=1;
+                                            foreach ($rs_products as $rinfo) { ?>                                               
+                                                <li><a href="<?php echo $rinfo['href']; ?>" class="dropdown-header"><?php echo $rinfo['name']; ?></a> </li>  
+                                            <?php $p++; } ?>                                            
                                         </ul>
                                     <?php } ?>
                                 </li>  
@@ -241,23 +232,36 @@
                                     <a href="<?php echo $banner_stands;?>" class="dropdown-toggle" data-toggle="dropdown">Banner stands <span class="caret"></span></a>
                                      <?php if (!empty($bs_products)) { ?>
                                         <ul class="dropdown-menu mega-dropdown-menu">
-                                            <?php foreach ($bs_products as $binfo) { ?>
+                                            <?php 
+                                            $k=1;
+                                            foreach ($bs_products as $binfo) { ?>
+                                             <?php if($k==4 && $bs_cat_img!=""){ ?>
+                                                <li class="col-sm-3 pull-right">                                               
+                                                    <img src="image/<?php echo $bs_cat_img;?>"  alt="Banner stands">   
+                                                </li>
+                                                <?php }?>
                                                 <li class="col-sm-3"><a href="<?php echo $binfo['href']; ?>" class="dropdown-header"><?php echo $binfo['name']; ?></a> </li>  
-                                            <?php } ?>
+                                            <?php $k++; } ?>   
+                                            <li class="clearfix"></li>                                               
+                                            <li class="col-sm-2"> 
+                                                <div class="order-btn">
+                                                <a href="<?php echo $banner_stands;?>"><i class="fa fa-arrow-right" aria-hidden="true"></i> More Products</a>
+                                                </div>
+                                            </li>
                                         </ul>
                                     <?php } ?>
                                 </li>
                                 <li><a href="<?php echo $wall_decals; ?>">Wall decals</a></li>
                                 <li><a href="<?php echo $window_wraps; ?>">Window wraps</a></li>
-                                <li class="dropdown mega-dropdown"> 
+                                <li class="dropdown"> 
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> More products <span class="caret"></span></a>
-                                    <ul class="dropdown-menu mega-dropdown-menu">
-                                        <li class="col-sm-3"><a href="<?php echo $magnetic_signs; ?>" class="dropdown-header">Magnetic Signs</a></li>
-                                        <li class="col-sm-3"><a href="<?php echo $paper_posters; ?>" class="dropdown-header">Paper Posters</a></li>
-                                        <li class="col-sm-3"><a href="<?php echo $canvas_printing; ?>" class="dropdown-header">Canvas printing</a></li>
-                                        <li class="col-sm-3"><a href="<?php echo $backdrops; ?>" class="dropdown-header">Backdrops </a></li>
-                                        <li class="col-sm-3"><a href="<?php echo $window_decals; ?>" class="dropdown-header">Window decals</a></li>
-                                        <li class="col-sm-3"><a href="<?php echo $static_cling; ?>" class="dropdown-header">Static Cling</a></li>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo $magnetic_signs; ?>" class="dropdown-header">Magnetic Signs</a></li>
+                                        <li><a href="<?php echo $paper_posters; ?>" class="dropdown-header">Paper Posters</a></li>
+                                        <li><a href="<?php echo $canvas_printing; ?>" class="dropdown-header">Canvas printing</a></li>
+                                        <li><a href="<?php echo $backdrops; ?>" class="dropdown-header">Backdrops </a></li>
+                                        <li><a href="<?php echo $window_decals; ?>" class="dropdown-header">Window decals</a></li>
+                                        <li><a href="<?php echo $static_cling; ?>" class="dropdown-header">Static Cling</a></li>
                                     </ul>
                                 </li>
                             </ul>

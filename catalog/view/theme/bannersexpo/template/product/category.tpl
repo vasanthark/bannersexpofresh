@@ -133,15 +133,14 @@ $dispaly_category_id = '59';
         </div>  
         <?php echo $content_bottom; ?>
     </div>
-
-        <script type="text/javascrip         t"><!--
-     $(document).ready(functi            on () {
-            $('form .order-btn                ').on({
-            click: function (e                    vent) {
-            event.preventDef                    ault();
-            $(this).closest('form').su                bmit();
-            }
-            });
-            });
-//--></        script>
-            <?php echo $footer; ?>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('form .order-btn').on({
+        click: function (event) {
+            event.preventDefault();
+            $(this).closest('form').submit();
+        }
+    });
+});
+</script>            
+<?php echo $footer; ?>
