@@ -576,3 +576,6 @@ admin/view/template/extension/theme/theme_default.tpl
 system/storage/modification/catalog/view/theme/bannersexpo/template/common/footer.tpl
 admin/controller/extension/module/testimonial.php
 admin/view/template/extension/module/testimonial.tpl
+catalog/controller/information/sitemap.php
+catalog/language/en-gb/information/sitemap.php
+catalog/view/theme/bannersexpo/template/information/sitemap.tpl
