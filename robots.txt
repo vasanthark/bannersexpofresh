@@ -1,0 +1,17 @@
+User-agent: *
+
+Disallow: /*&filter
+Disallow: /*&limit
+Disallow: /*&sort
+Disallow: /*?route=account/
+Disallow: /*?route=affiliate/
+Disallow: /*?route=checkout/
+Disallow: /*?route=product/search
+Disallow: /register/
+Disallow: /login/
+Disallow: /cart/
+Disallow: /delivery/
+Disallow: /forgotten/
+
+
+Sitemap: http://www.bannersexpo.com/sitemap.xml
