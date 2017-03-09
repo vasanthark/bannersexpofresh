@@ -36,10 +36,10 @@
             <form name="feature-product-form"  action="<?php echo $catinfo['action']; ?>" method="post" enctype="multipart/form-data">               
                     <div class="thumbnail-cont">
                         <div class="product-thumbnails"> 
-                        <a href="<?php echo $catinfo['href']; ?>"><img src="<?php echo $catinfo['thumb']; ?>" alt="<?php echo $catinfo['name']; ?>" title="<?php echo $catinfo['name']; ?>"/></a>            
+                        <a href="<?php echo $catinfo['action']; ?>"><img src="<?php echo $catinfo['thumb']; ?>" alt="<?php echo $catinfo['name']; ?>" title="<?php echo $catinfo['name']; ?>"/></a>            
                         </div>
                         <div class="product-thumbnails-txt">
-                            <p><strong><a href="<?php echo $catinfo['href']; ?>"><?php echo $catinfo['name']; ?></a></strong></p>
+                            <p><strong><a href="<?php echo $catinfo['action']; ?>"><?php echo $catinfo['name']; ?></a></strong></p>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 home-qty ">
                                     <input type="text" class="form-control" name="quantity" placeholder="Qty">

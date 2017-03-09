@@ -15,7 +15,7 @@ $material_type  = array("19");
                 <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 pull-right ">
                     <div class="your-order" id="producthome">
                         <h1>Start your order</h1>
-                        <form method="post" id="home_page_calc" name="home_page_calc" action="">
+                        <form method="post" id="home_page_calc" name="home_page_calc">
                         <div class="your-order-cont">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ">
@@ -182,7 +182,7 @@ $material_type  = array("19");
                                             $additnal_price = '0';
                                             }   
                                             ?>
-                                            <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                            <option value="<?php echo $option_value['product_option_value_id']; ?>">
                                                 <?php echo $option_value['name']; ?>                                               
                                             </option>
                                             <?php 

@@ -3,16 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">       
-        <title><?php echo $title; ?></title>
-        <base href="<?php echo $base; ?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">          
+        <title><?php echo $title; ?> - Banners Expo</title>
+        <base href="<?php echo $base; ?>" />       
         <?php if ($description) { ?>
 <meta name="description" content="<?php echo $description; ?>" />
         <?php } ?>
         <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
         <?php } ?>
-<meta name="robots" content="noindex, nofollow" />
+<meta name="robots" content="index, follow, noodp" />
         <!-- Bootstrap -->
         <link href="catalog/view/theme/bannersexpo/css/bootstrap.min.css" rel="stylesheet">
         <link href="catalog/view/theme/bannersexpo/css/style.css" rel="stylesheet"> 

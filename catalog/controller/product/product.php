@@ -696,19 +696,20 @@ class ControllerProductProduct extends Controller {
                             $pgroometqty = $op;
                         }
                     }
-                    
-                    if($pgroometprice>0 && $pgroometprice!="" && is_numeric($pgroometprice) && $pgroometqty>0 && $pgroometqty!='' && is_numeric($pgroometqty) )
-                    { 
-                        $price  = $price + ($pgroometprice*$pgroometqty);
-                    }   
                 }
+                
+                if($pgroometprice>0 && $pgroometprice!="" && is_numeric($pgroometprice) && $pgroometqty>0 && $pgroometqty!='' && is_numeric($pgroometqty) )
+                { 
+
+                    $price  = $price + ($pgroometprice*$pgroometqty);
+                }   
             }
             
             if(isset($_REQUEST['let_us_prc'])&& $_REQUEST['let_us_prc']!='')
-            {
+            {             
                 $price  = $price + $_REQUEST['let_us_prc'];
-            }  
-
+            }
+            
             $priceperfeet_price = $_REQUEST['pfeetprice'];   
                 
             /* get discount Feet price*/                     
@@ -743,6 +744,7 @@ class ControllerProductProduct extends Controller {
                    $price  = $price + $calculation_price;
                }    
             } 
+          
             
 //            echo "price:".$price."=priceperfeet_price:".$_REQUEST['pfeetprice']."=width:".$width."= height:".$height."calculation_price=".$calculation_price;
 //                       exit;
@@ -759,9 +761,11 @@ class ControllerProductProduct extends Controller {
                 $price = $price*$_REQUEST['quantity'];
             }    
             
+            
             //$json['tax']   = $this->currency->format($price);//$str;//$size['price'];
             $json['price']  = $this->currency->format($price, $this->config->get('config_currency'));
             $json['price_without_currency']  = $price;
+           
             
             $this->response->setOutput(json_encode($json));
 	}

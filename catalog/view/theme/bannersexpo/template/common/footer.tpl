@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="footer-part2"> <span>payment methods</span> <img src="image/paypal.png" alt=""></div>
+                    <div class="footer-part2"> <span>payment methods</span> <img src="image/paypal.png" alt="BannersExpo Payments"></div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="row">
                             <div class="footer-part2"> 
