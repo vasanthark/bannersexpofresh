@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Bas5Builder - ImpulsePro2</id>
+	<version>2.0</version>
+	<vqmver required="true">2.5.0</vqmver>
+	<author>base5builder.com</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$data['logout'] = $this->url->link('common/logout', 'token=' . $this->session->data['token'], true);
+				]]></search>
+			<add><![CDATA[
+				
+				$this->load->model('user/user');
+		
+				$this->load->model('tool/image');
+		
+				$user_info = $this->model_user_user->getUser($this->user->getId());
+		
+				if ($user_info) {
+					$data['firstname'] = $user_info['firstname'];
+					$data['lastname'] = $user_info['lastname'];
+		
+					$data['user_group'] = $user_info['user_group'];
+		
+					if (is_file(DIR_IMAGE . $user_info['image'])) {
+						$data['image'] = $this->model_tool_image->resize($user_info['image'], 45, 45);
+					} else {
+						$data['image'] = '';
+					}
+				} else {
+					$data['firstname'] = '';
+					$data['lastname'] = '';
+					$data['user_group'] = '';
+					$data['image'] = '';
+				}
+				]]></add>
+		</operation>
+	</file>
+</modification>

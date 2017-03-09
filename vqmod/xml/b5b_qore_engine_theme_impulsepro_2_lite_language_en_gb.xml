@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Bas5Builder - ImpulsePro2 (Language - English)</id>
+	<version>2.0</version>
+	<vqmver required="true">2.5.0</vqmver>
+	<author>base5builder.com</author>
+	<!-- Adds Language Text - Footer -->
+	<file name="admin/language/en-gb/common/footer.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$_['text_version'] = 'Version %s';
+				]]></search>
+			<add><![CDATA[
+				$_['text_created_by'] = 'Developed for OpenCart by: <a href="https://base5builder.com/index.php?route=product/category&amp;path=59_60&amp;click_source=impulsepro_v2_footer_link" target="blank" style="color: rgb(255, 255, 255); background: rgb(29, 29, 29) none repeat scroll 0% 0%; display: inline-block; font-weight: bold; font-family: roboto; opacity: 0.83; padding: 0px 4px 1px;">Base<span style="color:#ffa733;font-weight:bold">5</span>Builder</a>. All Rights Reserved.';
+				$_['text_theme_version'] = 'ImpulsePro v%s';
+				]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				$_['text_version'] = 'Version %s';
+				]]></search>
+			<add><![CDATA[
+				$_['text_version'] = 'OpenCart v%s';
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/footer.php">
+		<operation error="skip">
+			<search position="before"><![CDATA[
+				return $this->load->view('common/footer', $data);
+				]]></search>
+			<add><![CDATA[
+				$data['b5b_qore_engine']['language']['text_created_by'] = $this->language->get('text_created_by');
+				$data['b5b_qore_engine']['language']['text_theme_version'] = "";
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/en-gb/common/login.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$_['heading_title']  = 'Administration';
+				]]></search>
+			<add><![CDATA[
+				$_['button_cancel'] = 'Cancel';
+				$_['button_password_remembered'] = 'I remember my password!';
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/login.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$this->load->language('common/login');
+				]]></search>
+			<add><![CDATA[
+				$data['b5b_qore_engine']['language']['button_cancel'] = $this->language->get('button_cancel');
+				$data['b5b_qore_engine']['language']['button_password_remembered'] = $this->language->get('button_password_remembered');
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/en-gb/common/forgotten.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$_['heading_title']
+				]]></search>
+			<add><![CDATA[
+				$_['button_cancel'] = 'Cancel';
+				$_['button_password_remembered'] = 'I remember my password!';
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/forgotten.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$this->load->language('common/forgotten');
+				]]></search>
+			<add><![CDATA[
+				$data['b5b_qore_engine']['language']['button_cancel'] = $this->language->get('button_cancel');
+				$data['b5b_qore_engine']['language']['button_password_remembered'] = $this->language->get('button_password_remembered');
+				]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/column_left.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$this->load->language('common/column_left');
+				]]></search>
+			<add><![CDATA[
+				$data['b5b_qore_engine']['language']['text_order'] = $this->language->get('text_order');
+				]]></add>
+		</operation>
+	</file>
+</modification>
