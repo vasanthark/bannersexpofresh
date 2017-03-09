@@ -101,6 +101,9 @@ class ControllerInformationSitemap extends Controller {
 		$data['header'] = $this->load->controller('common/header');
                 
                 // Menu   
+                  /* Displays - CatId 59 */
+                $data['disp_products'] = $this->model_catalog_product->getCatproducts(59);
+        
                 /* Rigid Signs - CatId 60 */
                 $data['rs_products'] = $this->model_catalog_product->getCatproducts(60);
 
@@ -108,10 +111,10 @@ class ControllerInformationSitemap extends Controller {
                 $data['bs_products'] = $this->model_catalog_product->getCatproducts(61);
 
                 /* Displays - Floor stand - CatId 62 */
-                $data['dfs_products'] = $this->model_catalog_product->getCatproducts(62);
+              //  $data['dfs_products'] = $this->model_catalog_product->getCatproducts(62);
 
                  /* Displays - Table Covers - CatId 63 */
-                $data['dtc_products'] = $this->model_catalog_product->getCatproducts(63);
+              //  $data['dtc_products'] = $this->model_catalog_product->getCatproducts(63);
                 
                 
                 $data['vinyl_banner'] = $this->url->link('product/product', 'product_id=50');

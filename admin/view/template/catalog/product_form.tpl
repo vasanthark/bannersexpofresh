@@ -38,7 +38,7 @@
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
             <!-- PDF specification -->
-           <li><a href="#tab-specification" data-toggle="tab">PDF Specification</a></li>
+           <li><a href="#tab-specification" data-toggle="tab">Color Code Specification</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -829,6 +829,25 @@
                 </table>
               </div>
               <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Home Feature Image  ( Upload image dimension 285x210 )</td>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <tr>
+                      <td class="text-left">
+                          <a href="" id="thumb-fimage" data-toggle="image" class="img-thumbnail">
+                          <img src="<?php echo $fthumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                          <input type="hidden" name="fimage" value="<?php echo $fimage; ?>" id="input-fimage" />                         
+                      </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
                 <table id="images" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -929,12 +948,12 @@
              <div class="tab-pane" id="tab-specification">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-pencil"></i> Technical Specification PDF</h3>
+                        <h3 class="panel-title"><i class="fa fa-pencil"></i> Color Code</h3>
                     </div>
                     <div class="panel-body">
                         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-download" class="form-horizontal">                                    
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-filename">Colur Code PDF File</label>
+                                <label class="col-sm-2 control-label" for="input-filename">Colur Code Image File</label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <input type="text" readonly="readonly" name="filename" value="" id="input-filename" class="form-control" />

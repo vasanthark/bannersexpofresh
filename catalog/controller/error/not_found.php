@@ -35,7 +35,8 @@ class ControllerErrorNotFound extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
-		$data['text_error'] = $this->language->get('text_error');
+		//$data['text_error'] = $this->language->get('text_error');
+                $data['text_error'] = "";
 
 		$data['button_continue'] = $this->language->get('button_continue');
 

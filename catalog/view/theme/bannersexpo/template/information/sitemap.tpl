@@ -17,16 +17,13 @@
                         <li><a href="<?php echo $vinyl_banner;?>"><span>Vinyl banner</span></a></li>
                         <li><a href="<?php echo $mesh_banner;?>"><span>Mesh banner</span></a></li>
                         <li><a href="<?php echo $displays;?>"><span>Displays</span></a>
-                            <ul><li><a href="<?php echo $floor_stands;?>"><span>Floor stands</span></a>                                   
-                                    <?php if (!empty($dfs_products)) { ?>
-                                    <ul>
-                                        <?php foreach ($dfs_products as $dfsinfo) { ?>
-                                        <li><a href="<?php echo $dfsinfo['href']; ?>"><?php echo $dfsinfo['name']; ?></a> </li>  
-                                        <?php } ?>
-                                    </ul>
-                                    <?php } ?>
-                                </li>
+                             <?php if (!empty($disp_products)) { ?>
+                            <ul><?php 
+                                foreach ($disp_products as $dinfo) { ?>                                               
+                                <li><a href="<?php echo $dinfo['href']; ?>"><?php echo $dinfo['name']; ?></a> </li>  
+                                <?php } ?>                                            
                             </ul>
+                            <?php } ?>
                         </li>
                         <li><a href="<?php echo $yard_signs;?>"><span>Yard signs</span></a></li>
                         <li><a href="<?php echo $rigid_signs;?>"><span>Rigid signs</span></a>

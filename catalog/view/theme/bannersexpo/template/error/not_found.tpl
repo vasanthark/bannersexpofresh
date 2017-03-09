@@ -3,10 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="error-page">
+                 <?php if($text_error){ ?>
+                <h1><?php echo $heading_title; ?></h1>
+                <p><?php echo $text_error; ?></p>
+                <?php }else{ ?>
                 <h1>Sorry... That page seems to be missing.</h1>
                 <h2>404</h2>
                 <h3>Below are some popular links that might help</h3>
+                <?php } ?>
             </div>
+            <?php if($text_error == ''){ ?>
             <div class="sitemap site-map1">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <ul>
@@ -43,6 +49,7 @@
                     </ul>
                 </div>
             </div>
+             <?php } ?>
         </div>
     </div>
 </div>

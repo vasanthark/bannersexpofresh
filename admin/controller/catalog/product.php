@@ -1214,6 +1214,26 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+                
+                // Feature Image
+		if (isset($this->request->post['fimage'])) {
+			$data['fimage'] = $this->request->post['fimage'];
+		} elseif (!empty($product_info)) {
+			$data['fimage'] = $product_info['fimage'];
+		} else {
+			$data['fimage'] = '';
+		}
+
+		$this->load->model('tool/image');
+
+		if (isset($this->request->post['fimage']) && is_file(DIR_IMAGE . $this->request->post['fimage'])) {
+			$data['fthumb'] = $this->model_tool_image->resize($this->request->post['fimage'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['fimage'])) {
+			$data['fthumb'] = $this->model_tool_image->resize($product_info['fimage'], 100, 100);
+		} else {
+			$data['fthumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
 
 		// Images
 		if (isset($this->request->post['product_image'])) {

@@ -20,7 +20,7 @@ $dispaly_category_id = '59';
                 ?>
                 <?php foreach ($products as $product) { ?>  
               
-                <?php if($category_id=="60"){ 
+                <?php if($category_id=="60" || $category_id=="59"){ 
                         $clearfixval = 3;
                         ?>
                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">

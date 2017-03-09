@@ -103,6 +103,9 @@ class ControllerCommonHeader extends Controller {
         $this->load->model('catalog/product');        
         
 
+         /* Displays - CatId 59 */
+        $data['disp_products'] = $this->model_catalog_product->getCatproducts(59);
+        
         /* Rigid Signs - CatId 60 */
         $data['rs_products'] = $this->model_catalog_product->getCatproducts(60);
         
@@ -110,10 +113,10 @@ class ControllerCommonHeader extends Controller {
         $data['bs_products'] = $this->model_catalog_product->getCatproducts(61);
         
         /* Displays - Floor stand - CatId 62 */
-        $data['dfs_products'] = $this->model_catalog_product->getCatproducts(62);
+        // $data['dfs_products'] = $this->model_catalog_product->getCatproducts(62);
 
          /* Displays - Table Covers - CatId 63 */
-        $data['dtc_products'] = $this->model_catalog_product->getCatproducts(63);
+        // $data['dtc_products'] = $this->model_catalog_product->getCatproducts(63);
         
         /* Get cats */       
 	$disp_category = $this->model_catalog_category->getCategoryInfo(59);
@@ -129,11 +132,11 @@ class ControllerCommonHeader extends Controller {
         $data['mesh_banner'] = $this->url->link('product/product', 'product_id=51');
         
         $data['displays'] = $this->url->link('product/category', 'path=59');        
-        $data['floor_stands']= $this->url->link('product/category', 'path=59_62');
-        $data['table_covers']= $this->url->link('product/category', 'path=59_63');
+       // $data['floor_stands']= $this->url->link('product/category', 'path=59_62');
+      //  $data['table_covers']= $this->url->link('product/category', 'path=59_63');
         
-        $data['a_frame_signs'] = $this->url->link('product/product', 'product_id=52');
-        $data['trade_show'] = $this->url->link('product/product', 'product_id=75');
+      //  $data['a_frame_signs'] = $this->url->link('product/product', 'product_id=52');
+     //   $data['trade_show'] = $this->url->link('product/product', 'product_id=75');
         $data['yard_signs'] = $this->url->link('product/product', 'product_id=53');
         
         $data['rigid_signs'] = $this->url->link('product/category', 'path=60');   

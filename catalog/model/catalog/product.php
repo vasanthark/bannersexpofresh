@@ -8,7 +8,7 @@ class ModelCatalogProduct extends Model {
 
     public function getProduct($product_id) {
         $query = $this->db->query(""
-                . "SELECT DISTINCT *, pd.name AS name, p.image, m.name AS manufacturer, "
+                . "SELECT DISTINCT *, pd.name AS name, p.image, p.fimage , m.name AS manufacturer, "
                 . "(SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int) $this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, "
                 . "(SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int) $this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special, "
                 . "(SELECT points FROM " . DB_PREFIX . "product_reward pr WHERE pr.product_id = p.product_id AND pr.customer_group_id = '" . (int) $this->config->get('config_customer_group_id') . "') AS reward, (SELECT ss.name FROM " . DB_PREFIX . "stock_status ss WHERE ss.stock_status_id = p.stock_status_id AND ss.language_id = '" . (int) $this->config->get('config_language_id') . "') AS stock_status, "
@@ -43,6 +43,7 @@ class ModelCatalogProduct extends Model {
                 'quantity' => $query->row['quantity'],
                 'stock_status' => $query->row['stock_status'],
                 'image' => $query->row['image'],
+                'fimage' => $query->row['fimage'],
                 'manufacturer_id' => $query->row['manufacturer_id'],
                 'manufacturer' => $query->row['manufacturer'],
                 'price' => ($query->row['discount'] ? $query->row['discount'] : $query->row['price']),

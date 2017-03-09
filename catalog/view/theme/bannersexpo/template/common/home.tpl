@@ -265,7 +265,7 @@ $material_type  = array("19");
                 <ul class="nav nav-tabs">
                     <li class="active"> <a href="#tab1default" data-toggle="tab">Banners Expo.com </a></li>
                     <li><a href="#tab2default" data-toggle="tab"> Why Banners Expo </a></li>
-                    <li><a href="#tab3default" data-toggle="tab"> Technical Specifications </a></li>
+                   <!-- <li><a href="#tab3default" data-toggle="tab"> Technical Specifications </a></li> -->
                 </ul>
             </div>
             <div class="panel-body">

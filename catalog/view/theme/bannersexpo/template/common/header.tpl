@@ -40,7 +40,8 @@
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/icheck.js"></script> 
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/SimpleStarRating.js"></script> 
-         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/jquery.fancybox.js"></script> 
+        <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/jquery.fancybox.js"></script> 
+        <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/pdfpopup.js"></script> 
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
@@ -196,24 +197,16 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="<?php echo $vinyl_banner;?>">Vinyl banner</a> </li>
                                 <li><a href="<?php echo $mesh_banner;?>">Mesh banners</a> </li>
-                                <li class="dropdown mega-dropdown"> 
+                                <li class="dropdown"> 
                                     <a href="<?php echo $displays;?>" class="dropdown-toggle" data-toggle="dropdown">Displays <span class="caret"></span></a>
-                                    <ul class="dropdown-menu mega-dropdown-menu">
-                                        <li class="col-sm-8 floor-stand-menu"><a href="<?php echo $floor_stands;?>" class="dropdown-header">Floor Stands</a>
-                                           <?php if (!empty($dfs_products)) { ?>
-                                                <ul>
-                                                    <?php foreach ($dfs_products as $dfsinfo) { ?>
-                                                        <li><a href="<?php echo $dfsinfo['href']; ?>"><?php echo $dfsinfo['name']; ?></a> </li>  
-                                                    <?php } ?>
-                                                </ul>
-                                            <?php } ?>
-                                        </li>
-                                        <li class="col-sm-3 pull-right">
-                                            <?php if($disp_cat_img!=""){ ?>
-                                            <img src="image/<?php echo $disp_cat_img;?>"  alt="Displays" style="margin-bottom:-25px;">                                              
-                                            <?php }?>
-                                        </li>
-                                    </ul>
+                                     <?php if (!empty($disp_products)) { ?>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            foreach ($disp_products as $dinfo) { ?>                                               
+                                                <li><a href="<?php echo $dinfo['href']; ?>" class="dropdown-header"><?php echo $dinfo['name']; ?></a> </li>  
+                                            <?php } ?>                                            
+                                        </ul>
+                                    <?php } ?>
                                 </li>
                                 <li><a href="<?php echo $yard_signs;?>">Yard signs</a> </li>                                 
                                 <li class="dropdown">
@@ -221,10 +214,9 @@
                                      <?php if (!empty($rs_products)) { ?>
                                         <ul class="dropdown-menu">
                                             <?php 
-                                            $p=1;
                                             foreach ($rs_products as $rinfo) { ?>                                               
                                                 <li><a href="<?php echo $rinfo['href']; ?>" class="dropdown-header"><?php echo $rinfo['name']; ?></a> </li>  
-                                            <?php $p++; } ?>                                            
+                                            <?php } ?>                                            
                                         </ul>
                                     <?php } ?>
                                 </li>  

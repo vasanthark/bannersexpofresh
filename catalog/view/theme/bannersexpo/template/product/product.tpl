@@ -356,7 +356,7 @@ $wi_optionid = "";
                            </div>    
                            <?php if($pdf_name){ ?>
                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">                               
-                               <a href="<?php echo $siteurl;?>techspecification/<?php echo $pdf_name;?>" class="tech colorfancybox">See Color Chart</a> 
+                               <a  href="<?php echo $siteurl;?>techspecification/<?php echo $pdf_name;?>" class="tech colorfancybox">See Color Chart</a> 
                            </div>
                         </div>
                            <?php }?>
@@ -736,27 +736,51 @@ $wi_optionid = "";
                                    </div> 
                                 </div>
                             <?php
+                            if($direct_checkout=="0")
+                            {
                               // Upload Art work
-                            foreach ($options as $option) 
-                            { 
-                            if (in_array($option['option_id'], $upload_your_artwork))
-                            {                       
-                            ?> 
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="art_work">  
-                                    <div class="form-group">
-                                    <label>Upload File</label>
-                                      <button type="button" id="button-upload<?php echo $option['product_option_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-fileup"><i class="fa fa-upload"></i> Upload Your Art Work</button>
-                                      <span id="file_name_disp"></span>
-                                     <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" id="input-option<?php echo $option['product_option_id']; ?>" />                                                               
-                                    </div>  
-                                </div>   
-                            <?php
-                            }
-                            }
-                            ?>                             
+                                foreach ($options as $option) 
+                                { 
+                                    if (in_array($option['option_id'], $upload_your_artwork))
+                                    {                       
+                                    ?> 
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" id="art_work">  
+                                            <div class="form-group">
+                                            <label>Upload File</label>
+                                              <button type="button" id="button-upload<?php echo $option['product_option_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-fileup"><i class="fa fa-upload"></i> Upload Your Art Work</button>
+                                              <span id="file_name_disp"></span>
+                                             <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" id="input-option<?php echo $option['product_option_id']; ?>" />                                                               
+                                            </div>  
+                                        </div>   
+                                    <?php
+                                    }
+                                }
+                            }else{
+                                ?>    
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2"> 
+                                    <div class="form-group" id="prod-price-qty">                                                                         
+                                                    <?php 
+                                                    if ($price) 
+                                                    { 
+                                                    if (!$special) {  ?>
+                                                    <p class="price_prod_detail" id="pricediv">Price: <?php echo $price; ?></p>  
+                                                    <?php } else { ?>
+                                                    <p style="text-decoration: line-through;"><?php echo $price; ?></p>
+                                                    <p class="price_prod_detail"><?php echo $special; ?></span>
+                                                    <?php
+                                                    }
+                                                    }?>     
+                                             
+                                    </div>
+                                </div> 
+                                <?php
+                                    }
+                                ?>                          
                             </div>                          
                         </div>  
-                       
+                       <?php
+                        if($direct_checkout=="0")
+                       { ?>
                         <div class="form-group" id="prod-price-qty">
                             <div class="row">
                                 <div  class="">
@@ -776,6 +800,7 @@ $wi_optionid = "";
                                 </div>
                             </div>
                         </div>
+                       <?php }?>     
                        <?php                                 
                         $price_per_feet_option = array("22");  
                         foreach ($options as $option) 
