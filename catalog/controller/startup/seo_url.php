@@ -40,14 +40,17 @@ class ControllerStartupSeoUrl extends Controller {
                             $download_id = str_replace("download-","",$parts[0]);                               
                             $parts[0] = "download";                            
                         }  
+                        
                         $pos = strpos($parts[0], 'quickorder-');
                         if ($pos !== false) {                            
                             $prodcut_id = str_replace("quickorder-","",$parts[0]);                               
-//                            $parts[0] = "quickorder";                            
+                            $parts[0] = $parts[0]."/";                            
                         } 
                         
 			foreach ($parts as $part) {
+                            //echo "SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'";
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");  
+                               // echo $query->num_rows; exit;
 				if ($query->num_rows) {
                                     
 					$url = explode('=', $query->row['query']);
@@ -104,7 +107,7 @@ class ControllerStartupSeoUrl extends Controller {
                                         if ($url[0] == 'order_id') {
 						$this->request->get['order_id'] = $url[1];
 					}
-                                        
+                                       
                                         
                                         //custom download url
 //					if ($query->row['query'] && $url[0] != 'quickorder' && $url[0] != 'product/search' &&  $url[0] != 'information_id'&& $url[0] != 'download_id'  && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id' && $url[0] != 'tltblog_id' && $url[0] != 'tlttag_id' && $url[0] != 'tltpath' && $url[0] != 'address_id' && $url[0] != 'faq_id' && $url[0] != 'order_id' ) {
@@ -120,7 +123,6 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
                         
-                     
 
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {

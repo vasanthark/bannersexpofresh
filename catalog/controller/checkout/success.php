@@ -2,6 +2,35 @@
 class ControllerCheckoutSuccess extends Controller {
 	public function index() {
 		$this->load->language('checkout/success');
+                
+                $data['gaTracking'] = '';
+
+                if (isset($this->session->data['order_id'])) {
+                    $this->load->model('checkout/order');
+
+                    $orderInfo  = $this->model_checkout_order->getOrderGAC($this->session->data['order_id']);
+
+                    if ($orderInfo) {
+                        $data['gaTracking'] .= sprintf("ga('ecommerce:addTransaction', {'id': '%s', 'affiliation': '%s', 'revenue': '%s', 'currency': '%s'});",
+                                                            $orderInfo['order_id'],
+                                                            $orderInfo['store_name'],
+                                                            $orderInfo['total'],
+                                                            $orderInfo['currency_code']
+                                                            ) . "\n";
+                        $data['gaTracking'] = rtrim($data['gaTracking'], '\n');
+                        foreach ($orderInfo['products'] as $product) {
+                            $data['gaTracking'] .= sprintf("ga('ecommerce:addItem', {'id': '%s', 'name': '%s', 'sku': '%s', 'category': '%s', 'price': '%s', 'quantity': '%s', 'currency': '%s'});",
+                                                                $orderInfo['order_id'],
+                                                                $product['name'],
+                                                                $product['sku'],
+                                                                $product['category'],
+                                                                $product['price'],
+                                                                $product['quantity'],
+                                                                $orderInfo['currency_code']
+                                                                ) . "\n";
+                        }
+                    }
+                }
 
 		if (isset($this->session->data['order_id'])) {
 			$this->cart->clear();

@@ -162,6 +162,8 @@ class ControllerCommonHeader extends Controller {
             $data['social_icons'] = html_entity_decode($social_txt_info['description'], ENT_QUOTES, 'UTF-8');
         else
             $data['social_icons'] = false;
+        
+        $data['curr_page'] =  isset($this->request->get['route'])?$this->request->get['route']:"";
 
         // For page specific css
         if (isset($this->request->get['route'])) {

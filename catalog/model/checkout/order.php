@@ -114,6 +114,68 @@ class ModelCheckoutOrder extends Model {
 
 		$this->model_extension_total_voucher->disableVoucher($order_id);
 	}
+        
+        public function getOrderGAC($order_id) {
+            $order_query = $this->db->query("SELECT o.order_id, o.store_name, o.language_id, o.currency_code, o.currency_value, o.total FROM `" . DB_PREFIX . "order` o WHERE o.order_id = '" . (int)$order_id . "'");
+
+            if ($order_query->num_rows) {
+                $language_id = $order_query->row['language_id'];
+
+                $order_product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+
+                foreach ($order_product_query->rows as $product) {
+                    $option_data = '';
+
+                    $order_option_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$product['order_product_id'] . "'");
+
+                    foreach ($order_option_query->rows as $option) {
+                        if ($option['type'] != 'file') {
+                            $option_data .= $option['name'] . ': ' . (utf8_strlen($option['value']) > 20 ? utf8_substr($option['value'], 0, 20) . '..' : $option['value']) . ' - ';
+                        }
+                    }
+
+                    $option_data = rtrim($option_data, ' - ');
+
+                    $category_data = '';
+
+                    $category_query = $this->db->query("SELECT cd.name FROM `" . DB_PREFIX . "product_to_category` pc INNER JOIN `" . DB_PREFIX . "category_description` cd ON pc.category_id = cd.category_id WHERE pc.product_id = '" . (int)$product['product_id'] . "' AND cd.language_id = '" . (int)$language_id . "'");
+
+                    $i = 0;
+                    foreach ($category_query->rows as $category) {
+                        $i++;
+                        if ($i <= 5) {
+                            $category_data .= $category['name'] . '/';
+                        }
+                    }
+
+                    $category_data = rtrim($category_data, '/');
+
+                    if ($option_data) {
+                        $name = utf8_substr($product['name'] . ' - ' . $option_data, 0, 80);
+                    } else {
+                        $name = utf8_substr($product['name'], 0, 80);
+                    }
+
+                    $products[] = array(
+                        'name'     => $name,
+                        'sku'      => $product['model'],
+                        'category' => $category_data,
+                        'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_query->row['currency_code'], $order_query->row['currency_value']),
+                        'quantity' => $product['quantity']
+                    );
+                }
+
+                return array(
+                    'order_id'      => $order_query->row['order_id'],
+                    'store_name'    => $order_query->row['store_name'],
+                    'products'      => $products,
+                    'total'         => $this->currency->format($order_query->row['total'], $order_query->row['currency_code'], $order_query->row['currency_value']),
+                    'currency_code' => $order_query->row['currency_code']
+                );
+            } else {
+                return false;
+            }    
+        }
 
 	public function getOrder($order_id) {
 		$order_query = $this->db->query("SELECT *, (SELECT os.name FROM `" . DB_PREFIX . "order_status` os WHERE os.order_status_id = o.order_status_id AND os.language_id = o.language_id) AS order_status FROM `" . DB_PREFIX . "order` o WHERE o.order_id = '" . (int)$order_id . "'");

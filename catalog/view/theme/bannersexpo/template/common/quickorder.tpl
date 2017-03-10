@@ -239,10 +239,7 @@ $pdoubleside_optionid = "";
                                                     }   
                                                     ?>
                                                     <option rel="<?php echo $additnal_price;?>" <?php if($pmat_type_val==$option['product_option_id']){ echo 'selected="selected"'; }?> value="<?php echo $option_value['product_option_value_id']; ?>">
-                                                        <?php echo $option_value['name']; ?>
-                                                        <?php if ($option_value['price']) { ?>
-                                                        (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                                                        <?php } ?>
+                                                        <?php echo $option_value['name']; ?>                                                       
                                                     </option>
                                                     <?php 
                                                     } ?>
@@ -673,10 +670,7 @@ $pdoubleside_optionid = "";
                                                                 }   
                                                     ?>
                                                             <option rel="<?php echo $additnal_price;?>" value="<?php echo $option_value1['product_option_value_id']; ?>">
-                                                                <?php echo $option_value1['name']; ?>
-                                                                <?php if ($option_value1['price']) { ?>
-                                                                (<?php echo $option_value1['price_prefix']; ?><?php echo $option_value1['price']; ?>)
-                                                                <?php } ?>
+                                                                <?php echo $option_value1['name']; ?>                                                              
                                                             </option>
                                                             <?php 
                                                             } ?>

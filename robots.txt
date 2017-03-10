@@ -12,6 +12,9 @@ Disallow: /login/
 Disallow: /cart/
 Disallow: /delivery/
 Disallow: /forgotten/
+Disallow: /quickorder-50/
+Disallow: /quickorder-51/
+Disallow: /quickorder-61/
 
 
 Sitemap: http://www.bannersexpo.com/sitemap.xml
