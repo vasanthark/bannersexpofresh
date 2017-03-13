@@ -171,17 +171,9 @@ $material_type  = array("19");
                                         $pmat_optionid = $option['product_option_id'];
                                     ?>  
                                     <div class="form-group">                                
-                                        <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">
-                                            <option value=""> <?php echo $option['name']; ?> </option>
+                                        <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">                                        
                                             <?php foreach ($option['product_option_value'] as $option_value) 
-                                            { ?>
-                                            <?php 
-                                            if ($option_value['priceonly']) { 
-                                            $additnal_price = $option_value['priceonly'];
-                                            }else{
-                                            $additnal_price = '0';
-                                            }   
-                                            ?>
+                                            { ?>                                            
                                             <option value="<?php echo $option_value['product_option_value_id']; ?>">
                                                 <?php echo $option_value['name']; ?>                                               
                                             </option>
@@ -366,7 +358,8 @@ $material_type  = array("19");
 
                     if(response!="FAIL")
                     $('#product_options').html(response);   
-                                
+                
+                    $('.material_type').selectpicker("refresh");              
                     $('.selectpicker').selectpicker('refresh');
                                          
                     $('input').iCheck({
@@ -379,6 +372,7 @@ $material_type  = array("19");
             addtoprice(option_value);
             
             $('.home-product-calc').selectpicker("refresh");
+            
         });
         
         /* Size select */     

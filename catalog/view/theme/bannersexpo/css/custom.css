@@ -264,6 +264,10 @@ float:left;
     font-size: 15px;
 }
 
+.dropdown-header{
+    font-size: 17px;
+}
+
 .homerate .star{
     display: none;
 }

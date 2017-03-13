@@ -180,8 +180,7 @@ if (in_array($option['option_id'], $material_type))
 $pmat_optionid = $option['product_option_id'];
 ?>  
 <div class="form-group">                                
-    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?> )">
-        <option value="">Select <?php echo $option['name']; ?> </option>
+    <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker material_type" onchange="addtoprice(<?php echo $product_id; ?> )">      
         <?php foreach ($option['product_option_value'] as $option_value) 
         { ?>                               
         <option value="<?php echo $option_value['product_option_value_id']; ?>">
