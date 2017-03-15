@@ -90,22 +90,38 @@ class Cart {
                                 $feet_price = 0;
                                 $pgroometprice = 0;     
                                 
-                                /* get discount Feet price*/                     
-                                $discount_type = array("23");
-                                foreach ($this->getProductOptions($cproduct_id) as $option) {
-                                    if (in_array($option['option_id'], $discount_type)) {
-                                        $product_option_value_data = array();
-                                    
-                                        foreach ($option['product_option_value'] as $option_value) {
-                                            $disc_qty = $option_value['name'];
-                                            $disc_prc = $option_value['price']; 
-                                            if($cart['quantity']>=$disc_qty)
-                                            {
-                                                $priceperfeet_price = $disc_prc;
-                                            }    
-                                        }
+                                // Material type Prices                               
+                                $mtprices = array();
+                                $material_type_prices = array("63");
+                                foreach ($this->getProductOptions($cproduct_id) as $option) 
+                                { 
+                                    if (in_array($option['option_id'], $material_type_prices))
+                                    {
+                                       foreach ($option['product_option_value'] as $option_value) 
+                                       { 
+                                           if ($option_value['price']) 
+                                             $mtprices[$option_value['name']] =  $option_value['price'];                                          
+                                       }
                                     }
-                                }                   
+                                }                               
+                               
+        
+                                /* get discount Feet price*/                     
+//                                $discount_type = array("23");
+//                                foreach ($this->getProductOptions($cproduct_id) as $option) {
+//                                    if (in_array($option['option_id'], $discount_type)) {
+//                                        $product_option_value_data = array();
+//                                    
+//                                        foreach ($option['product_option_value'] as $option_value) {
+//                                            $disc_qty = $option_value['name'];
+//                                            $disc_prc = $option_value['price']; 
+//                                            if($cart['quantity']>=$disc_qty)
+//                                            {
+//                                                $priceperfeet_price = $disc_prc;
+//                                            }    
+//                                        }
+//                                    }
+//                                }                   
 
 				$option_data = array();
 
@@ -116,50 +132,58 @@ class Cart {
 					if ($option_query->num_rows) {
                                             
 						if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+                                                    
 							$option_value_query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id) LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_option_value_id = '" . (int)$value . "' AND pov.product_option_id = '" . (int)$product_option_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 							if ($option_value_query->num_rows) {
                                                             
-								if ($option_value_query->row['price_prefix'] == '+') {
-									$option_price += $option_value_query->row['price'];
-								} elseif ($option_value_query->row['price_prefix'] == '-') {
-									$option_price -= $option_value_query->row['price'];
-								}
+                                                                    if ($option_value_query->row['price_prefix'] == '+') {
+                                                                            $option_price += $option_value_query->row['price'];
+                                                                    } elseif ($option_value_query->row['price_prefix'] == '-') {
+                                                                            $option_price -= $option_value_query->row['price'];
+                                                                    }
 
-								if ($option_value_query->row['points_prefix'] == '+') {
-									$option_points += $option_value_query->row['points'];
-								} elseif ($option_value_query->row['points_prefix'] == '-') {
-									$option_points -= $option_value_query->row['points'];
-								}
+                                                                    if ($option_value_query->row['points_prefix'] == '+') {
+                                                                            $option_points += $option_value_query->row['points'];
+                                                                    } elseif ($option_value_query->row['points_prefix'] == '-') {
+                                                                            $option_points -= $option_value_query->row['points'];
+                                                                    }
 
-								if ($option_value_query->row['weight_prefix'] == '+') {
-									$option_weight += $option_value_query->row['weight'];
-								} elseif ($option_value_query->row['weight_prefix'] == '-') {
-									$option_weight -= $option_value_query->row['weight'];
-								}
+                                                                    if ($option_value_query->row['weight_prefix'] == '+') {
+                                                                            $option_weight += $option_value_query->row['weight'];
+                                                                    } elseif ($option_value_query->row['weight_prefix'] == '-') {
+                                                                            $option_weight -= $option_value_query->row['weight'];
+                                                                    }
 
-								if ($option_value_query->row['subtract'] && (!$option_value_query->row['quantity'] || ($option_value_query->row['quantity'] < $cart['quantity']))) {
-									$stock = false;
-								}
+                                                                    if ($option_value_query->row['subtract'] && (!$option_value_query->row['quantity'] || ($option_value_query->row['quantity'] < $cart['quantity']))) {
+                                                                            $stock = false;
+                                                                    }
 
-								$option_data[] = array(
-									'product_option_id'       => $product_option_id,
-									'product_option_value_id' => $value,
-									'option_id'               => $option_query->row['option_id'],
-									'option_value_id'         => $option_value_query->row['option_value_id'],
-									'name'                    => $option_query->row['name'],
-									'value'                   => $option_value_query->row['name'],
-									'type'                    => $option_query->row['type'],
-									'quantity'                => $option_value_query->row['quantity'],
-									'subtract'                => $option_value_query->row['subtract'],
-									'price'                   => $option_value_query->row['price'],
-									'price_prefix'            => $option_value_query->row['price_prefix'],
-									'points'                  => $option_value_query->row['points'],
-									'points_prefix'           => $option_value_query->row['points_prefix'],
-									'weight'                  => $option_value_query->row['weight'],
-									'weight_prefix'           => $option_value_query->row['weight_prefix']
-								);
-							}
+                                                                    $option_data[] = array(
+                                                                            'product_option_id'       => $product_option_id,
+                                                                            'product_option_value_id' => $value,
+                                                                            'option_id'               => $option_query->row['option_id'],
+                                                                            'option_value_id'         => $option_value_query->row['option_value_id'],
+                                                                            'name'                    => $option_query->row['name'],
+                                                                            'value'                   => $option_value_query->row['name'],
+                                                                            'type'                    => $option_query->row['type'],
+                                                                            'quantity'                => $option_value_query->row['quantity'],
+                                                                            'subtract'                => $option_value_query->row['subtract'],
+                                                                            'price'                   => $option_value_query->row['price'],
+                                                                            'price_prefix'            => $option_value_query->row['price_prefix'],
+                                                                            'points'                  => $option_value_query->row['points'],
+                                                                            'points_prefix'           => $option_value_query->row['points_prefix'],
+                                                                            'weight'                  => $option_value_query->row['weight'],
+                                                                            'weight_prefix'           => $option_value_query->row['weight_prefix']
+                                                                    );
+
+                                                        if($option_query->row['name']=="Material Type"){
+                                                            $materialtypeval = $option_value_query->row['name'];  
+                                                            if (array_key_exists($materialtypeval, $mtprices)) {
+                                                                $feet_price = $mtprices[$materialtypeval];
+                                                            }
+                                                        }
+                                                    }
                                                         
 						} elseif ($option_query->row['type'] == 'checkbox') {
                                                     
@@ -267,10 +291,10 @@ class Cart {
                                                             $width_val = $value;
                                                         } 
                                                         
-                                                        if($option_query->row['option_id']=="22")
-                                                        {
-                                                            $feet_price = $value;                                                         
-                                                        } 
+//                                                        if($option_query->row['option_id']=="22")
+//                                                        {
+//                                                            $feet_price = $value;                                                         
+//                                                        } 
                                                         
                                                         if($option_query->row['option_id']=="25")
                                                         {

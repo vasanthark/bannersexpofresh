@@ -201,7 +201,7 @@ $wi_optionid = "";
                             $pmat_optionid = $option['product_option_id'];
                         ?>  
                         <div class="form-group">                                
-                            <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?> )">                                
+                            <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker material_type" onchange="addtoprice(<?php echo $product_id; ?> )">                                
                                 <?php foreach ($option['product_option_value'] as $option_value) 
                                 { ?>                               
                                 <option value="<?php echo $option_value['product_option_value_id']; ?>">
@@ -1297,6 +1297,40 @@ $wi_optionid = "";
 
         $('.star_rating').rating();
         var pid = "<?php echo $product_id;?>";
+        
+         /* Get material type price */
+        var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+        setfeetprice(mtype_text,pid);
+        
+        $(document).on('change', '.material_type', function() {             
+            var mtype_text  = $.trim($(this).find("option:selected").text());
+            setfeetprice(mtype_text,pid);
+            addtoprice(pid);
+            return false;
+        });  
+        
+        function setfeetprice(mtype_text,pid)
+        {              
+            $.ajax({
+               url : 'index.php?route=common/home/mtoptions',
+               type: 'post',
+               data: 'product_id='+pid,    
+               dataType: "JSON",
+               async: false,
+               success: function (jsonStr) {  
+                   if(jsonStr!="FAIL"){                       
+                    $.each(jsonStr, function (index, value) {  
+                        if(index==mtype_text)
+                        { 
+                            $('#pfeetprice').val(value);
+                            return false;
+                        }    
+                    });
+                  }
+               }
+           });  
+           
+        }
 
         addtoprice(pid);
 

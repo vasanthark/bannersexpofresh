@@ -105,17 +105,17 @@ class ControllerCommonQuickorder extends Controller {
                 $data['feetprice_curr'] = "";
                 $data['feetprice_only'] = 0;
 
-                if (!empty($data['options'])) {
-                    foreach ($data['options'] as $option) {
-                        if (in_array($option['option_id'], $priceperfeet_option)) {
-                            $priceperfeet_price = $option['value'];
-                            if ($option['option_id'] == "22") {
-                                $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
-                                $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
-                            }
-                        }
-                    }
-                }
+//                if (!empty($data['options'])) {
+//                    foreach ($data['options'] as $option) {
+//                        if (in_array($option['option_id'], $priceperfeet_option)) {
+//                            $priceperfeet_price = $option['value'];
+//                            if ($option['option_id'] == "22") {
+//                                $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
+//                                $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
         

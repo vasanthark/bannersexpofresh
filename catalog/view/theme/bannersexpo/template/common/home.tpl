@@ -6,6 +6,7 @@ $width_feet  = array("15");
 $width_inch  = array("16");
 $double_side  = array("17");
 $material_type  = array("19");
+$material_type_prices = array("63");
 ?>
 <div class="fullslider">
    <?php echo $content_top; ?>
@@ -171,7 +172,7 @@ $material_type  = array("19");
                                         $pmat_optionid = $option['product_option_id'];
                                     ?>  
                                     <div class="form-group">                                
-                                        <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice( <?php echo $product_id; ?> )">                                        
+                                        <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker material_type">                                        
                                             <?php foreach ($option['product_option_value'] as $option_value) 
                                             { ?>                                            
                                             <option value="<?php echo $option_value['product_option_value_id']; ?>">
@@ -227,7 +228,7 @@ $material_type  = array("19");
                                         <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                                         <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
                                         <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
-                                        <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
+                                        <input type="hidden" name="pfeetprice" id="pfeetprice" value="0"> 
                                         <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
                                         <input type="hidden" name="product_id" id="org_prod_id" value="<?php echo $product_id; ?>" />
                                         <input type="hidden" name="process_type" id="process_type" value="1" /> 
@@ -337,6 +338,41 @@ $material_type  = array("19");
         
         var pid = $("#org_prod_id").val();
         
+        /* Get material type price */
+        var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+        setfeetprice(mtype_text,pid);
+        
+        $(document).on('change', '.material_type', function() { 
+            var pid = $("#org_prod_id").val();
+            var mtype_text  = $.trim($(this).find("option:selected").text());
+            setfeetprice(mtype_text,pid);
+            addtoprice(pid);
+            return false;
+        });  
+        
+        function setfeetprice(mtype_text,pid)
+        {              
+            $.ajax({
+               url : 'index.php?route=common/home/mtoptions',
+               type: 'post',
+               data: 'product_id='+pid,    
+               dataType: "JSON",
+               async: false,
+               success: function (jsonStr) {  
+                   if(jsonStr!="FAIL"){                       
+                    $.each(jsonStr, function (index, value) {  
+                        if(index==mtype_text)
+                        { 
+                            $('#pfeetprice').val(value);
+                            return false;
+                        }    
+                    });
+                  }
+               }
+           });  
+           
+        }
+        
         addtoprice(pid);
         
         $('#home-product-calc').on('change', function(e) {
@@ -361,6 +397,9 @@ $material_type  = array("19");
                 
                     $('.material_type').selectpicker("refresh");              
                     $('.selectpicker').selectpicker('refresh');
+                    
+                    var mtype_text  = $.trim($('.material_type').find("option:selected").text());
+                    setfeetprice(mtype_text,option_value);
                                          
                     $('input').iCheck({
                         checkboxClass: 'icheckbox_square-red',
@@ -372,7 +411,6 @@ $material_type  = array("19");
             addtoprice(option_value);
             
             $('.home-product-calc').selectpicker("refresh");
-            
         });
         
         /* Size select */     

@@ -80,18 +80,18 @@ class ControllerCommonHome extends Controller {
         // live
         $product_id = '50';
 
-        $discount_type = array("23");
-        $disc_qty_prc = array();
-        foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
-            if (in_array($option['option_id'], $discount_type)) {
-                $product_option_value_data = array();
-                foreach ($option['product_option_value'] as $option_value) {
-                    $disc_qty = $option_value['name'];
-                    $disc_prc = $option_value['price'];
-                    $disc_qty_prc[$disc_qty] = $disc_prc;
-                }
-            }
-        }
+//        $discount_type = array("23");
+//        $disc_qty_prc = array();
+//        foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
+//            if (in_array($option['option_id'], $discount_type)) {
+//                $product_option_value_data = array();
+//                foreach ($option['product_option_value'] as $option_value) {
+//                    $disc_qty = $option_value['name'];
+//                    $disc_prc = $option_value['price'];
+//                    $disc_qty_prc[$disc_qty] = $disc_prc;
+//                }
+//            }
+//        }
 
         $data['product_id'] = $product_id;
 
@@ -165,17 +165,17 @@ class ControllerCommonHome extends Controller {
             $data['feetprice_curr'] = "";
             $data['feetprice_only'] = 0;
 
-            if (!empty($data['options'])) {
-                foreach ($data['options'] as $option) {
-                    if (in_array($option['option_id'], $priceperfeet_option)) {
-                        $priceperfeet_price = $option['value'];
-                        if ($option['option_id'] == "22") {
-                            $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
-                            $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
-                        }
-                    }
-                }
-            }
+//            if (!empty($data['options'])) {
+//                foreach ($data['options'] as $option) {
+//                    if (in_array($option['option_id'], $priceperfeet_option)) {
+//                        $priceperfeet_price = $option['value'];
+//                        if ($option['option_id'] == "22") {
+//                            $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
+//                            $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
+//                        }
+//                    }
+//                }
+//            }
         }
 
         /* Rigid Signs - CatId 60 */
@@ -236,18 +236,18 @@ class ControllerCommonHome extends Controller {
                 $data['yard_p'] = 1;
             }
 
-            $discount_type = array("23");
-            $disc_qty_prc = array();
-            foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
-                if (in_array($option['option_id'], $discount_type)) {
-                    $product_option_value_data = array();
-                    foreach ($option['product_option_value'] as $option_value) {
-                        $disc_qty = $option_value['name'];
-                        $disc_prc = $option_value['price'];
-                        $disc_qty_prc[$disc_qty] = $disc_prc;
-                    }
-                }
-            }
+//            $discount_type = array("23");
+//            $disc_qty_prc = array();
+//            foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) {
+//                if (in_array($option['option_id'], $discount_type)) {
+//                    $product_option_value_data = array();
+//                    foreach ($option['product_option_value'] as $option_value) {
+//                        $disc_qty = $option_value['name'];
+//                        $disc_prc = $option_value['price'];
+//                        $disc_qty_prc[$disc_qty] = $disc_prc;
+//                    }
+//                }
+//            }
 
             $data['product_id'] = $product_id;
 
@@ -323,17 +323,17 @@ class ControllerCommonHome extends Controller {
                 $data['feetprice_curr'] = "";
                 $data['feetprice_only'] = 0;
 
-                if (!empty($data['options'])) {
-                    foreach ($data['options'] as $option) {
-                        if (in_array($option['option_id'], $priceperfeet_option)) {
-                            $priceperfeet_price = $option['value'];
-                            if ($option['option_id'] == "22") {
-                                $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
-                                $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
-                            }
-                        }
-                    }
-                }
+//                if (!empty($data['options'])) {
+//                    foreach ($data['options'] as $option) {
+//                        if (in_array($option['option_id'], $priceperfeet_option)) {
+//                            $priceperfeet_price = $option['value'];
+//                            if ($option['option_id'] == "22") {
+//                                $data['feetprice_curr'] = $this->currency->format($this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->config->get('config_currency'));
+//                                $data['feetprice_only'] = $this->tax->calculate($priceperfeet_price, $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false);
+//                            }
+//                        }
+//                    }
+//                }
             }
 
             $load_view = $this->load->view('common/viewoptions', $data);
@@ -343,6 +343,34 @@ class ControllerCommonHome extends Controller {
             echo "FAIL";
             exit;
         }
+    }
+    
+    public function mtoptions(){
+        $this->load->model('catalog/product');
+        
+        $product_id = $_POST['product_id'];
+        
+        // Material type Prices
+        $mtprices = array();
+        $material_type_prices = array("63");
+        foreach ($this->model_catalog_product->getProductOptions($product_id) as $option) 
+        { 
+            if (in_array($option['option_id'], $material_type_prices))
+            {
+               foreach ($option['product_option_value'] as $option_value) 
+               { 
+                   if ($option_value['price']) 
+                     $mtprices[$option_value['name']] =  $option_value['price'];                                          
+               }
+            }
+        }
+        
+        if(!empty($mtprices)){
+            echo json_encode($mtprices);
+        }else{
+            echo "FAIL";
+        }
+        exit;
     }
 
 }

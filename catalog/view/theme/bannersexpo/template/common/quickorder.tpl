@@ -227,8 +227,7 @@ $pdoubleside_optionid = "";
                                                 <label> <?php echo $option['name']; ?></label>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9">
-                                                <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker material_type" onchange="addtoprice(<?php echo $product_id; ?>)">
-                                                    <option value="">---Select One---</option>
+                                                <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker material_type">                                                  
                                                     <?php foreach ($option['product_option_value'] as $option_value) 
                                                     { ?>
                                                     <?php 
@@ -854,6 +853,40 @@ $pdoubleside_optionid = "";
             $("#let_us_perm_prc").val("0");
         }
         
+        /* Get material type price */
+        var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+        setfeetprice(mtype_text,pid);
+        
+        $(document).on('change', '.material_type', function() {            
+            var mtype_text  = $.trim($(this).find("option:selected").text());
+            setfeetprice(mtype_text,pid);
+            addtoprice(pid);
+            return false;
+        });  
+        
+        function setfeetprice(mtype_text,pid)
+        {              
+            $.ajax({
+               url : 'index.php?route=common/home/mtoptions',
+               type: 'post',
+               data: 'product_id='+pid,    
+               dataType: "JSON",
+               async: false,
+               success: function (jsonStr) {  
+                   if(jsonStr!="FAIL"){                       
+                    $.each(jsonStr, function (index, value) {  
+                        if(index==mtype_text)
+                        { 
+                            $('#pfeetprice').val(value);
+                            return false;
+                        }    
+                    });
+                  }
+               }
+           });  
+           
+        }
+        
         // Intial price calculation
         addtoprice(pid);
 
@@ -905,7 +938,7 @@ $pdoubleside_optionid = "";
          $(".grmtqty").prop('disabled', true);
          $(".grmtqty").val('4');
          $(this).selectpicker('refresh');
-         addtoprice(pid);  
+         //addtoprice(pid);  
        }
         
         $('input.placement_not_other').on('ifChecked', function (event) {  

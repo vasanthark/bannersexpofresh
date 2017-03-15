@@ -713,21 +713,21 @@ class ControllerProductProduct extends Controller {
             $priceperfeet_price = $_REQUEST['pfeetprice'];   
                 
             /* get discount Feet price*/                     
-            $discount_type = array("23");
-            foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
-                if (in_array($option['option_id'], $discount_type)) {
-                    $product_option_value_data = array();
-                    foreach ($option['product_option_value'] as $option_value) {
-                        $disc_qty = $option_value['name'];
-                        $disc_prc = $option_value['price'];
-
-                        if($_REQUEST['quantity']>=$disc_qty)
-                        {
-                            $priceperfeet_price = $disc_prc;
-                        }    
-                    }
-                }
-             }
+//            $discount_type = array("23");
+//            foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
+//                if (in_array($option['option_id'], $discount_type)) {
+//                    $product_option_value_data = array();
+//                    foreach ($option['product_option_value'] as $option_value) {
+//                        $disc_qty = $option_value['name'];
+//                        $disc_prc = $option_value['price'];
+//
+//                        if($_REQUEST['quantity']>=$disc_qty)
+//                        {
+//                            $priceperfeet_price = $disc_prc;
+//                        }    
+//                    }
+//                }
+//             }
             
             $calculation_price = 0;
             

@@ -701,7 +701,7 @@ if (in_array($option['option_id'], $price_per_feet_option))
                 <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                 <input type="hidden" name="plamination" id="plamination"  value="<?php echo $plamination_optionid;?>">
                 <input type="hidden" name="pmetalsteaks" id="pmetalsteaks"  value="<?php echo $pmetalsteaks_optionid;?>">                                    
-                <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
+                <input type="hidden" name="pfeetprice" id="pfeetprice" value=""> 
                 <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
                 <input type="hidden" name="product_id" id="org_prod_id" value="<?php echo $product_id; ?>" />   
                 <input type="hidden" name="product_url" id="product_url" value="<?php echo $product_url; ?>" />   

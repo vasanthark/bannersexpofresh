@@ -107,11 +107,6 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.bannersexpo.com/plasto-59-78-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>http://www.bannersexpo.com/aclima-23-83-retractable-banner-stand/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
@@ -162,22 +157,27 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.bannersexpo.com/miracula-31-80-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.bannersexpo.com/miracula-35-80-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>http://www.bannersexpo.com/pandora-31-83-retractable-banner-stand/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.bannersexpo.com/pandora-35-83-retractable-banner-stand/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.bannersexpo.com/plasto-lite-31-78-retractable-banner-stand/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.bannersexpo.com/plasto-31-78-retractable-banner-stand/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.bannersexpo.com/prevalax-37-62-tension-banner-stand/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -250,26 +250,6 @@
   <loc>http://www.bannersexpo.com/sitemap/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.bannersexpo.com/plasto-lite-31-78-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.bannersexpo.com/plasto-31-78-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.bannersexpo.com/plasto-47-78-retractable-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.bannersexpo.com/prevalax-37-62-tension-banner-stand/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.bannersexpo.com/spire-23-78-tension-banner-stand/</loc>
