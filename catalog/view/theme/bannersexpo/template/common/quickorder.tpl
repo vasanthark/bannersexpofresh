@@ -887,6 +887,13 @@ $pdoubleside_optionid = "";
            
         }
         
+       var pval = $('input.placement_not_other').data("id");
+       if(pval=="All Side"){
+         $(".grmtqty").prop('disabled', true);
+         $(".grmtqty").val('4');
+         $(this).selectpicker('refresh');       
+       }
+        
         // Intial price calculation
         addtoprice(pid);
 
@@ -932,14 +939,6 @@ $pdoubleside_optionid = "";
            addtoprice(pid);  
            $('#placementother').hide();          
         });
-        
-       var pval = $('input.placement_not_other').data("id");
-       if(pval=="All Side"){
-         $(".grmtqty").prop('disabled', true);
-         $(".grmtqty").val('4');
-         $(this).selectpicker('refresh');
-         //addtoprice(pid);  
-       }
         
         $('input.placement_not_other').on('ifChecked', function (event) {  
         
