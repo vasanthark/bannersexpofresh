@@ -729,20 +729,61 @@ class ControllerProductProduct extends Controller {
 //                }
 //             }
             
+            /* Identify the material type value to get discount percentage*/
+            if(isset($_REQUEST['pmat_type_value']) && $_REQUEST['pmat_type_value']!=""){
+                if($_REQUEST['pmat_type_value']=="13 oz")
+                {    
+                    /* 13oz discount percentage */                     
+                    $discount_type = array("64");
+                }else if($_REQUEST['pmat_type_value']=="15 oz")
+                {    
+                    /* 15oz discount percentage */                     
+                    $discount_type = array("65");
+                }else if($_REQUEST['pmat_type_value']=="18 oz")
+                {    
+                    /* 18oz discount percentage */                     
+                    $discount_type = array("66");
+                }else if($_REQUEST['pmat_type_value']=="10 oz")
+                {    
+                    /* 10oz discount percentage */                     
+                    $discount_type = array("68");
+                }    
+            }else{
+                $discount_type = array(); 
+            }
+            
+            $disc_percentage = "";
+            if(!empty($discount_type)){
+            foreach ($this->model_catalog_product->getProductOptions($_REQUEST['product_id']) as $option) {
+                    if (in_array($option['option_id'], $discount_type)) {
+                        $product_option_value_data = array();
+                        foreach ($option['product_option_value'] as $option_value) {
+                            $disc_qty = $option_value['name'];
+                            $disc_prc = $option_value['price'];
+
+                            if($_REQUEST['quantity']>=$disc_qty)
+                            {
+                                $disc_percentage = $disc_prc;
+                            }    
+                        }
+                    }
+                }
+            }
+            
             $calculation_price = 0;
             
             $height = ($hcinch+$heightinch)/12;
             $width = ($wcinch+$widthinch)/12;
            // echo "HCinch".$hcinch."#heightinch".$heightinch."#hegith".$height; 
-           //   echo "WCinch".$wcinch."#Wightinch".$widthinch."#With".$width;
-           //  exit;
+           // echo "WCinch".$wcinch."#Wightinch".$widthinch."#With".$width;
+           // exit;
             if(isset($_REQUEST['pfeetprice']) && $_REQUEST['pfeetprice']!='')
             {
-               if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
-               { 
+                if($height>0 && $height!="" && is_numeric($height) && $width>0 && $width!='' && is_numeric($width) )
+                { 
                    $calculation_price  = $height*$width*$priceperfeet_price;
                    $price  = $price + $calculation_price;
-               }    
+                }    
             } 
           
             
@@ -761,14 +802,101 @@ class ControllerProductProduct extends Controller {
                 $price = $price*$_REQUEST['quantity'];
             }    
             
+            /* Discount Calc */
+            if($disc_percentage!=""){   
+                $orgp = $price;
+                $disc_price = $orgp * ($disc_percentage/100);
+                $price = ($orgp - $disc_price);   
+                $json['org_price']  = $this->currency->format($orgp, $this->config->get('config_currency'));
+            }else{
+                $json['org_price']  = "";
+            }            
             
-            //$json['tax']   = $this->currency->format($price);//$str;//$size['price'];
+            //$json['tax']   = $this->currency->format($price);//$str;//$size['price'];            
             $json['price']  = $this->currency->format($price, $this->config->get('config_currency'));
             $json['price_without_currency']  = $price;
            
             
             $this->response->setOutput(json_encode($json));
 	}
+        
+        public function qtycalculate(){
+            
+            $this->language->load('product/product');
+            $this->load->model('catalog/product');
+                                    
+            $height = 0;
+            $width  = 0;
+            $hcinch = 0;
+            $heightinch = 0;  
+            $wcinch = 0;
+            $widthinch = 0;
+            
+            $json = array();
+            $json['success'] = 1;
+            $json['grmtqty'] = 4;
+
+            if(isset($_REQUEST['option']))
+            {
+                foreach ($_REQUEST['option'] as $key=>$op)
+                {
+                    if(isset($_REQUEST['pheight']) && $_REQUEST['pheight']!='')
+                    { 
+                        if($key == $_REQUEST['pheight'])
+                        {
+                            if($op>0)
+                            {
+                                $hcinch = $op*12;
+                            }    
+                        }                        
+                    }                    
+                   
+                    if(isset($_REQUEST['pheightinch']) && $_REQUEST['pheightinch']!='')
+                    {                        
+                        if($key == $_REQUEST['pheightinch'])
+                        {
+                            $heightinch = $op;
+                        }                       
+                    }                    
+                   
+                    if(isset($_REQUEST['pwidth']) && $_REQUEST['pwidth']!='')
+                    {
+                        if($key == $_REQUEST['pwidth'])
+                        {
+                            if($op>0)
+                            {
+                                $wcinch = $op*12;
+                            }  
+                        }
+                    }                    
+                   
+                    if(isset($_REQUEST['pwidthinch']) && $_REQUEST['pwidthinch']!=''){
+                        if($key == $_REQUEST['pwidthinch'])
+                        {
+                            $widthinch = $op;
+                        }
+                    }
+                }
+                
+                $height = ($hcinch+$heightinch)/12;
+                $width = ($wcinch+$widthinch)/12;
+                
+                if ($height % 2 == 0 && $width % 2 == 0) {
+                   // Even
+                    $grmtqty = $height + $width;
+                }else if ($height % 2 != 0 && $width % 2 != 0) {                    
+                   // Odd
+                    $grmtqty = ($height + $width) - 2;                  
+                }else{
+                   // odd or even
+                    $grmtqty = ($height + $width) - 1;
+                }
+             
+                $json['grmtqty'] = $grmtqty;                
+            }
+           
+            $this->response->setOutput(json_encode($json));
+        }
 
 	public function review() {
 		$this->load->language('product/product');

@@ -455,14 +455,21 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 25px
 }
 .price1 {
-    font-size:25px;
+    font-size:21px;
     color:#191919;
     padding:10px;
 }
 
+.home-price1 {
+  float: left;
+  font-size: 19px !important;
+  padding: 0;
+}
+
 .price_prod_detail{
-    font-size:20px;   
-    padding:10px;
+    font-size:19px;   
+   /* padding:10px;*/
+   padding:0px;
     color: #5170b3;
     float: left;
     font-family: "Roboto",sans-serif;

@@ -125,6 +125,11 @@ class ControllerCheckoutCart extends Controller {
 					$price = $this->currency->format($unit_price, $this->session->data['currency']);
                                        
 					//$total = $this->currency->format($unit_price * $product['quantity'], $this->session->data['currency']);
+                                        if(isset($product['org_total']) && $product['org_total']!=""){
+                                            $org_total = $this->currency->format($product['org_total'], $this->session->data['currency']);
+                                        }else{
+                                            $org_total = "";
+                                        }
                                         $total = $this->currency->format($product['total'], $this->session->data['currency']);
                                         
                                         
@@ -167,6 +172,7 @@ class ControllerCheckoutCart extends Controller {
 					'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
 					'price'     => $price,
 					'total'     => $total,
+                                        'org_total'     => $org_total,
 					'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				);
 			}
@@ -210,7 +216,7 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				array_multisort($sort_order, SORT_ASC, $results);
-
+//echo "<pre>"; print_r($results); exit;
 				foreach ($results as $result) {
 					if ($this->config->get($result['code'] . '_status')) {
 						$this->load->model('extension/total/' . $result['code']);

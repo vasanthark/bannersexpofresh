@@ -42,6 +42,8 @@ $proofing_email = array("45");
 $lamination  = array("47");
 $metalsteaks = array("48");
 
+$auto_calc = array("67");
+
 $hqty = 1;
 $calculated_feetprice = "0";
 $height_feet_value = 1;
@@ -260,7 +262,7 @@ $pdoubleside_optionid = "";
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
                                             <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
                                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <input <?php if($pdoubleside_val!=""){ echo "checked";} ?> class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <input <?php if($pdoubleside_val!=""){ echo "checked";} ?> data-id="<?php echo $option['name']; ?>" class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
                                                 <?php } ?> 
                                                 <label> <?php echo $option['name']; ?></label>                                               
                                                 <?php if ($option_value['price']) { ?>
@@ -280,7 +282,7 @@ $pdoubleside_optionid = "";
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
                                             <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
                                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <input <?php if($plamination_val!=""){ echo "checked";} ?> class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <input <?php if($plamination_val!=""){ echo "checked";} ?> data-id="<?php echo $option['name']; ?>" class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
                                                 <?php } ?> 
                                                 <label> <?php echo $option['name']; ?></label>                                               
                                                 <?php if ($option_value['price']) { ?>
@@ -300,7 +302,7 @@ $pdoubleside_optionid = "";
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
                                             <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
                                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                                <input <?php if($pmetalsteaks_val!=""){ echo "checked";} ?> class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <input <?php if($pmetalsteaks_val!=""){ echo "checked";} ?> data-id="<?php echo $option['name']; ?>" class="subject-list1" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
                                                 <?php } ?> 
                                                 <label> <?php echo $option['name']; ?></label>                                               
                                                 <?php if ($option_value['price']) { ?>
@@ -316,42 +318,38 @@ $pdoubleside_optionid = "";
                                     // Grommets per price                                   
                                     foreach ($options as $option){
                                         if (in_array($option['option_id'], $grommets_per_price)){ 
+                                        $grommte_price = $option['value'];
                                         ?> 
-                                       
-                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h5> Grommets <span>  (per grommet price $<?php echo $option['value']; ?>) </span></h5>
-                                        </div>   
-                                       
                                          <input type="hidden" value="<?php echo $option['value']; ?>" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>">
                                          <input type="hidden" name="pgroometprice" id="pgroometprice" value="<?php echo $option['product_option_id']; ?>">    
                                         <?php 
                                         }
                                     }?>
+                                       
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                       <h5> Grommets <span> (every 2 feet recommended)</span></h5>
+                                   </div>   
+                                    
                                     <div class="form-group">
-                                    <?php
-                                      
+                                    <?php                                      
                                     // Grommets Type
                                     foreach ($options as $option){ 
-                                        if (in_array($option['option_id'], $grommets_type))
-                                        {
-                                        ?>  
-                                       
+                                        if (in_array($option['option_id'], $grommets_type)){
+                                        ?>                                         
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                                             <label>Grommets Types</label>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">                                                                   
                                             <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker" onchange="addtoprice(<?php echo $product_id; ?>)">
                                                 <option value="">---Select One---</option>
-                                                <?php foreach ($option['product_option_value'] as $option_value) 
-                                                { ?>
+                                          <?php foreach ($option['product_option_value'] as $option_value){ ?>
                                                 <option value="<?php echo $option_value['product_option_value_id']; ?>">
                                                     <?php echo $option_value['name']; ?>                                                   
                                                 </option>
                                                 <?php 
                                                 } ?>
                                             </select>  
-                                        </div>
-                                           
+                                        </div>                                           
                                         <?php 
                                         } 
                                     } 
@@ -365,7 +363,7 @@ $pdoubleside_optionid = "";
                                             </div>
                                             <div class="col-xs-4 col-sm-6 col-md-6 col-lg-2 mobile-qty">
                                                 <div class="qty-filed qty-filed3">                                              
-                                                    <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control grmtqty numberentry" />                                               
+                                                    <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control grmtqty numberentry" value="" />                                               
                                                 </div>
                                             </div>
                                             <input type="hidden" name="pgroometqty" id="pgroometqty" value="<?php echo $option['product_option_id']; ?>">   
@@ -374,8 +372,26 @@ $pdoubleside_optionid = "";
                                     //end of loop
                                     } ?>
                                      </div>
-                                    <?php
                                     
+                                    <?php
+                                    // Auto calculation of grommets Qty                                    
+                                    foreach ($options as $option){ 
+                                        if (in_array($option['option_id'], $auto_calc)){ 
+                                         $autocalc_optionid = $option['product_option_id'];
+                                        ?>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 twosidebanner">
+                                            <div class="form-group <?php echo ($option['required'] ? ' required' : ''); ?>">                                               
+                                                <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                                                <input class="auto-calc-check" data-id="<?php echo $option['name']; ?>" data-name="<?php echo $option['product_option_id']; ?>" type="checkbox" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
+                                                <?php } ?> 
+                                                <label> <?php echo $option['name']; ?> </label> <span> ( per grommet price $<?php echo $grommte_price; ?> )</span>                                                                                              
+                                            </div>
+                                        </div>
+                                        <?php 
+                                        } 
+                                    }?> 
+                                    
+                                    <?php                                    
                                     // Placement
                                     foreach ($options as $option){ 
                                         if (in_array($option['option_id'], $grommets_placements)){
@@ -816,6 +832,8 @@ $pdoubleside_optionid = "";
                                                 <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
                                                 <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                                                 <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                                <input type="hidden" name="pmat_type_value" id="pmat_type_value"  value="">
+                                                <input type="hidden" name="auto_calc" id="auto_calc" value="<?php echo $autocalc_optionid;?>" />
                                                 <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                                 <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
                                                 <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="<?php echo $calculated_feetprice;?>">
@@ -844,6 +862,8 @@ $pdoubleside_optionid = "";
         
         if(pmat_type_val!="")
         {    
+            var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+            $('#pmat_type_value').val(mtype_text);
             $('.material_type').selectpicker('val', pmat_type_val);     
             $('.material_type').selectpicker('refresh');
         }
@@ -857,10 +877,11 @@ $pdoubleside_optionid = "";
         var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
         setfeetprice(mtype_text,pid);
         
-        $(document).on('change', '.material_type', function() {            
+        $(document).on('change', '.material_type', function() {  
             var mtype_text  = $.trim($(this).find("option:selected").text());
+            $('#pmat_type_value').val(mtype_text);
             setfeetprice(mtype_text,pid);
-            addtoprice(pid);
+            addtoprice(pid);          
             return false;
         });  
         
@@ -893,31 +914,34 @@ $pdoubleside_optionid = "";
          $(".grmtqty").val('4');
          $(this).selectpicker('refresh');       
        }
-        
-        // Intial price calculation
-        addtoprice(pid);
+       addtoprice(pid);
+       
 
         $('#producthome input[type=\'text\']').bind('keyup', function (e) {
-            $.ajax({
-                url: 'index.php?route=product/product/calculate&product_id=' + pid,
-                type: 'post',
-                data: $('input[type=\'text\'] , input[type=\'hidden\'], input[type=\'radio\']:checked, input[type=\'checkbox\']:checked, select'),
-                dataType: 'json',
-                success: function (json) {
-                    if (json['success']) {
-                        $('#pricediv').html("Price: " + json['price']);
-                        $('#calculated_feetprice').val(json['calculated_feetprice']);
-                    }
-                }
-            });
+            if ($(".auto-calc-check").is(":checked")) {           
+              calcualte_qty(pid);                 
+            }else{
+              addtoprice(pid);
+            }  
         });
-                
-        // Two side banner        
-        $('input.subject-list1').on('ifChecked', function (event) {      
+        
+        // Auto calcualtion grommet Qty  
+        $(document).on('ifChecked', 'input.auto-calc-check', function(event) {
+            calcualte_qty(pid);                        
+        });
+
+        $(document).on('ifUnchecked', 'input.auto-calc-check', function(event) {
+           $(".grmtqty").val('4');
+           $(this).selectpicker('refresh');
+           addtoprice(pid);          
+        });
+                        
+        // Two side banner   , Lamination , Metal steaks  
+        $('input.subject-list1').on('ifChecked', function (event) { 
             addtoprice(pid);
         });
 
-        $('input.subject-list1').on('ifUnchecked', function (event) {       
+        $('input.subject-list1').on('ifUnchecked', function (event) {  
            addtoprice(pid);          
         });
         
@@ -944,7 +968,10 @@ $pdoubleside_optionid = "";
         
             var pval = $(this).data("id");   
           
-            if(pval=="All Side" || pval=="All 4 corners only" || pval=="Top & Bottom" || pval=="Right & Left" )
+            if(pval=="All Side")
+              calcualte_qty(pid);    
+          
+            if(pval=="All 4 corners only" || pval=="Top & Bottom" || pval=="Right & Left" )
              $(".grmtqty").val('4');
            
             if(pval=="Bottom Only")
@@ -1069,18 +1096,8 @@ $pdoubleside_optionid = "";
                         $('.text-danger').parent().addClass('has-error');
                     }
 
-                    if (json['success']) {
-                        //  $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                        // $('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
-
-                        //  $('html, body').animate({scrollTop: 0}, 'slow');
-
-                        //  $('#carttotal').html(json['carttotal_disp']);
-                        // $('#carttotalamt').html(json['carttotalamt_disp']);
-
-                        // $('#cart > ul').load('index.php?route=common/cart/info ul li');
-
+                    if (json['success']) {  
+                    
                         $(location).attr('href', json['redirect']);
                     }
                 },
@@ -1169,6 +1186,23 @@ $pdoubleside_optionid = "";
                 if (json['success']) {
                     $('#pricediv').html("Price: " + json['price']);
                     $('#calculated_feetprice').val(json['calculated_feetprice']);
+                }
+            }
+        });
+    }
+    
+    function calcualte_qty(pid)
+    {
+        $.ajax({
+            url: 'index.php?route=product/product/qtycalculate&product_id=' + pid,
+            type: 'post',
+            data: $('input[type=\'text\'] , input[type=\'hidden\'], input[type=\'radio\']:checked, input[type=\'checkbox\']:checked, select'),
+            dataType: 'json',
+            async : 'false',
+            success: function (json) {
+                if (json['success']) {
+                    $(".grmtqty").val(json['grmtqty']);
+                    addtoprice(pid);
                 }
             }
         });

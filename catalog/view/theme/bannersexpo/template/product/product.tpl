@@ -755,51 +755,25 @@ $wi_optionid = "";
                                     }
                                 }
                             }else{
-                                ?>    
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2"> 
-                                    <div class="form-group" id="prod-price-qty">                                                                         
-                                                    <?php 
-                                                    if ($price) 
-                                                    { 
-                                                    if (!$special) {  ?>
-                                                    <p class="price_prod_detail" id="pricediv">Price: <?php echo $price; ?></p>  
-                                                    <?php } else { ?>
-                                                    <p style="text-decoration: line-through;"><?php echo $price; ?></p>
-                                                    <p class="price_prod_detail"><?php echo $special; ?></span>
-                                                    <?php
-                                                    }
-                                                    }?>     
-                                             
-                                    </div>
-                                </div> 
-                                <?php
+                               
                                     }
                                 ?>                          
                             </div>                          
-                        </div>  
-                       <?php
-                        if($direct_checkout=="0")
-                       { ?>
+                        </div>
                         <div class="form-group" id="prod-price-qty">
                             <div class="row">
                                 <div  class="">
-                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
                                         <?php 
                                         if ($price) 
-                                        { 
-                                        if (!$special) {  ?>
+                                        { ?>
                                         <p class="price_prod_detail" id="pricediv">Price: <?php echo $price; ?></p>  
-                                        <?php } else { ?>
-                                        <p style="text-decoration: line-through;"><?php echo $price; ?></p>
-                                        <p class="price_prod_detail"><?php echo $special; ?></span>
-                                        <?php
-                                        }
+                                        <?php 
                                         }?>      
                                     </div>                                    
                                 </div>
                             </div>
-                        </div>
-                       <?php }?>     
+                        </div>    
                        <?php                                 
                         $price_per_feet_option = array("22");  
                         foreach ($options as $option) 
@@ -853,6 +827,7 @@ $wi_optionid = "";
                                         <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
                                         <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                                         <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                        <input type="hidden" name="pmat_type_value" id="pmat_type_value"  value="">
                                         <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                         <input type="hidden" name="plamination" id="plamination"  value="<?php echo $plamination_optionid;?>">
                                         <input type="hidden" name="pmetalsteaks" id="pmetalsteaks"  value="<?php echo $pmetalsteaks_optionid;?>">                                    
@@ -1300,10 +1275,12 @@ $wi_optionid = "";
         
          /* Get material type price */
         var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+        $('#pmat_type_value').val(mtype_text);
         setfeetprice(mtype_text,pid);
         
         $(document).on('change', '.material_type', function() {             
             var mtype_text  = $.trim($(this).find("option:selected").text());
+            $('#pmat_type_value').val(mtype_text);
             setfeetprice(mtype_text,pid);
             addtoprice(pid);
             return false;
@@ -1335,18 +1312,7 @@ $wi_optionid = "";
         addtoprice(pid);
 
         $('#producthome input[type=\'text\']').bind('keyup', function (e) {
-            $.ajax({
-                url: 'index.php?route=product/product/calculate&product_id=' + pid,
-                type: 'post',
-                data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
-                dataType: 'json',
-                success: function (json) {
-                    if (json['success']) {
-                        $('#pricediv').html("Price: " + json['price']);
-                        $('#calculated_feetprice').val(json['calculated_feetprice']);
-                    }
-                }
-            });
+            addtoprice(pid);
         });
 
         $('input').on('ifChecked', function (event) {
@@ -1486,8 +1452,12 @@ $wi_optionid = "";
             data: $('.form-group input[type=\'text\'] , .form-group input[type=\'hidden\'], .form-group input[type=\'radio\']:checked, .form-group input[type=\'checkbox\']:checked, .form-group select'),
             dataType: 'json',
             success: function (json) {
-                if (json['success']) {
-                    $('#pricediv').html("Price: " + json['price']);
+                if (json['success']) {                   
+                    if(json['org_price']!=""){
+                        $('#pricediv').html("Price: <span class='orgprice'>"+json['org_price']+"</span>&nbsp;&nbsp;" + json['price']);
+                    }else{
+                        $('#pricediv').html("Price: " + json['price']);
+                    }
                     $('#calculated_feetprice').val(json['calculated_feetprice']);
                 }
             }

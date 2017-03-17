@@ -633,52 +633,27 @@ $pmetalsteaks_optionid = $option['product_option_id'];
             }
             }
         }else{
-        ?>    
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
-            <div class="form-group ">
-                <div class="price">
-                    <?php 
-                    if ($price) 
-                    { 
-                    if (!$special) {  ?>
-                    <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
-                    <?php } else { ?>
-                    <span style="text-decoration: line-through;"><?php echo $price; ?></span>
-                    <span class="price1"><?php echo $special; ?></span>
-                    <?php
-                    }
-                    }?>                 
-                </div>
-            </div>
-        </div> 
-        <?php
+        
             }
         ?>    
     </div>                          
-</div>  
-<?php
- if($direct_checkout=="0")
-{ ?>
-<div class="form-group" id="prod-price-qty">
-    <div class="row">
-        <div  class="">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
-                <?php 
-                if ($price) 
-                { 
-                if (!$special) {  ?>
-                <p class="price1" id="pricediv">Price: <?php echo $price; ?></p>  
-                <?php } else { ?>
-                <p style="text-decoration: line-through;"><?php echo $price; ?></p>
-                <p class="price1"><?php echo $special; ?></span>
-                    <?php
-                    }
-                    }?>      
-            </div>                                    
-        </div>
-    </div>
 </div>
-<?php }?>
+    
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="prod-price-qty">     
+                <div class="form-group">
+                    <div class="home-price">
+                    <?php 
+                    if ($price) 
+                    { 
+                    ?>
+                    <span class="price1 home-price1" id="pricediv">Price: <?php if(isset($org_price) &&  $org_price!=""){ ?> <span class='orgprice'><?php echo $org_price; ?></span>&nbsp;&nbsp; <?php }?><?php echo $price; ?></span>  
+                    <?php 
+                    }?>  
+                    </div>
+                </div>    
+            </div>
+             
+</div>
 <?php                                 
 $price_per_feet_option = array("22");  
 foreach ($options as $option) 
@@ -698,6 +673,7 @@ if (in_array($option['option_id'], $price_per_feet_option))
                 <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
                 <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                 <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                <input type="hidden" name="pmat_type_value" id="pmat_type_value"  value="">
                 <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                 <input type="hidden" name="plamination" id="plamination"  value="<?php echo $plamination_optionid;?>">
                 <input type="hidden" name="pmetalsteaks" id="pmetalsteaks"  value="<?php echo $pmetalsteaks_optionid;?>">                                    

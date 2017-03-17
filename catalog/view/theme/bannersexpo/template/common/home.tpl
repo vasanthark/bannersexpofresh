@@ -190,26 +190,25 @@ $material_type_prices = array("63");
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">                                               
                                                 Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 feet2">
+                                            </div>                                                                               
+                                        </div>
+                                    </div>
+                                     <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feet2">
                                                 <div class="form-group ">
-                                                    <div class="price">
+                                                    <div class="home-price">
                                                         <?php 
                                                         if ($price) 
-                                                        { 
-                                                        if (!$special) {  ?>
-                                                        <span class="price1" id="pricediv">Price: <?php echo $price; ?></span>  
-                                                        <?php } else { ?>
-                                                        <span style="text-decoration: line-through;"><?php echo $price; ?></span>
-                                                        <span class="price1"><?php echo $special; ?></span>
+                                                        { ?>                                                        
+                                                        <span class="price1 home-price1" id="pricediv">Price: <?php echo $price; ?></span>  
                                                         <?php
-                                                        }
                                                         }?>                 
                                                     </div>
                                                 </div>
-                                            </div>                                      
+                                            </div> 
                                         </div>
-                                    </div>                                     
+                                    </div>
                                      <div class="form-group ">
                                         <?php                                 
                                         $price_per_feet_option = array("22");  
@@ -227,6 +226,7 @@ $material_type_prices = array("63");
                                         <input type="hidden" name="pheight" id="pheight" value="<?php echo  $hf_optionid;?>">    
                                         <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                                         <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
+                                        <input type="hidden" name="pmat_type_value" id="pmat_type_value"  value="">
                                         <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                         <input type="hidden" name="pfeetprice" id="pfeetprice" value="0"> 
                                         <input type="hidden" name="calculated_feetprice" id="calculated_feetprice" value="">
@@ -339,14 +339,17 @@ $material_type_prices = array("63");
         var pid = $("#org_prod_id").val();
         
         /* Get material type price */
-        var mtype_text   = $.trim($('.material_type').find("option:selected").text());  
+        var mtype_text   = $.trim($('.material_type').find("option:selected").text()); 
+        $('#pmat_type_value').val(mtype_text);
         setfeetprice(mtype_text,pid);
+        
         
         $(document).on('change', '.material_type', function() { 
             var pid = $("#org_prod_id").val();
             var mtype_text  = $.trim($(this).find("option:selected").text());
+            $('#pmat_type_value').val(mtype_text);
             setfeetprice(mtype_text,pid);
-            addtoprice(pid);
+            addtoprice(pid);            
             return false;
         });  
         
@@ -399,7 +402,10 @@ $material_type_prices = array("63");
                     $('.selectpicker').selectpicker('refresh');
                     
                     var mtype_text  = $.trim($('.material_type').find("option:selected").text());
-                    setfeetprice(mtype_text,option_value);
+                    if(mtype_text!=""){
+                        $('#pmat_type_value').val(mtype_text);
+                        setfeetprice(mtype_text,option_value);
+                    }
                                          
                     $('input').iCheck({
                         checkboxClass: 'icheckbox_square-red',
@@ -594,7 +600,11 @@ $material_type_prices = array("63");
             dataType: 'json',
             success: function (json) {
                 if (json['success']) {
-                    $('#pricediv').html("Price: " + json['price']);
+                    if(json['org_price']!=""){
+                        $('#pricediv').html("Price: <span class='orgprice'>"+json['org_price']+"</span>&nbsp;&nbsp;" + json['price']);
+                    }else{
+                        $('#pricediv').html("Price: " + json['price']);
+                    }
                     $('#calculated_feetprice').val(json['calculated_feetprice']);
                 }
             }

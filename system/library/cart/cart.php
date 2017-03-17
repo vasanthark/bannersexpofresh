@@ -128,7 +128,7 @@ class Cart {
 				foreach (json_decode($cart['option']) as $product_option_id => $value) {
                                     
 					$option_query = $this->db->query("SELECT po.product_option_id, po.option_id, od.name, o.type FROM " . DB_PREFIX . "product_option po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE po.product_option_id = '" . (int)$product_option_id . "' AND po.product_id = '" . (int)$cart['product_id'] . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-
+                                       
 					if ($option_query->num_rows) {
                                             
 						if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
@@ -457,7 +457,59 @@ class Cart {
                                }else{
                                     
                                    $totalprice = ($price + $option_price) * $cart['quantity'];
-                               }    
+                               }  
+                               
+                               //echo $materialtypeval; exit;
+                               /* Identify the material type value to get discount percentage*/
+                                if(isset($materialtypeval) && $materialtypeval!=""){
+                                    if($materialtypeval=="13 oz")
+                                    {    
+                                        /* 13oz discount percentage */                     
+                                        $discount_type = array("64");
+                                    }else if($materialtypeval=="15 oz")
+                                    {    
+                                        /* 15oz discount percentage */                     
+                                        $discount_type = array("65");
+                                    }else if($materialtypeval=="18 oz")
+                                    {    
+                                        /* 18oz discount percentage */                     
+                                        $discount_type = array("66");
+                                    }else if($materialtypeval=="10 oz")
+                                    {    
+                                        /* 10oz discount percentage */                     
+                                        $discount_type = array("68");
+                                    }    
+                                }else{
+                                    $discount_type = array(); 
+                                }
+                                
+                                $disc_percentage = "";
+                                if(!empty($discount_type)){
+                                foreach ($this->getProductOptions($cproduct_id) as $option) {
+                                        if (in_array($option['option_id'], $discount_type)) {
+                                            $product_option_value_data = array();
+                                            foreach ($option['product_option_value'] as $option_value) {
+                                                $disc_qty = $option_value['name'];
+                                                $disc_prc = $option_value['price'];
+
+                                                if($cart['quantity']>=$disc_qty)
+                                                {
+                                                    $disc_percentage = $disc_prc;
+                                                }    
+                                            }
+                                        }
+                                    }
+                                }
+                               
+                                /* Discount Calc */
+                                if($disc_percentage!=""){ 
+                                    $org_total = $totalprice;
+                                    $disc_price = $totalprice * ($disc_percentage/100);                                     
+                                    $totalprice = ($totalprice - $disc_price);
+                                   
+                                }else{
+                                    $org_total = "";
+                                }
                                 
                               
 				$product_data[] = array(
@@ -475,6 +527,7 @@ class Cart {
 					'stock'           => $stock,
 					'price'           => ($price + $option_price),
 					//'total'           => ($price + $option_price) * $cart['quantity'],
+                                        'org_total'           => $org_total,
                                         'total'           => $totalprice,
 					'reward'          => $reward * $cart['quantity'],
 					'points'          => ($product_query->row['points'] ? ($product_query->row['points'] + $option_points) * $cart['quantity'] : 0),
@@ -487,6 +540,7 @@ class Cart {
 					'length_class_id' => $product_query->row['length_class_id'],
 					'recurring'       => $recurring
 				);
+                               
 			} else {
 				$this->remove($cart['cart_id']);
 			}

@@ -43,7 +43,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($products as $product) { ?>
+                                <?php 
+                                foreach ($products as $product) { ?>
                                 <tr>
                                     <td class="text-center"><?php if ($product['thumb']) { ?>
                                         <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
@@ -74,7 +75,13 @@
                                                 <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></button>
                                             </span></div></td>
                                     <td class="text-center"><?php echo $product['price']; ?></td>
-                                    <td class="text-center"><?php echo $product['total']; ?></td>
+                                    <td class="text-center">
+                                        <?php if(isset($product['org_total']) && $product['org_total']!="") { ?>
+                                        <span class="orgprice"><?php echo $product['org_total']; ?></span>
+                                        <?php }?>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <span class="finalprice"><?php echo $product['total']; ?></span>                                     
+                                    </td>
                                 </tr>
                                 <?php } ?>
                                 <?php foreach ($vouchers as $voucher) { ?>
@@ -100,7 +107,7 @@
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-8">
-                <table class="table table-bordered">
+                <table class="table table-bordered">                    
                     <?php foreach ($totals as $total) { ?>
                     <tr>
                         <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>

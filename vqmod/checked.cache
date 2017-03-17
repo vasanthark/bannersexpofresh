@@ -422,3 +422,4 @@ catalog/view/theme/bannersexpo/template/common/viewoptions.tpl
 admin/model/catalog/url_alias.php
 admin/language/en-gb/catalog/category.php
 admin/view/template/catalog/category_list.tpl
+catalog/controller/extension/analytics/google_analytics.php

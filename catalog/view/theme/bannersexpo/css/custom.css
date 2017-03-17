@@ -305,6 +305,36 @@ float:left;
     width: 65%;
 }
 
+.orgprice{   
+    font-weight: bold;
+    color: #7e7e7e !important;
+    font-size: 16px !important;
+    position: relative;
+}
+.orgprice::before {
+  border-color: #e93700;
+  border-top: 2px solid #e93700;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 48%;
+  transform: rotate(-10deg);
+}
+/*.orgprice::after {
+  border-bottom: 2px solid red;
+  content: "";
+  left: 0;
+  margin-top: calc(0.125em / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: 52%;
+}*/
+
+#prod-price-qty{
+    padding-bottom: 10px;
+}
+
 @media (max-width: 767px) {
     
     .floor-stand-menu ul li {
