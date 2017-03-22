@@ -881,17 +881,59 @@ class ControllerProductProduct extends Controller {
                 $height = ($hcinch+$heightinch)/12;
                 $width = ($wcinch+$widthinch)/12;
                 
-                if ($height % 2 == 0 && $width % 2 == 0) {
-                   // Even
-                    $grmtqty = $height + $width;
-                }else if ($height % 2 != 0 && $width % 2 != 0) {                    
-                   // Odd
-                    $grmtqty = ($height + $width) - 2;                  
+                if(isset($_REQUEST['grommet_pos_value']) && $_REQUEST['grommet_pos_value']!=""){
+                    
+                    $grommet_pos_value = $_REQUEST['grommet_pos_value'];
+                    
+                    if($grommet_pos_value=="All 4 corners only" ){
+                         $grmtqty = 4;
+                    }else if($grommet_pos_value=="No Grommets"){
+                         $grmtqty = 0;
+                    }else if($grommet_pos_value=="All Side"){
+                        
+                        if ($height % 2 == 0 && $width % 2 == 0) {
+                            // Even
+                             $grmtqty = $height + $width;
+                         }else if ($height % 2 != 0 && $width % 2 != 0) {                    
+                            // Odd
+                             $grmtqty = ($height + $width) - 2;                  
+                         }else{
+                            // odd or even
+                             $grmtqty = ($height + $width) - 1;
+                         }
+                         
+                    }else if($grommet_pos_value=="Bottom Only" || $grommet_pos_value=="Top Only"){
+                        
+                         if($width<4){
+                             $grmtqty = 2;
+                         }else if($width % 2 == 0){
+                             $grmtqty = ($width / 2) + 1;
+                         }else if($width % 2 != 0){
+                             $grmtqty = ($width / 2) + 0.5;
+                         }
+                         
+                    }else if($grommet_pos_value=="Top & Bottom"){
+                         if($width<4){
+                             $grmtqty = 4;
+                         }else if($width % 2 == 0){
+                             $grmtqty = (($width / 2) + 1) * 2;
+                         }else if($width % 2 != 0){
+                             $grmtqty = (($width / 2) + 0.5) * 2;
+                         }
+                    }else if($grommet_pos_value=="Right & Left"){
+                         if($height<4){
+                             $grmtqty = 4;
+                         }else if($height % 2 == 0){
+                             $grmtqty = (($height / 2) + 1) * 2;
+                         }else if($height % 2 != 0){
+                             $grmtqty = (($height / 2) + 0.5) * 2;
+                         }
+                    }       
+                
                 }else{
-                   // odd or even
-                    $grmtqty = ($height + $width) - 1;
+                    $grmtqty = 0;
                 }
-             
+                
                 $json['grmtqty'] = $grmtqty;                
             }
            

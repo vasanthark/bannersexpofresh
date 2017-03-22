@@ -400,31 +400,40 @@ $pdoubleside_optionid = "";
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                 <h5> Placements </h5>
                                             </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="red_text" style="display:none;">
+                                                <p style="color:red;">The selected grommet position in on the 4 corners, please change grommet quantity or choose other positions!</p>
+                                            </div>
                                             <?php 
                                             $opl = 1;
                                             foreach ($option['product_option_value'] as $option_value){ 
                                             
-                                                if (trim(strtolower($option_value['name']))=="other") {
+                                                if (trim(strtolower($option_value['name']))=="custom") {
                                                     $placement_class = ' placement_other';
+                                                    ?>
+                                                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                                        <input data-id="<?php echo $option_value['name']; ?>" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($opl==1){ echo 'checked=""'; } ?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker <?php echo $placement_class;?>">
+                                                        <?php echo $option_value['name']; ?>
+                                                        ( Fill the grommet Qty above!! )
+                                                    </div>
+                                                    <?php
                                                 }else{
                                                     $placement_class = ' placement_not_other';
-                                                }                                               
-                                                
-                                            ?>
-                                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                                    <input data-id="<?php echo $option_value['name']; ?>" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($opl==1){ echo 'checked=""'; } ?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker <?php echo $placement_class;?>">
-                                                    <?php echo $option_value['name']; ?>
-                                                </div>
-                                            <?php 
+                                                    ?>
+                                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                        <input data-id="<?php echo $option_value['name']; ?>" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($opl==1){ echo 'checked=""'; } ?> type="radio" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="selectpicker <?php echo $placement_class;?>">
+                                                        <?php echo $option_value['name']; ?>
+                                                    </div>
+                                                    <?php
+                                                } 
                                                 $opl++;
                                             } 
                                             
                                             // Grommets placement other
                                             foreach ($options as $option) {      
                                                 if (in_array($option['option_id'], $grommets_placement_other)){
-                                                ?>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notes-field" id="placementother">                                           
-                                                        <textarea rows="5" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control form-notes" ></textarea>
+                                                ?>                                                    
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 notes-field" id="placementother"> 
+                                                        <textarea rows="5" name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control form-notes" placeholder="Please enter your custom grommet requirements." ></textarea>
                                                     </div>
                                                 <?php
                                                 }
@@ -833,6 +842,7 @@ $pdoubleside_optionid = "";
                                                 <input type="hidden" name="pheightinch" id="pheightinch" value="<?php echo  $hi_optionid;?>">    
                                                 <input type="hidden" name="pmat_type" id="pmat_type"  value="<?php echo $pmat_optionid;?>">
                                                 <input type="hidden" name="pmat_type_value" id="pmat_type_value"  value="">
+                                                <input type="hidden" name="grommet_pos_value" id="grommet_pos_value"  value="">    
                                                 <input type="hidden" name="auto_calc" id="auto_calc" value="<?php echo $autocalc_optionid;?>" />
                                                 <input type="hidden" name="pdoubleside" id="pdoubleside"  value="<?php echo $pdoubleside_optionid;?>">
                                                 <input type="hidden" name="pfeetprice" id="pfeetprice" value="<?php echo  $feetprice_only;?>"> 
@@ -908,35 +918,82 @@ $pdoubleside_optionid = "";
            
         }
         
-       var pval = $('input.placement_not_other').data("id");
-       if(pval=="All Side"){
-         $(".grmtqty").prop('disabled', true);
-         $(".grmtqty").val('4');
-         $(this).selectpicker('refresh');       
-       }
-       addtoprice(pid);
+        var pval = $('input.placement_not_other').data("id");
+        $('#grommet_pos_value').val(pval);
+        if(pval=="All Side"){
+         // $(".grmtqty").prop('disabled', true);
+          calcualte_qty(pid,pval);  
+          $(this).selectpicker('refresh');       
+        }
        
+        // addtoprice(pid);       
 
-        $('#producthome input[type=\'text\']').bind('keyup', function (e) {
-            if ($(".auto-calc-check").is(":checked")) {           
-              calcualte_qty(pid);                 
+        $('#producthome input[type=\'text\']').bind('keyup', function (e) {  
+        
+            var selected1 = $('input.placement_not_other:checked');
+            var selected2 = $('input.placement_other:checked');
+            
+            if ($(".auto-calc-check").is(":checked")) {                
+                if (selected1.length > 0) {
+                    pval = selected1.data("id");
+                    $('#grommet_pos_value').val(pval);
+                    calcualte_qty(pid,pval);  
+                }else if(selected2.length > 0) {
+                    $(".grmtqty").val('4');
+                    $(this).selectpicker('refresh');
+                    addtoprice(pid);  
+                }                           
             }else{
-              addtoprice(pid);
+                if (selected1.length > 0) {
+                    pval = selected1.data("id");
+                    if(pval=="All Side"){
+                        $('#grommet_pos_value').val(pval);
+                        calcualte_qty(pid,pval); 
+                    }
+                }else if(selected1.length > 0) {
+                    $(".grmtqty").val('4');
+                    $(this).selectpicker('refresh');                    
+                }else{                 
+                    addtoprice(pid);
+                }
             }  
         });
         
         // Auto calcualtion grommet Qty  
         $(document).on('ifChecked', 'input.auto-calc-check', function(event) {
-            calcualte_qty(pid);                        
+            $(".grmtqty").prop('disabled', true);
+            groomet_auto_cal_qty(pid)
+            $(this).selectpicker('refresh');   
         });
 
         $(document).on('ifUnchecked', 'input.auto-calc-check', function(event) {
-           $(".grmtqty").val('4');
-           $(this).selectpicker('refresh');
-           addtoprice(pid);          
+           $(".grmtqty").prop('disabled', false);  
+           var selected1 = $('input.placement_not_other:checked');
+           var selected2 = $('input.placement_other:checked');
+           if (selected1.length > 0) {
+                pval = selected1.data("id");
+            }else if(selected2.length > 0) {
+                pval = selected2.data("id");
+            }    
+           set_groomet_qty(pid,pval);
+           $(this).selectpicker('refresh');              
         });
+        
+        function groomet_auto_cal_qty(pid){
+            var selected1 = $('input.placement_not_other:checked');
+            var selected2 = $('input.placement_other:checked');
+            if (selected1.length > 0) {
+                pval = selected1.data("id");
+                $('#grommet_pos_value').val(pval);
+                calcualte_qty(pid,pval);  
+            }else if(selected2.length > 0) {
+                $(".grmtqty").val('4');
+                $(this).selectpicker('refresh');
+                addtoprice(pid);  
+            }     
+        }
                         
-        // Two side banner   , Lamination , Metal steaks  
+        // Two side banner , Lamination , Metal steaks  
         $('input.subject-list1').on('ifChecked', function (event) { 
             addtoprice(pid);
         });
@@ -945,44 +1002,64 @@ $pdoubleside_optionid = "";
            addtoprice(pid);          
         });
         
-        // Placement 
+        // Custom Placement grommet Qty counts
+        
         $('#placementother').hide();
         
-        $('input.placement_other').on('ifChecked', function (event) {  
+        $('input.placement_other').on('ifChecked', function (event) { 
+           $("#red_text").hide();
            $(".grmtqty").prop('disabled', false);
            $(".grmtqty").val('4');
            $(this).selectpicker('refresh');
            addtoprice(pid);       
-           $('#placementother').show();
-           
+           $('#placementother').show();           
         });
 
         $('input.placement_other').on('ifUnchecked', function (event) {  
-           $(".grmtqty").prop('disabled', true);
+         //  $(".grmtqty").prop('disabled', true);
+           $("#red_text").hide();
            $(this).selectpicker('refresh');
            addtoprice(pid);  
            $('#placementother').hide();          
         });
         
+        // Other Placements grommet Qty counts
         $('input.placement_not_other').on('ifChecked', function (event) {  
-        
+            if ($(".auto-calc-check").is(":checked")) {
+                 $(".grmtqty").prop('disabled', true);
+            }else{
+                 $(".grmtqty").prop('disabled', false);
+            }
             var pval = $(this).data("id");   
-          
-            if(pval=="All Side")
-              calcualte_qty(pid);    
-          
-            if(pval=="All 4 corners only" || pval=="Top & Bottom" || pval=="Right & Left" )
-             $(".grmtqty").val('4');
-           
-            if(pval=="Bottom Only")
-             $(".grmtqty").val('2');  
-          
-            if(pval=="No Grommets")
-             $(".grmtqty").val('0');    
-         
-            $(this).selectpicker('refresh'); 
-            addtoprice(pid);       
+            set_groomet_qty(pid,pval);
+            $(this).selectpicker('refresh');                  
         });
+        
+        function set_groomet_qty(pid,pval){     
+            $("#red_text").hide();
+            $('#grommet_pos_value').val(pval);
+            if(pval=="All 4 corners only" ){
+                $(".grmtqty").val('4');
+                $("#red_text").show();
+                addtoprice(pid);  
+            }else if(pval=="No Grommets"){
+                $(".grmtqty").prop('disabled', true);
+                $(".grmtqty").val('0');  
+                addtoprice(pid);  
+            }else if ($(".auto-calc-check").is(":checked")) {
+               calcualte_qty(pid,pval);   
+            }else{ 
+                if(pval=="All Side"){  
+                  calcualte_qty(pid,pval);  
+                }else if(pval=="Bottom Only" || pval=="Top Only"){
+                  $(".grmtqty").val('2');  
+                  addtoprice(pid); 
+                }else{
+                  $(".grmtqty").val('4');  
+                  addtoprice(pid); 
+                }
+            }   
+        }
         
         // Finishing        
         $('#finishingoptions1').hide();
@@ -1191,7 +1268,7 @@ $pdoubleside_optionid = "";
         });
     }
     
-    function calcualte_qty(pid)
+    function calcualte_qty(pid,pval)
     {
         $.ajax({
             url: 'index.php?route=product/product/qtycalculate&product_id=' + pid,
