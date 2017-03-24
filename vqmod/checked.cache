@@ -423,3 +423,10 @@ admin/model/catalog/url_alias.php
 admin/language/en-gb/catalog/category.php
 admin/view/template/catalog/category_list.tpl
 catalog/controller/extension/analytics/google_analytics.php
+admin/language/en-gb/localisation/geo_zone.php
+admin/model/localisation/geo_zone.php
+admin/view/template/localisation/geo_zone_list.tpl
+admin/view/template/localisation/geo_zone_form.tpl
+admin/view/template/extension/shipping/free.tpl
+catalog/model/extension/shipping/free.php
+catalog/language/en-gb/extension/shipping/free.php

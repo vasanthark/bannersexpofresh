@@ -185,6 +185,10 @@ class ControllerCommonHome extends Controller {
         $data['banner_stands'] = $this->url->link('product/category', 'path=61');     
         $data['yard_signs'] = $this->url->link('product/product', 'product_id=53');
         $data['wall_decals'] = $this->url->link('product/product', 'product_id=56');
+        
+        $data['pvinyl_banner'] = $this->url->link('product/product', 'product_id=50');
+        $data['pmesh_banner'] = $this->url->link('product/product', 'product_id=51');
+        $data['pbackdrops'] = $this->url->link('product/product', 'product_id=61');
 
         $this->response->setOutput($this->load->view('common/home', $data));
     }

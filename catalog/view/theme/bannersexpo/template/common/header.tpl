@@ -33,7 +33,7 @@
 
         <script src="catalog/view/theme/bannersexpo/js/jquery.1.11.3.js"></script> 
         <!-- Include all compiled plugins (below), or include individual files as needed --> 
-        <script src="catalog/view/theme/bannersexpo/js/bootstrap.min.js"></script> 
+        <script src="catalog/view/theme/bannersexpo/js/bootstrap.min.js"></script>        
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/maps.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/bootstrap-select.min.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/owl.carousel.min.js"></script> 
@@ -42,6 +42,7 @@
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/SimpleStarRating.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/jquery.fancybox.js"></script> 
         <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/pdfpopup.js"></script> 
+        <script type="text/javascript" src="catalog/view/theme/bannersexpo/js/scrollmain.js"></script> 
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
@@ -50,7 +51,7 @@
         <?php } ?>            
         <script type="text/javascript">
             $(document).ready(function () {   
-                
+                              
                 $(window).orion({speed: 500});
 
                 $('.indicator').click(function (e) {
@@ -103,6 +104,20 @@
                $(".dropdown-toggle").click(function (e) {
                    var targetUrl = $(this).attr('href');
                    $(location).attr('href', targetUrl);
+                });
+                
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 800) {
+                            $('.scrollToTop').fadeIn();
+                    } else {
+                            $('.scrollToTop').fadeOut();
+                    }
+                });
+
+                //Click event to scroll to top
+                $('.scrollToTop').click(function(){
+                    $('html, body').animate({scrollTop : 0},800);
+                    return false;
                 });
                 
             });

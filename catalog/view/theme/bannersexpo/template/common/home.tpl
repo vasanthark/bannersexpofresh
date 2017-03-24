@@ -319,11 +319,32 @@ $material_type_prices = array("63");
         </div>
     </div>   
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Free Shipping On All Orders Over $199!</h4>
+      </div>
+      <div class="modal-body">
+          <p class="popup-box">Get Valuable Discount For Banners Over 10 Quantity (Vinyl, Mesh) & Backdrops Over 3</p>
+          <p class="popup-box"><a href="<?php echo $pvinyl_banner;?>" class="btn btn-popup">Vinyl Banner</a> <a href="<?php echo $pmesh_banner;?>" class="btn btn-popup">Mesh Banner</a> <a href="<?php echo $pbackdrops;?>" class="btn btn-popup"> Backdrops</a></p>
+      </div>
+      
+    </div>
+  </div>
+</div>
  
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
+       
+        if(localStorage.getItem('popState') != 'shown'){
+            //$('#myModal2').modal('show');
+            localStorage.setItem('popState','shown')
+        }
+        
        var ratings = document.getElementsByClassName('rating');
 
         for (var i = 0; i < ratings.length; i++) {

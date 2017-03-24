@@ -10,9 +10,15 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$this->load->model('extension/extension');
 
 			$results = $this->model_extension_extension->getExtensions('shipping');
+                        $cart_total = $this->cart->getTotal(); 
 
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
+                                    
+                                    if($cart_total>199 && $result['code']=="weight") continue;
+                                    
+                                    if($cart_total<199 && $result['code']=="free") continue;
+                                    
 					$this->load->model('extension/shipping/' . $result['code']);
 
 					$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
