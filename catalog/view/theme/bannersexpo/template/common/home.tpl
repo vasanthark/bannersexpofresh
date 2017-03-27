@@ -20,7 +20,7 @@ $material_type_prices = array("63");
                         <div class="your-order-cont">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group ">
-                                    <select name="home_cat" class="selectpicker" id="home-product-calc">
+                                    <select name="home_cat" class="selectpicker" id="home-product-calc" data-live-search="true">
                                         <option value="50">Vinyl Banner</option>
                                         <option value="51">Mesh Banners</option>
                                         <option value="<?php echo $displays;?>">Displays</option>
@@ -190,7 +190,9 @@ $material_type_prices = array("63");
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">                                               
                                                 Qty <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control control2 numberentry"/>
-                                            </div>                                                                               
+                                            </div>    
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"  id="save_price">                                                 
+                                            </div>       
                                         </div>
                                     </div>
                                      <div class="form-group ">
@@ -201,7 +203,7 @@ $material_type_prices = array("63");
                                                         <?php 
                                                         if ($price) 
                                                         { ?>                                                        
-                                                        <span class="price1 home-price1" id="pricediv">Price: <?php echo $price; ?></span>  
+                                                            <span class="price1 home-price1" id="pricediv">Price: <?php echo $price; ?></span>  
                                                         <?php
                                                         }?>                 
                                                     </div>
@@ -321,27 +323,27 @@ $material_type_prices = array("63");
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Free Shipping On All Orders Over $199!</h4>
-      </div>
-      <div class="modal-body">
-          <p class="popup-box">Get Valuable Discount For Banners Over 10 Quantity (Vinyl, Mesh) & Backdrops Over 3</p>
-          <p class="popup-box"><a href="<?php echo $pvinyl_banner;?>" class="btn btn-popup">Vinyl Banner</a> <a href="<?php echo $pmesh_banner;?>" class="btn btn-popup">Mesh Banner</a> <a href="<?php echo $pbackdrops;?>" class="btn btn-popup"> Backdrops</a></p>
-      </div>
-      
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1>Free</h1>
+            <h3>shipping</h3>
+            <p class="blue-color">On All Orders<span> Over $199!</span></p>
+            <p class="different-color">Get<span> Valuable Discount</span></p>
+            <p class="single-color"> For Banners Over 10 Quantity</p>
+            <p class="single-color"> (Vinyl, Mesh) & Backdrops Over 3</p>
+            <p class="buttons"><a href="<?php echo $pvinyl_banner;?>" class="btn btn-popup">Vinyl Banner</a> <a href="<?php echo $pmesh_banner;?>" class="btn btn-popup1">Mesh Banner</a> <a href="<?php echo $pbackdrops;?>" class="btn btn-popup2"> Backdrops</a></p>
+          </div>
+        </div>
     </div>
-  </div>
-</div>
- 
+</div> 
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
-       
+        $('#myModal2').modal('show');
         if(localStorage.getItem('popState') != 'shown'){
-            //$('#myModal2').modal('show');
+            $('#myModal2').modal('show');
             localStorage.setItem('popState','shown')
         }
         
@@ -613,6 +615,7 @@ $material_type_prices = array("63");
 
     function addtoprice(pid)
     {
+        $('#save_price').hide();
         var pid = $("#org_prod_id").val();
         $.ajax({
             url: 'index.php?route=product/product/calculate&product_id=' + pid,
@@ -622,7 +625,10 @@ $material_type_prices = array("63");
             success: function (json) {
                 if (json['success']) {
                     if(json['org_price']!=""){
+                        $('#save_price').show();
                         $('#pricediv').html("Price: <span class='orgprice'>"+json['org_price']+"</span>&nbsp;&nbsp;" + json['price']);
+                        var saveprc = json['org_price_without_currency']-json['price_without_currency'];                  
+                        $('#save_price').html("<span>Save</span> $"+saveprc.toFixed(2)+"!!")
                     }else{
                         $('#pricediv').html("Price: " + json['price']);
                     }

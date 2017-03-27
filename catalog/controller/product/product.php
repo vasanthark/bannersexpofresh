@@ -807,6 +807,7 @@ class ControllerProductProduct extends Controller {
                 $orgp = $price;
                 $disc_price = $orgp * ($disc_percentage/100);
                 $price = ($orgp - $disc_price);   
+                $json['org_price_without_currency']  = $orgp;
                 $json['org_price']  = $this->currency->format($orgp, $this->config->get('config_currency'));
             }else{
                 $json['org_price']  = "";
