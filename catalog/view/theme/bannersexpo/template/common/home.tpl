@@ -341,7 +341,7 @@ $material_type_prices = array("63");
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
-        $('#myModal2').modal('show');
+        
         if(localStorage.getItem('popState') != 'shown'){
             $('#myModal2').modal('show');
             localStorage.setItem('popState','shown')
