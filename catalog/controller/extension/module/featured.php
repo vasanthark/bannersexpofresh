@@ -28,7 +28,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 
             foreach ($products as $product_id) {
                 $product_info = $this->model_catalog_product->getProduct($product_id);
-
+       
                 if ($product_info) {
                     if ($product_info['fimage']) {
                         //$image = $this->model_tool_image->resize($product_info['image'], $setting['width'], $setting['height']);
@@ -76,7 +76,8 @@ class ControllerExtensionModuleFeatured extends Controller {
                         'tax' => $tax,
                         'rating' => $rating,
                         'href' => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
-                        'action' => $action
+                        'action' => $action,
+                        'model' =>     $product_info['model'],
                     );
                 }
             }

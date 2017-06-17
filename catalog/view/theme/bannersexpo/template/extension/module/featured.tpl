@@ -6,7 +6,9 @@
                     <h2>Our featured product</h2>
                 </div>
             </div>
-            <?php foreach ($products as $product) { ?>
+            <?php 
+        
+            foreach ($products as $product) { ?>
              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <form name="feature-product-form"  action="<?php echo $product['action']; ?>" method="post" enctype="multipart/form-data">               
                     <div class="thumbnail-cont">
@@ -14,7 +16,7 @@
                         <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>"/></a>            
                         </div>
                         <div class="product-thumbnails-txt">
-                            <p><strong><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></strong></p>
+                            <p><strong><a href="<?php echo $product['href']; ?>"><?php echo $product['model']; ?></a></strong></p>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 home-qty ">
                                     <input type="text" class="form-control" name="quantity" placeholder="Qty">

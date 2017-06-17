@@ -449,3 +449,17 @@ catalog/view/theme/bannersexpo/template/tltblog/tltblog.tpl
 admin/view/template/testimonial/testimonial_form.tpl
 admin/language/en-gb/marketing/contact.php
 admin/view/template/marketing/contact.tpl
+admin/language/english/catalog/faq.php
+admin/model/catalog/faq.php
+admin/view/template/catalog/faq_list.tpl
+admin/language/english/catalog/faqcategory.php
+admin/model/catalog/faqcategory.php
+admin/view/template/catalog/faqcategory_list.tpl
+admin/view/template/catalog/faqcategory_form.tpl
+admin/view/template/catalog/faq_form.tpl
+catalog/controller/information/faq.php
+catalog/language/english/information/faq.php
+catalog/model/catalog/faq.php
+catalog/model/catalog/faqcategory.php
+catalog/view/theme/bannersexpo/template/information/faq_list.tpl
+admin/view/template/extension/theme/theme_default.tpl
