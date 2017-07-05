@@ -30,7 +30,9 @@ class ControllerExtensionModuleTestimonial extends Controller
             }
 
             $data['module'] = 'sr' . $module++;
-            
+            echo "<pre>";
+            print_r($data);
+            exit;
             return $this->load->view('extension/module/testimonial', $data);
         }
     }

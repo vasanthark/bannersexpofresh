@@ -19,5 +19,6 @@ $_['text_unsubscribe_successful']    = 'Thank you. You have un-subscribed succes
 $_['text_email_submitted']    = 'Thanks for submitted to get newsletter of our store.';
 $_['text_subject_send_confirm_email']    = 'Please confirmation your email have subscribed';
 $_['text_email_was_submitted']    = 'You was submitted to get newsletter with this email.';
+$_['text_email_was_already_submitted'] = 'You have already subscribed for newsletter';
 $_['text_email_was_blacklist']    = 'We\'re sorry but we do not accept your email. Please contact with us to check the issue.';
 $_['text_email_resubscribed']     = 'Thanks for re-subscribed out system newsletter. Please check your inbox to verify this email.';

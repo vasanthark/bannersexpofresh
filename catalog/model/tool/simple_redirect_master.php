@@ -12,8 +12,6 @@ class ModelToolSimpleRedirectMaster extends Model {
      * @return array
      */
     public function getRedirect($from, $store_id = 0) {
-        
-       
         $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "srm_redirect` WHERE `from` = '" . $this->db->escape($from) . "' AND `store_id` = '" . (int)$store_id . "' AND `status` = '1' LIMIT 1");
 
 	    if ($query->num_rows) {

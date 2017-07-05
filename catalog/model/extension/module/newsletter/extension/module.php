@@ -21,7 +21,7 @@ class ModelExtensionModuleNewsletterExtensionModule extends Model {
                     // Enabled/Disabled
                     return array(
                         'error' => 1,
-                        'msg'   => $this->language->get('text_email_was_submitted')
+                        'msg'   => $this->language->get('text_email_was_already_submitted')
                     );
                     break;
                 case '2':

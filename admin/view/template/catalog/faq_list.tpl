@@ -63,7 +63,7 @@
           </thead>
           <tbody>
             
-            <?php if ($faqs) { ?>
+        <?php if (!empty($faqs)) { ?>
             <?php foreach ($faqs as $faq) { ?>
             <tr>
               <td style="text-align: center;"><?php if ($faq['selected']) { ?>

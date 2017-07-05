@@ -51,7 +51,7 @@ class ModelCatalogFaqCategory extends Model {
 
 		if (isset($data['faqcategory_layout'])) {
 			foreach ($data['faqcategory_layout'] as $store_id => $layout) {
-				if ($layout['layout_id']) {
+				if ($layout) {
 					$this->db->query("INSERT INTO " . DB_PREFIX . "faqcategory_to_layout SET faqcategory_id = '" . (int)$faqcategory_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout['layout_id'] . "'");
 				}
 			}

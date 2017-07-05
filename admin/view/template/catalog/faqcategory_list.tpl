@@ -49,7 +49,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php if ($catalog_faqcategorys) { ?>
+                <?php if (!empty($catalog_faqcategorys)) { ?>
                 <?php foreach ($catalog_faqcategorys as $catalog_faqcategory) { ?>
                 <tr>
                   <td class="text-center"><?php if (in_array($catalog_faqcategory['faqcategory_id'], $selected)) { ?>

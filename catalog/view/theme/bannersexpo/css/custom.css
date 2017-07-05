@@ -397,7 +397,38 @@ button.close {
     padding: 5px;
 
 }
+.enter-subscribe1 i {
+  font-size: 24px;
+}
+.input-group-email {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.input-group-email .form-control {  
+  border: 1px solid #fbad35;  
+}
+.sign-btn.enter-subscribe1 {
+    padding: 4px 20px;
+}
+.more-less {
+  float: right;
+}
+.panel-group > .panel-default > .panel-heading {
+  background: none repeat scroll 0 0 #f0f2f6; 
+}
+.panel-group > .panel-default:nth-child(2n) > .panel-heading {
+  background: none repeat scroll 0 0 #ffffff;  
+}
+.faq-list h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
 
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+  background-color: #8e8e8e;
+}
 @media (max-width: 767px) {
     
     .floor-stand-menu ul li {

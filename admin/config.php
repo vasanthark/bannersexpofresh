@@ -1,34 +1,36 @@
 <?php
 
 // HTTP
-define('HTTP_SERVER', 'http://local.bannersexpofresh/admin/');
-define('HTTP_CATALOG', 'http://local.bannersexpofresh/');
+define('HTTP_SERVER', 'http://www.bannersexpo.com/admin/');
+define('HTTP_CATALOG', 'http://www.bannersexpo.com/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://local.bannersexpofresh/admin/');
-define('HTTPS_CATALOG', 'http://local.bannersexpofresh/');
+define('HTTPS_SERVER', 'http://www.bannersexpo.com/admin/');
+define('HTTPS_CATALOG','http://www.bannersexpo.com/');
 
 // DIR
 
-define('DIR_APPLICATION', $_SERVER['DOCUMENT_ROOT'] . 'admin/');
-define('DIR_SYSTEM', $_SERVER['DOCUMENT_ROOT'] . 'system/');
-define('DIR_IMAGE', $_SERVER['DOCUMENT_ROOT'] . 'image/');
-define('DIR_LANGUAGE', $_SERVER['DOCUMENT_ROOT'] . 'admin/language/');
-define('DIR_TEMPLATE', $_SERVER['DOCUMENT_ROOT'] . 'admin/view/template/');
-define('DIR_CONFIG', $_SERVER['DOCUMENT_ROOT'] . 'system/config/');
-define('DIR_CACHE', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/cache/');
-define('DIR_DOWNLOAD', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/download/');
-define('DIR_LOGS', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/logs/');
-define('DIR_MODIFICATION', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/modification/');
-define('DIR_UPLOAD', $_SERVER['DOCUMENT_ROOT'] . 'system/storage/upload/');
-define('DIR_CATALOG', $_SERVER['DOCUMENT_ROOT'] . 'catalog/');
+$filepath = $_SERVER['DOCUMENT_ROOT'] .'/';
 
-define('DIR_TECHSPEC', $_SERVER['DOCUMENT_ROOT']. 'techspecification/');
+define('DIR_APPLICATION', $filepath . 'admin/');
+define('DIR_SYSTEM', $filepath . 'system/');
+define('DIR_IMAGE', $filepath . 'image/');
+define('DIR_LANGUAGE', $filepath. 'admin/language/');
+define('DIR_TEMPLATE', $filepath. 'admin/view/template/');
+define('DIR_CONFIG', $filepath . 'system/config/');
+define('DIR_CACHE', $filepath . 'system/storage/cache/');
+define('DIR_DOWNLOAD', $filepath . 'system/storage/download/');
+define('DIR_LOGS', $filepath . 'system/storage/logs/');
+define('DIR_MODIFICATION', $filepath. 'system/storage/modification/');
+define('DIR_UPLOAD', $filepath . 'system/storage/upload/');
+define('DIR_CATALOG', $filepath . 'catalog/');
+
+define('DIR_TECHSPEC', $filepath. 'techspecification/');
 // DB
 define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'bannersexpofresh');
+define('DB_HOSTNAME', 'bannersexpo.com');
+define('DB_USERNAME', 'signsny_expofres');
+define('DB_PASSWORD', 'cFVl=hAgQh!v');
+define('DB_DATABASE', 'signsny_expofresh');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');

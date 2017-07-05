@@ -467,3 +467,5 @@ admin/language/en-gb/localisation/zone.php
 admin/view/template/localisation/zone_list.tpl
 admin/language/en-gb/localisation/country.php
 admin/view/template/localisation/country_list.tpl
+catalog/controller/extension/module/tawkto.php
+catalog/view/theme/default/template/extension/module/tawkto.tpl
