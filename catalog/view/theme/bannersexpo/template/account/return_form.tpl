@@ -189,4 +189,5 @@ $('.date').datetimepicker({
         pickTime: false
     });
 //--></script>
+<?php echo $content_bottom; ?>    
 <?php echo $footer; ?>

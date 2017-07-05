@@ -19,13 +19,24 @@
                     <div class="faq-list">
                         <div class="faq-heading"><h2><?php echo $category['title']; ?><a id="<?php echo $category['title']; ?>"></a></h2></div>
                         <div class="faqs-content">
-                            <div class="faq-block">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <?php if (count($category['faqs'])) { ?>
                                 <?php foreach ($category['faqs'] AS $faq) { ?>
-                                <div>
-                                    <div class="faq-heading" ><a href="<?php  echo $faq['href']; ?>" target="_blank"><?php echo $faq['title']; ?></a></div>
-                                    
-                                </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" data-target="<?php  echo '#collapse'.$faq['faq_id']; ?>" aria-expanded="false" aria-controls="<?php  echo 'collapse'.$faq['faq_id']; ?>">
+                                                <a class="collapsed" role="button" >
+                                                    <i class="more-less fa fa-plus"></i>
+                                                    <?php echo $faq['title']; ?>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="<?php  echo 'collapse'.$faq['faq_id']; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <?php echo $faq['description']; ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php } ?>
                                 <?php } ?>
                             </div>
@@ -44,6 +55,14 @@
     </div>   
     <?php echo $content_bottom; ?>
 </div>
-
-
+<script>
+    function toggleIcon(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find(".more-less")
+        .toggleClass('fa-plus fa-minus');
+}
+$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+$('.panel-group').on('shown.bs.collapse', toggleIcon);
+    </script>
 <?php echo $footer; ?> 

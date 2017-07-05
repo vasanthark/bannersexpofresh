@@ -1479,5 +1479,6 @@ $wi_optionid = "";
 
         return null;
     }
-</script>            
+</script>      
+<?php echo $content_bottom; ?>
 <?php echo $footer; ?>

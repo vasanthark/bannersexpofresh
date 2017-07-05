@@ -708,4 +708,5 @@ $('select[name=\'country_id\']').on('change', function () {
 
     $('select[name=\'country_id\']').trigger('change');
 //--></script>
+ <?php echo $content_bottom; ?>
 <?php echo $footer; ?>

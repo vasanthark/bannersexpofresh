@@ -167,7 +167,7 @@
                         <div class="buttons clearfix">
                             <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
                         </div>
-                        <?php echo $content_bottom; ?>
+                       
                     </div>
                 
                 <div id="content" class="col-sm-3">
@@ -179,4 +179,5 @@
     </div>
 </div>
 </div>
+ <?php echo $content_bottom; ?>
 <?php echo $footer; ?>

@@ -81,7 +81,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="contact-page-form">     
               <div class="contact-map" id="contactus-map"></div>
-            <?php // echo $content_bottom; ?>
+            <?php  echo $content_bottom; ?>
           </div>
         </div>
       </div>

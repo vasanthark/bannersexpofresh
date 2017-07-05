@@ -31,7 +31,7 @@
 
                         <div class="blog-text">
                             <p><a href="<?php echo $tltblog['href']; ?>"><?php echo $tltblog['title']; ?></a></p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipicing elit. Nullam feugiat dignissim metus, id vestibulum tellus Cras ante commodo.</p>
+                            <p><?php echo $tltblog['intro']; ?></p>
                             <div class="blog-text-read">
                                 <a href="<?php echo $tltblog['href']; ?>">Read more...</a></div>
                         </div>

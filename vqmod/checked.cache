@@ -463,3 +463,7 @@ catalog/model/catalog/faq.php
 catalog/model/catalog/faqcategory.php
 catalog/view/theme/bannersexpo/template/information/faq_list.tpl
 admin/view/template/extension/theme/theme_default.tpl
+admin/language/en-gb/localisation/zone.php
+admin/view/template/localisation/zone_list.tpl
+admin/language/en-gb/localisation/country.php
+admin/view/template/localisation/country_list.tpl

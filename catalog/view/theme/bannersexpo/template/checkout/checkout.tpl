@@ -794,4 +794,5 @@ $(document).delegate('#button-payment-method', 'click', function() {
     });
 });
 //--></script>
+<?php echo $content_bottom; ?>
 <?php echo $footer; ?>

@@ -322,7 +322,7 @@ $material_type_prices = array("63");
     </div>   
 </div>
 <!-- Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
@@ -333,6 +333,14 @@ $material_type_prices = array("63");
             <p class="different-color">Get<span> Valuable Discount</span></p>
             <p class="single-color"> For Banners Over 10 Quantity</p>
             <p class="single-color"> (Vinyl, Mesh) & Backdrops Over 3</p>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+            <div class="input-group input-group-email">
+                <input type="text" class="form-control" id="email1" name="email1" placeholder="Enter your email address..."/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default sign-btn enter-subscribe1" type="button"><i class="fa fa-envelope"></i></button>
+                </span> 
+            </div>
+            </div>
             <p class="buttons"><a href="<?php echo $pvinyl_banner;?>" class="btn btn-popup">Vinyl Banner</a> <a href="<?php echo $pmesh_banner;?>" class="btn btn-popup1">Mesh Banner</a> <a href="<?php echo $pbackdrops;?>" class="btn btn-popup2"> Backdrops</a></p>
           </div>
         </div>
@@ -341,7 +349,12 @@ $material_type_prices = array("63");
 <?php echo $column_left; ?>
 <script type="text/javascript">
     $(function () {
-        
+        new AdvancedNewsletter({
+        container_id: '#myModal2',
+            input_id: 'input[name=email1]',
+            submit_id: '.enter-subscribe1'
+        });
+$('#myModal2').modal('show');
         if(localStorage.getItem('popState') != 'shown'){
             $('#myModal2').modal('show');
             localStorage.setItem('popState','shown')
